@@ -1,0 +1,23 @@
+ESTADO
+Ofrece una panoramica general del estado actual de la Estacion Meteorologica.
+Mediante el desglose de sus diferentes secciones, podra el usuario estar al tanto de las configuraciones principales del equipo.
+
+LAN
+Seccion de informacion acerca de la configuracion de red cableada ETHERNET detectada en el sistema.
+
+Direccion MAC
+Direccion fisica del dispositivo de red.
+
+Direccion IP
+Direccion IP asignada al dispositivo fisico de red.
+
+La marcacion ESTATICA | DHCP informa acerca del tipo de asignacion de direccion IP establecida.
+
+WIFI
+Descripcion de la conectividad inalambrica del dispositivo.
+
+RSSID
+Red inalambrica a la cual se ha establecido conexion.
+
+Direccion IP
+Direccion IP asignada al dispositivo mediante conexion de red inalambrica.
