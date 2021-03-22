@@ -3,78 +3,38 @@
 
     <!-- (Optional) The Header -->
     <q-header elevated>
-      <q-icon name="outlined_arrow_downward" class="bg-pink text-h5 q-pa-md rounded-borders q-card"/>
-      <q-toolbar>
-        <q-btn
-          flat
-          round
-          dense
-          icon="outlined_menu"
-          @click="leftDrawer = !leftDrawer"
-        />
-        <q-select value="leftDrawer" :options="['hell', 'goodby']" dropdown-icon="outlined_arrow_downward"/>
-        <q-toolbar-title>
-          Header
-        </q-toolbar-title>
+      <q-toolbar class="text-h6">
+        <q-btn icon="menu" class="text-h6" round flat dense @click="leftDrawer = !leftDrawer"/>
+        <q-space/>
+        <q-icon class="text-h4" name="battery-charging" style="margin-right: 1rem"/>
+        <q-btn class="text-h6" icon="help" flat dense round/>
       </q-toolbar>
-
-      <q-tabs>
-        <q-route-tab
-          icon="map"
-          to="/your/route"
-          replace
-          label="One Tab"
-        />
-        <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
-        />
-      </q-tabs>
     </q-header>
 
     <!-- (Optional) The Footer -->
     <q-footer>
-      <q-tabs switch-indicator>
-        <q-route-tab
-          icon="map"
-          to="/your/route"
-          replace
-          label="One Tab"
-        />
-        <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
-        />
-      </q-tabs>
 
-      <q-toolbar>
-        <q-btn
-          flat
-          round
-          dense
-          icon="menu"
-          @click="leftDrawer = !leftDrawer"
-        />
-        <q-toolbar-title>
-          Footer
-        </q-toolbar-title>
-      </q-toolbar>
     </q-footer>
 
     <!-- (Optional) A Drawer; you can add one more with side="right" or change this one's side -->
     <q-drawer
+      show-if-above
       v-model="leftDrawer"
       side="left"
       bordered
       content-class="bg-grey-2"
     >
       <!-- QScrollArea is optional -->
-      <q-scroll-area class="fit q-pa-sm">
+      <q-scroll-area class="fit q-pa-sm bg-secondary text-white row">
         <!-- Content here -->
+        <div class="col flex">
+          <q-space/>
+          <q-btn icon="close" color="primary" text-color="white" round flat v-if="$q.screen.lt.md"
+                 @click="leftDrawer = false"/>
+        </div>
+        <div class="col flex flex-center bg-primary q-ma-md q-pa-sm" v-for="n in 6" :key="n">
+          hello
+        </div>
       </q-scroll-area>
     </q-drawer>
 
@@ -87,21 +47,19 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, ref } from '@vue/composition-api';
+  import { defineComponent } from '@vue/composition-api';
+  import { fasPooStorm } from '@quasar/extras/fontawesome-v5';
 
   export default defineComponent({
     // name: 'LayoutName',
     data() {
       return {
+        fasPooStorm
       };
     },
 
     setup() {
-      const leftDrawer = ref(false);
-      return { leftDrawer };
+      return { leftDrawer: false };
     }
   });
 </script>
-
-<style>
-</style>

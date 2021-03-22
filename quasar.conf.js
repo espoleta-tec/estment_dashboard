@@ -32,6 +32,7 @@ module.exports = configure(function(ctx) {
       'i18n',
       'axios',
       'global',
+      'importIcons.ts',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css

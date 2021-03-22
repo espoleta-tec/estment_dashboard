@@ -5,17 +5,32 @@
 </template>
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
-  import { icons } from 'assets/SVG/import-SVG';
+  import { icons } from 'assets/icons/import-icons';
+
 
   export default defineComponent({
     name: 'App',
     created(): void {
-      this.$q.iconMapFn = (iconName => {
-        if (iconName.indexOf('outlined_') === -1 && iconName.indexOf('outlined_') === -1 && iconName.indexOf('outlined_') === -1) {
-          iconName = 'outlined_' + iconName
+      this.$axios.interceptors.response.use((response) => {
+        return response;
+      }, error => {
+        if (error.response.status === 401) {
+          this.$store.commit('login/resetToken');
         }
-        if (iconName in icons) {
-          return { icon: `img:${icons[iconName]}` };
+      });
+
+      this.$q.iconMapFn = (iconName => {
+        let passName = iconName;
+        if (passName in icons) {
+          return { icon: icons[passName] };
+        }
+        passName = 'jam_' + iconName;
+        if (passName in icons) {
+          return { icon: icons[passName] };
+        }
+        passName = 'weather_' + iconName;
+        if (passName in icons) {
+          return { icon: icons[passName] };
         }
       });
     }

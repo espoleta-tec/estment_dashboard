@@ -2,6 +2,7 @@ import { RouteConfig } from 'vue-router';
 import ResponsiveLayout from 'layouts/ResponsiveLayout.vue';
 import Index from 'pages/Index.vue';
 import Error404 from 'pages/Error404.vue';
+import Login from 'pages/Login.vue';
 
 const routes: RouteConfig[] = [
   {
@@ -10,6 +11,9 @@ const routes: RouteConfig[] = [
     children: [
       { path: '', component: Index },
     ]
+  },
+  {
+    path: '/login', component: Login
   },
 
   // Always leave this as last one,

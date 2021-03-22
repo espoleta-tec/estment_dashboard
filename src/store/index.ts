@@ -2,8 +2,10 @@ import { store } from 'quasar/wrappers';
 import Vuex from 'vuex';
 import layout from './layout';
 import { LayoutState } from 'src/store/layout/state';
-import net from './net'
-import { NetState} from 'src/store/net/state';
+import net from './net';
+import { NetState } from 'src/store/net/state';
+import login from './login';
+import { LoginStateInterface } from 'src/store/login/state';
 
 // import example from './module-example';
 // import { ExampleStateInterface } from './module-example/state';
@@ -20,16 +22,18 @@ export interface StateInterface {
   example: unknown;
   layout: LayoutState,
   net: NetState,
+  login: LoginStateInterface
 }
 
-export default store(function ({ Vue }) {
+export default store(function({ Vue }) {
   Vue.use(Vuex);
 
   return new Vuex.Store<StateInterface>({
     modules: {
       // example
       layout,
-      net
+      net,
+      login
     },
 
     // enable strict mode (adds overhead!)
