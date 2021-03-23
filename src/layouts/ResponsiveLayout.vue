@@ -32,9 +32,10 @@
           <q-btn icon="close" color="primary" text-color="white" round flat v-if="$q.screen.lt.md"
                  @click="leftDrawer = false"/>
         </div>
-        <q-item @click="$router.push('/login')" clickable class="row no-wrap flex items-center q-ma-md q-pa-sm text-h5" v-for="n in 6" :key="n">
-            <q-icon name="user_filled"/>
-            <span style="margin-left: 0.2rem;">Usuario</span>
+        <q-item @click="$router.push('/login')" clickable class="row no-wrap flex items-center q-ma-md q-pa-sm text-h5"
+                v-for="n in 6" :key="n">
+          <q-icon name="user_filled"/>
+          <span style="margin-left: 0.2rem;">Usuario</span>
         </q-item>
       </q-scroll-area>
     </q-drawer>
