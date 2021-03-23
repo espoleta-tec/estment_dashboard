@@ -25,7 +25,7 @@
       content-class="bg-grey-2"
     >
       <!-- QScrollArea is optional -->
-      <q-scroll-area class="theme-gradient fit q-pa-sm text-white row">
+      <q-scroll-area class="app-drawer fit q-pa-sm text-white row">
         <!-- Content here -->
         <div class="col flex">
           <q-space/>
@@ -66,7 +66,4 @@
   });
 </script>
 <style lang="scss">
-  .theme-gradient {
-    background: $gradient;
-  }
 </style>
