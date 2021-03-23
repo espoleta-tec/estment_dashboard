@@ -2,12 +2,12 @@
   <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
-    <q-header elevated>
+    <q-header>
       <q-toolbar class="text-h6">
-        <q-btn icon="menu" class="text-h6" round flat dense @click="leftDrawer = !leftDrawer"/>
+        <q-btn icon="moon" class="text-h6" round flat dense @click="leftDrawer = !leftDrawer"/>
         <q-space/>
-        <q-icon class="text-h4" name="battery-charging" style="margin-right: 1rem"/>
-        <q-btn class="text-h6" icon="help" flat dense round/>
+        <q-icon class="text-h4" name="settings_filled" style="margin-right: 1rem"/>
+        <q-btn class="text-h6" icon="sd_filled" flat dense round/>
       </q-toolbar>
     </q-header>
 
@@ -25,16 +25,17 @@
       content-class="bg-grey-2"
     >
       <!-- QScrollArea is optional -->
-      <q-scroll-area class="fit q-pa-sm bg-secondary text-white row">
+      <q-scroll-area class="theme-gradient fit q-pa-sm text-white row">
         <!-- Content here -->
         <div class="col flex">
           <q-space/>
           <q-btn icon="close" color="primary" text-color="white" round flat v-if="$q.screen.lt.md"
                  @click="leftDrawer = false"/>
         </div>
-        <div class="col flex flex-center bg-primary q-ma-md q-pa-sm" v-for="n in 6" :key="n">
-          hello
-        </div>
+        <q-item @click="$router.push('/login')" clickable class="row no-wrap flex items-center q-ma-md q-pa-sm text-h5" v-for="n in 6" :key="n">
+            <q-icon name="user_filled"/>
+            <span style="margin-left: 0.2rem;">Usuario</span>
+        </q-item>
       </q-scroll-area>
     </q-drawer>
 
@@ -63,3 +64,8 @@
     }
   });
 </script>
+<style lang="scss">
+  .theme-gradient {
+    background: $gradient;
+  }
+</style>

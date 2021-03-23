@@ -34,7 +34,7 @@
     "html-webpack-inline-source-plugin": "1.0.0-beta.2",
     "inline-source": "^7.2.0",
     "quasar": "^1.0.0",
-    "svg-stringifier": "^2.0.8",
+    "svg-stringify": "^3.1.2",
     "vue-apexcharts": "^1.6.0",
     "vue-chartjs": "^3.5.1",
     "vue-i18n": "^8.0.0",

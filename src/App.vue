@@ -24,11 +24,7 @@
         if (passName in icons) {
           return { icon: icons[passName] };
         }
-        passName = 'jam_' + iconName;
-        if (passName in icons) {
-          return { icon: icons[passName] };
-        }
-        passName = 'weather_' + iconName;
+        passName = 'vortex_' + iconName;
         if (passName in icons) {
           return { icon: icons[passName] };
         }
