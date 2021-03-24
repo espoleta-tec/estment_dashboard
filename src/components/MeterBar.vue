@@ -1,6 +1,8 @@
 <template>
-  <div class="self-stretch row">
-    <div ref="meter" class="col" :style="meterClass">
+  <div class="row text-h6" style="position: relative">
+    <q-icon ref="indicator" name="arrow-left" :style="indicator">
+    </q-icon>
+    <div ref="meter" :style="meterClass">
       <div :style="coverClass"/>
     </div>
   </div>
@@ -41,7 +43,7 @@
       },
       border: {
         type: String,
-        default: 'solid white 1px'
+        default: 'solid rgba(255, 255, 255, 0.1)'
       },
       width: {
         type: String,
@@ -51,26 +53,45 @@
     computed: {
       meterClass(): any {
         return {
+          position: 'relative',
+          padding: '1px',
           background: colors.getBrand(this.color) ? colors.getBrand(this.color) : this.color,
-          'border-radius': this.rounded ? '9999px' : '',
+          // background: 'black',
           border: this.isMounted ? this.border : '',
+          'border-radius': this.rounded ? '1000rem' : '',
           'overflow': 'hidden',
-          width: this.width
+          width: this.width,
+          'border-spacing': 'revert',
+          // '-webkit-background-clip': 'padding-box',
+          // '-moz-background-clip': 'padding',
+          'background-clip': 'content-box'
         };
       },
       coverClass(): any {
         let height = this.value <= 1 ? 1 - this.value : 0;
-        let color = colors.getBrand(this.trackColor) ? colors.getBrand(this.trackColor) : this.trackColor
+        let color = colors.getBrand(this.trackColor) ? colors.getBrand(this.trackColor) : this.trackColor;
         return {
-          width: '100%',
+          position: 'absolute',
+          width: '100px',
+          top: '0',
           height: `${height * this.barHeight}px`,
-          background: color
+          background: color,
+          transform: 'translateY(-5px)'
         };
       },
       barHeight() {
         if (!this.isMounted) return 0;
         let meter = this.$refs.meter as Element;
-        return height(meter)
+        return height(meter);
+      },
+      indicator(): any {
+        if (!this.isMounted) return {};
+        let barHeight = this.value <= 1 ? 1 - this.value : 0;
+        return {
+          position: 'absolute',
+          top: `calc(${barHeight * this.barHeight - 1}px - 0.5em)`,
+          left: this.width
+        };
       }
     }
   });
@@ -81,5 +102,12 @@
     border-radius: 9999px;
     border: solid white 1px;
     overflow: hidden;
+    /*border-style: ;*/
+  }
+
+  .indicator {
+    position: absolute;
+    top: 0;
+    left: 2rem;
   }
 </style>

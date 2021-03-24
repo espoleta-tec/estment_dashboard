@@ -1,18 +1,28 @@
 <template>
-  <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
+  <q-layout view="lHh Lpr lFf" class="bg-dark"> <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
-    <q-header>
-      <q-toolbar class="text-h6">
-        <q-btn icon="moon" class="text-h6" round flat dense @click="leftDrawer = !leftDrawer"/>
+    <q-header class="bg-dark q-pa-sm">
+      <q-toolbar class="text-h6 ">
+        <q-btn icon="menu_filled" class="text-h6" round flat dense @click="leftDrawer = !leftDrawer"/>
         <q-space/>
-        <q-icon class="text-h4" name="settings_filled" style="margin-right: 1rem"/>
-        <q-btn class="text-h6" icon="sd_filled" flat dense round/>
+        <div class="row items-center content-center" style="margin-left: 1rem" v-for="n in notifications"
+             :key="n.text">
+          <q-icon :name="n.icon" class="text-h6" style="margin-right: 1rem"/>
+          <div class="text-body2 text-uppercase text-secondary">{{n.text}}</div>
+        </div>
       </q-toolbar>
     </q-header>
 
     <!-- (Optional) The Footer -->
-    <q-footer>
+    <q-footer class="bg-dark q-pa-md" style="height: 100px" v-if="false">
+      <q-scroll-area horizontal class="fit" >
+        <q-tabs class="text-h4" indicator-color="transparent" active-bg-color="accent">
+          <q-route-tab to="" v-for="n in 6" :key="n" class="q-ma-md bg-secondary">
+            <q-icon name="wind_turbine"/>
+          </q-route-tab>
+        </q-tabs>
+      </q-scroll-area>
 
     </q-footer>
 
@@ -50,13 +60,15 @@
 
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
-  import { fasPooStorm } from '@quasar/extras/fontawesome-v5';
 
   export default defineComponent({
     // name: 'LayoutName',
     data() {
       return {
-        fasPooStorm
+        notifications: [
+          // { text: '21%', icon: 'sd_filled' },
+          { text: '4-13/3', icon: 'moon' }
+        ]
       };
     },
 
@@ -65,5 +77,5 @@
     }
   });
 </script>
-<style lang="scss">
+<style>
 </style>

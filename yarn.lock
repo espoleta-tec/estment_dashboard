@@ -10030,10 +10030,10 @@ svg-parser@^2.0.4:
   resolved "https://registry.yarnpkg.com/svg-parser/-/svg-parser-2.0.4.tgz#fdc2e29e13951736140b76cb122c8ee6630eb6b5"
   integrity sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==
 
-svg-stringify@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/svg-stringify/-/svg-stringify-3.1.2.tgz#0502521219064942e08c0a9f91abd4c48bd864be"
-  integrity sha512-r8tJDhggU71BqBP386k+35dPWMBMSYJIm5AvRrOKmVD14+8a2FxiKKs6osybHoTo1hVIXlI4thAhkFqLErqqFA==
+svg-stringify@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/svg-stringify/-/svg-stringify-3.2.2.tgz#7af4782367749bda29ac246c4e4bd3e3dd59cacf"
+  integrity sha512-sAKHv4tDX8iS5LMLhLV/vp0Fb7f4Ha3gsZ+2+hXFhNRkwKv1NaWWpcRHnvGJstexBPc88c8CsJvSDSuNMTSYWQ==
   dependencies:
     element-to-path "^1.2.0"
     eslint "^7.22.0"

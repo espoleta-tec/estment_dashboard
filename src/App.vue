@@ -6,7 +6,7 @@
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
   import { icons } from 'assets/icons/import-icons';
-
+  import { icons as styleIcons } from 'assets/icons/styled/import-styled';
 
   export default defineComponent({
     name: 'App',
@@ -21,6 +21,10 @@
 
       this.$q.iconMapFn = (iconName => {
         let passName = iconName;
+        if (passName in styleIcons) {
+          return { icon: styleIcons[passName] };
+        }
+
         if (passName in icons) {
           return { icon: icons[passName] };
         }
