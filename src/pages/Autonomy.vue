@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import StateParameter from 'components/StateParameter';
+  import StateParameter from 'components/old/StateParameter';
   export default {
     // name: 'PageName',
     data() {

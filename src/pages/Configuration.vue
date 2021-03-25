@@ -28,8 +28,8 @@
 </template>
 
 <script>
-  import APSettings from 'components/APSettings';
-  import StationSettings from 'components/StationSettings';
+  import APSettings from 'components/old/APSettings';
+  import StationSettings from 'components/old/StationSettings';
   export default {
     // name: 'PageName',
     components: {

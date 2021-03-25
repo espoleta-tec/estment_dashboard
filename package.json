@@ -35,11 +35,10 @@
     "html-webpack-inline-source-plugin": "1.0.0-beta.2",
     "inline-source": "^7.2.0",
     "quasar": "^1.0.0",
-    "svg-stringify": "^3.2.2",
+    "svg-stringify": "^3.2.6",
     "vue-apexcharts": "^1.6.0",
     "vue-chartjs": "^3.5.1",
-    "vue-i18n": "^8.0.0",
-    "vue3-apexcharts": "^1.2.1"
+    "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
@@ -54,7 +53,8 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "4.0.0-beta.4",
     "quasar-app-extension-ide-helper": "^1.0.0",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "vue-svg-gauge": "^1.2.1"
   },
   "browserslist": [
     "last 10 Chrome versions",

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import StateParameter from 'components/StateParameter';
+  import StateParameter from 'components/old/StateParameter';
   import StateLegend from 'pages/docs/StateLegend';
 
 

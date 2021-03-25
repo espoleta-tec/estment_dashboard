@@ -1,0 +1,27 @@
+<template>
+  <q-icon class="rotate-180 text-h3 q-ma-sm">
+    <svg viewBox="0 0 21.538923 24.28571">
+      <g
+        id="surface1"
+        transform="matrix(0.52858627,-0.0548091,0.05555666,0.52147377,-6.0036974,6.9632322)">
+        <path
+          d="m 25.879,0.371 a 1.364,1.364 0 0 0 -0.555,0.122 c -2.135,0.961 -0.53,7.119 1.528,12.176 A 4.125,4.125 0 0 1 33.4,9.716 c 0,0 0.013,0 0.017,0 C 31.27,5.374 28.037,0.371 25.879,0.371 Z m 7.539,9.345 a 4.141,4.141 0 0 1 -0.73,7.138 c 1.118,0.072 2.219,0.122 3.266,0.122 2.562,0 8.544,-0.254 8.772,-2.519 0.233,-2.324 -5.903,-3.994 -11.309,-4.741 z m -0.73,7.138 c -0.011,0 -0.024,0 -0.035,0 a 4.089,4.089 0 0 1 -1.668,0.365 4.159,4.159 0 0 1 -4.151,-4.151 c 0,-0.137 0.022,-0.267 0.035,-0.4 -3.027,4.542 -5.858,10.254 -3.96,11.62 a 1.435,1.435 0 0 0 0.851,0.261 c 2.188,0.001 6.151,-4.122 8.928,-7.694 z m -1.7,-6.843 a 3.057,3.057 0 1 0 3.057,3.057 3.061,3.061 0 0 0 -3.06,-3.056 z m 0,1.667 a 1.39,1.39 0 1 1 -1.39,1.39 1.389,1.389 0 0 1 1.387,-1.389 z"
+          data-name="Trazado 235"
+          id="Trazado_235"
+          inkscape:connector-curvature="0"
+          style="fill:#eeeeee"/>
+      </g>
+      <animateTransform additive="sum" attributeName="transform" attributeType="xml" dur="8s"
+                        from="0" repeatCount="indefinite" to="360" type="rotate"/>
+    </svg>
+
+  </q-icon>
+</template>
+
+<script lang="ts">
+  import { defineComponent } from '@vue/composition-api';
+
+  export default defineComponent({
+    // name: 'ComponentName'
+  });
+</script>

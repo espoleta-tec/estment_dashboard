@@ -1,57 +1,40 @@
 <template>
-  <q-toolbar class="bg-dark row">
-    <!--    <q-btn flat @click="leftDrawer = !leftDrawer" round dense icon="menu"/>-->
-    <div class="col-4 q-ma-md column content-center" style="width: 250px">
-      <div class="flex items-end q-ma-xs">
-        <q-img src="~assets/img/tornado.png" width="30px" contain ratio="1"/>
-        <div class="column">
-          <q-space/>
-          <div class="text-h5 text-bold col" style="margin-left: 5px">TORNADO</div>
-        </div>
-      </div>
-      <div class="text-secondary flex flex-center text-h6">
-        Cargando...
-      </div>
-    </div>
-    <div class="col-1"/>
-    <div class="col row content-between">
-      <div class="col column text-body1">
-        <span>Identificacion</span>
-        <span>...</span>
-      </div>
-      <div class="col column">
-        <span>Hardware</span>
-        <span>...</span>
-        <span>Firmware Version</span>
-        <span>...</span>
-      </div>
+  <q-header class="bg-dark q-pa-sm">
+    <q-toolbar class="text-h6 ">
+      <q-btn icon="menu_filled" class="q-pa-sm" round flat dense @click="leftDrawer = !leftDrawer"/>
       <q-space/>
-      <div class="flex flex-center items-end">
-        <q-img src="~assets/img/full_battery_32px.png" ratio="1" width="30px"/>
+      <div v-show="false" class="row items-center content-center" style="margin-left: 1rem" v-for="n in notifications"
+           :key="n.text">
+        <q-icon :name="n.icon" class="text-h6" style="margin-right: 1rem"/>
+        <div class="text-body2 text-uppercase text-secondary">{{n.text}}</div>
       </div>
-    </div>
-  </q-toolbar>
+    </q-toolbar>
+  </q-header>
 </template>
 
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
 
   export default defineComponent({
-    // name: 'ComponentName',
+    // name: 'ComponentName'
     data() {
       return {
-        loadingProgress: 1
+        notifications: [
+          // { text: '21%', icon: 'sd_filled' },
+          { text: '4-13/3', icon: 'moon' }
+        ]
       };
     },
     computed: {
       leftDrawer: {
-        get(): boolean {
-          return this.$store.state.layout.leftDrawer;
+        get: function() {
+          return this.$store.state.layout.leftDrawer
         },
-        set(payload: boolean) {
-          console.log(payload);
+        set: function(payload) {
+          console.log('toggling')
           this.$store.commit('layout/toggleDrawer', payload)
         }
       }
     }
-  });</script>
+  });
+</script>

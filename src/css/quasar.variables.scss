@@ -13,8 +13,8 @@
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
 $primary: #0e789b;
-$secondary: #00eaff;
-$accent: #ffa826;
+$secondary: #ffa80d;
+$accent: #00ff08;
 
 $dark: #242931;
 $dark-2: #606a74;
@@ -25,7 +25,7 @@ $negative: #C10015;
 $info: #31CCEC;
 $warning: #ffa826;
 
-$gradient: $primary;
 $temperature-gradient: linear-gradient(0deg, blue, green, yellow, red);
-$humidity-gradient: linear-gradient(0deg, #808080, #0065fc);
+$humidity-gradient: linear-gradient(0deg, #eeebeb, #0065fc 20%);
+$drawer-gradient: linear-gradient(180deg, #010b2b 10%, #20586e 50%, #313b45 90%);
 

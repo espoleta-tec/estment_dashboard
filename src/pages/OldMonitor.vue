@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-  import DashboardComponent from 'components/DashboardComponent.vue';
+  import DashboardComponent from 'components/old/DashboardComponent.vue';
   import { defineComponent } from '@vue/composition-api';
 
   const humidity = require('assets/img/humidity_50px.png')

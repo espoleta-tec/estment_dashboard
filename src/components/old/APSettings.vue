@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-  import { Masks, ConfigField } from 'components/models';
+  import { Masks, ConfigField } from 'components/old/models';
   import { PropType } from '@vue/composition-api';
 
   export default {

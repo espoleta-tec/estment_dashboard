@@ -54,7 +54,7 @@
       meterClass(): any {
         return {
           position: 'relative',
-          padding: '1px',
+          padding: '5px',
           background: colors.getBrand(this.color) ? colors.getBrand(this.color) : this.color,
           // background: 'black',
           border: this.isMounted ? this.border : '',
@@ -72,7 +72,8 @@
         let color = colors.getBrand(this.trackColor) ? colors.getBrand(this.trackColor) : this.trackColor;
         return {
           position: 'absolute',
-          width: '100px',
+          width: '100%',
+          left: '0',
           top: '0',
           height: `${height * this.barHeight}px`,
           background: color,
@@ -102,7 +103,6 @@
     border-radius: 9999px;
     border: solid white 1px;
     overflow: hidden;
-    /*border-style: ;*/
   }
 
   .indicator {

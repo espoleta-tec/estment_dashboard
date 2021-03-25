@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="21.538923"
+   height="24.285711"
+   viewBox="0 0 21.538923 24.28571"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="helice.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1024"
+     id="namedview6"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="17.142975"
+     inkscape:cx="7.6270691"
+     inkscape:cy="14.682343"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4">
+    <sodipodi:guide
+       position="11.14159,22.399846"
+       orientation="1,0"
+       id="guide817"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="13.994337,12.182221"
+       orientation="0,1"
+       id="guide819"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <g
+     id="surface1"
+     transform="matrix(0.52858627,-0.0548091,0.05555666,0.52147377,-6.0036974,6.9632322)">
+    <path
+       id="Trazado_235"
+       data-name="Trazado 235"
+       d="m 25.879,0.371 a 1.364,1.364 0 0 0 -0.555,0.122 c -2.135,0.961 -0.53,7.119 1.528,12.176 A 4.125,4.125 0 0 1 33.4,9.716 c 0,0 0.013,0 0.017,0 C 31.27,5.374 28.037,0.371 25.879,0.371 Z m 7.539,9.345 a 4.141,4.141 0 0 1 -0.73,7.138 c 1.118,0.072 2.219,0.122 3.266,0.122 2.562,0 8.544,-0.254 8.772,-2.519 0.233,-2.324 -5.903,-3.994 -11.309,-4.741 z m -0.73,7.138 c -0.011,0 -0.024,0 -0.035,0 a 4.089,4.089 0 0 1 -1.668,0.365 4.159,4.159 0 0 1 -4.151,-4.151 c 0,-0.137 0.022,-0.267 0.035,-0.4 -3.027,4.542 -5.858,10.254 -3.96,11.62 a 1.435,1.435 0 0 0 0.851,0.261 c 2.188,0.001 6.151,-4.122 8.928,-7.694 z m -1.7,-6.843 a 3.057,3.057 0 1 0 3.057,3.057 3.061,3.061 0 0 0 -3.06,-3.056 z m 0,1.667 a 1.39,1.39 0 1 1 -1.39,1.39 1.389,1.389 0 0 1 1.387,-1.389 z"
+       inkscape:connector-curvature="0"
+       style="fill:#eeeeee" />
+  </g>
+</svg>

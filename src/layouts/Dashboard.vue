@@ -56,8 +56,8 @@
 </template>
 
 <script lang="ts">
-  import Header from 'components/Header.vue';
-  import LeftDrawer from 'components/LeftDrawer.vue';
+  import Header from 'components/old/Header.vue';
+  import LeftDrawer from 'components/old/LeftDrawer.vue';
   import { defineComponent } from '@vue/composition-api';
 
 
