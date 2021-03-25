@@ -5,10 +5,10 @@ import Login from 'pages/Login.vue';
 import Dashboard from 'pages/Dashboard.vue';
 import Humidity from 'pages/graphs/Humidity.vue';
 import Power from 'pages/graphs/Power.vue';
-import Precipitation from 'pages/graphs/Precipitation.vue';
 import Pressure from 'pages/graphs/Pressure.vue';
 import Temperature from 'pages/graphs/Temperature.vue';
 import Wind from 'pages/graphs/Wind.vue';
+import Precipitation from 'pages/graphs/Precipitation.vue';
 
 const routes: RouteConfig[] = [
   {
@@ -16,12 +16,12 @@ const routes: RouteConfig[] = [
     component: ResponsiveLayout,
     children: [
       { path: '', component: Dashboard },
-      { path: 'humidity', component: Humidity },
-      { path: 'power', component: Power },
-      { path: 'precipitation', component: Precipitation },
-      { path: 'pressure', component: Pressure },
-      { path: 'temperature', component: Temperature },
-      { path: 'wind', component: Wind },
+      { path: 'humidity', component: Humidity, name: 'Humedad' },
+      { path: 'power', component: Power, name: 'Generacion Electrica' },
+      { path: 'precipitation', component: Precipitation,name: 'Precipitaciones' },
+      { path: 'pressure', component: Pressure, name: 'Presion Atmosferica' },
+      { path: 'temperature', component: Temperature, name: 'Temperatura' },
+      { path: 'wind', component: Wind, name: 'Viento' }
     ]
   },
   {

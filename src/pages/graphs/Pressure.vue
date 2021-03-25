@@ -1,6 +1,7 @@
 <template>
-  <q-page padding>
+  <q-page padding class="row">
     <!-- content -->
+    <GraphView class="col-12"/>
   </q-page>
 </template>
 

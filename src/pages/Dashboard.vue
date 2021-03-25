@@ -1,5 +1,5 @@
 <template>
-  <q-page class="column text-white">
+  <q-page class="column text-white" padding>
     <!-- content -->
     <!--    <meter-bar rounded color="temperature-gradient" v-model="progress" width="3rem"/>-->
     <div class="col row items-center">
@@ -44,7 +44,7 @@
     </div>
     <div class="col-2 row">
       <div :key="elem.text" class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm" v-for="elem in fourthBar">
-        <q-btn class="col-12 text-h6 q-pa-md" :to="elem.to" outline v-ripple:accent>
+        <q-btn class="col-12 text-h6 q-pa-md" :to="elem.to" outline v-ripple:secondary>
           <div class="column items-center q-gutter-md">
             <q-icon :name="elem.icon"/>
             <div class="text-secondary text-body2 text-no-wrap">{{elem.text}}</div>
@@ -64,7 +64,7 @@
   import Helix from 'components/Helix.vue';
 
   export default defineComponent({
-    // name: 'PageName'
+    name: 'PageName',
     components: {
       MeterBar, MyGauge, Helix
     },
@@ -76,10 +76,10 @@
         twoBar: [],
         fourthBar: [
           { text: 'ESTE', icon: 'vane', to: '/wind' },
-          { text: '5 m/s', icon: '032-windsock' },
-          { text: '1002hpa', icon: 'barometer' },
-          { text: '1.8 W', icon: 'wind_turbine', to: '/power' },
-          { text: '70mm', icon: '028-drop' },
+          { text: '5 m/s', icon: '032-windsock', to: '/wind' },
+          { text: '1002hpa', icon: 'barometer', to: '/pressure' },
+          { text: '1.8 W', icon: 'wind_turbine', to: '/wind' },
+          { text: '70mm', icon: '028-drop', to: '/precipitation' },
           { text: '254 lum', icon: '022-sunrise' }
         ],
         selected: 1,

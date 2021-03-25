@@ -77,6 +77,7 @@
       }
     },
     mounted(): void {
+      this.$store.commit('layout/changeCurrentView', 'Fuck')
       this.$store.dispatch('net/getNet')
         .then(() => {
           console.log('data loaded');

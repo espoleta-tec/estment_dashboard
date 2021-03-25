@@ -1,9 +1,11 @@
 export interface LayoutState {
-  leftDrawer: boolean
+  leftDrawer: boolean,
+  currentView: string
 }
 
 export default function () {
   return {
-    leftDrawer: false
+    leftDrawer: false,
+    currentView: '',
   }
 }

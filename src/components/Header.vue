@@ -2,6 +2,8 @@
   <q-header class="bg-dark q-pa-sm">
     <q-toolbar class="text-h6 ">
       <q-btn icon="menu_filled" class="q-pa-sm" round flat dense @click="leftDrawer = !leftDrawer"/>
+      <span>{{$route.name}}</span>
+<!--      <span>{{$store.state.layout.currentView}}</span>-->
       <q-space/>
       <div v-show="false" class="row items-center content-center" style="margin-left: 1rem" v-for="n in notifications"
            :key="n.text">
