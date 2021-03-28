@@ -5,6 +5,7 @@
       <span>{{$route.name}}</span>
 <!--      <span>{{$store.state.layout.currentView}}</span>-->
       <q-space/>
+<!--      <q-btn icon="arrows-fullscreen" round flat @click="requetsFullscreen"/>-->
       <div v-show="false" class="row items-center content-center" style="margin-left: 1rem" v-for="n in notifications"
            :key="n.text">
         <q-icon :name="n.icon" class="text-h6" style="margin-right: 1rem"/>
@@ -16,6 +17,9 @@
 
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
+  import { AppFullscreen } from 'quasar';
+
+
 
   export default defineComponent({
     // name: 'ComponentName'
@@ -29,14 +33,19 @@
     },
     computed: {
       leftDrawer: {
-        get: function() {
+        get: function(): boolean {
           return this.$store.state.layout.leftDrawer
         },
-        set: function(payload) {
+        set: function(payload: boolean) {
           console.log('toggling')
           this.$store.commit('layout/toggleDrawer', payload)
         }
       }
+    },
+    methods: {
+
+    },
+    mounted() {
     }
   });
 </script>

@@ -1,8 +1,8 @@
 <template>
-  <q-page class="row no-wrap text-white bg-dark" padding>
+  <div class="row no-wrap text-white bg-dark">
     <!-- content -->
     <GraphView class="col-12"/>
-  </q-page>
+  </div>
 </template>
 
 <script lang="ts">

@@ -1,7 +1,8 @@
 <template>
-  <q-page padding>
+  <div class="row no-wrap text-white">
     <!-- content -->
-  </q-page>
+    <GraphView class="col-12" :secondData="true"/>
+  </div>
 </template>
 
 <script lang="ts">

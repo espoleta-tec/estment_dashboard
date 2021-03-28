@@ -16,7 +16,14 @@
 
     <q-page-container>
       <!-- This is where pages get injected -->
-      <router-view/>
+<!--      <transition-->
+<!--        :duration="300"-->
+<!--        appear-->
+<!--        enter-active-class="animated fadeIn"-->
+<!--        leave-active-class="animated fadeOut"-->
+<!--      >-->
+        <router-view :style="$store.state.layout.leftDrawer && $q.screen.lt.md ? 'filter: blur(5px)' : ''"/>
+<!--      </transition>-->
     </q-page-container>
 
   </q-layout>
@@ -35,7 +42,7 @@
 
 
     setup() {
-      return { leftDrawer: false };
+      // return { leftDrawer: false };
     }
   });
 </script>

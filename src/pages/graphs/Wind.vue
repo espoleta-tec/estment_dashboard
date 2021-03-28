@@ -1,13 +1,15 @@
 <template>
-  <q-page padding class="row">
+  <div class="row">
     <!-- content -->
-    <GraphView class="col-12"/>
-  </q-page>
+    <GraphView :radar="true" class="col-12"/>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   // name: 'PageName'
+  components: {
+  }
 })
 </script>

@@ -1,40 +1,44 @@
 <template>
   <q-drawer
     bordered
+    class="relative-position"
     show-if-above
     side="left"
-    v-model="leftDrawer"
-    class="relative-position"
-  >
+    v-model="leftDrawer">
     <!-- QScrollArea is optional -->
-    <div class="bg-primary absolute-full"/>
-    <q-scroll-area class="fit q-pa-sm text-white row">
+    <!--    <div class="bg-grey-3  absolute-full"/>-->
+    <q-scroll-area class="fit text-dark bg-grey-2 text-white row">
       <!-- Content here -->
-      <div class="col flex no-wrap q-pa-md items-center">
-        <Logo class="text-h5"/>
-        <q-space/>
-        <q-btn @click="leftDrawer = false" class="text-h6" color="primary" flat icon="close-circle-f" round
-               text-color="white"
-               v-if="$q.screen.lt.md"/>
+      <div class="col-12 text-dark">
+        <div class="row no-wrap items-center absolute-top-right" style="height: auto; width: 100%">
+          <q-btn @click="requetsFullscreen" flat icon="arrows-fullscreen" round/>
+          <q-space/>
+          <q-btn @click="leftDrawer = false" class="text-h6" color="primary" flat icon="close-circle-f" round
+                 v-if="$q.screen.lt.md"/>
+        </div>
+        <Logo class="text-h4 q-ma-lg"/>
+        <div class="q-pa-md"/>
+        <q-item
+          :class="`text-uppercase text-bold row no-wrap flex items-center
+        text-h5 ${$route.path === n.to ? 'text-secondary bg-dark' : ''}`"
+          :key="n.to"
+          @click="$router.push(n.to)"
+          clickable v-for="n in drawerRoutes">
+          <q-icon :name="n.icon"/>
+          <span style="margin-left: 0.2rem;">{{n.name}}</span>
+        </q-item>
       </div>
-      <q-item :key="n" @click="$router.push('/login')" class="row no-wrap flex items-center q-ma-md q-pa-sm text-h5"
-              clickable v-for="n in 6">
-        <q-icon name="user_filled"/>
-        <span style="margin-left: 0.2rem;">Usuario</span>
-      </q-item>
     </q-scroll-area>
   </q-drawer>
 </template>
 
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
-  import Logo from 'components/Logo.vue';
+  import { AppFullscreen } from 'quasar';
+
 
   export default defineComponent({
     // name: 'ComponentName'
-    components: {
-      Logo
-    },
     computed: {
       leftDrawer: {
         get: function() {
@@ -43,6 +47,28 @@
         set: function(payload) {
           this.$store.commit('layout/toggleDrawer', payload);
         }
+      },
+      drawerRoutes() {
+        return [
+          { to: '/', name: 'Tablero', icon: 'home_filled' },
+          { to: '/user', name: 'usuario', icon: 'user_filled' },
+          { to: '/sensors', name: 'sensores', icon: 'microchip' },
+          { to: '/connectivity', name: 'conectividad', icon: 'wifi_router' },
+          { to: '/storage', name: 'almacenamiento', icon: 'sd_filled' }
+        ];
+      }
+    },
+    methods: {
+      requetsFullscreen() {
+        if (AppFullscreen.isActive) {
+          AppFullscreen.exit()
+          return
+        }
+        AppFullscreen.request().then(() => {
+          console.log('entered fullscreen');
+        }).catch((err) => {
+          console.log(err.message);
+        });
       }
     }
   });

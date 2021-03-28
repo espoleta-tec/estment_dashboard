@@ -1,174 +1,108 @@
 <template>
-  <div class="column relative-position text-white">
-    <q-icon class="text-h1" name="wind_turbine"
-            style="position: absolute; z-index: 0; right: 1rem; top: 0; opacity: 0.1"/>
-    <div class="col-1 column column no-wrap text-no-wrap text-uppercase" style="margin-left: 2em">
-      <div class="col text-body2">promedio dia</div>
-      <div class="col text-secondary text-h6 text-weight-bolder">1.2 Watts</div>
-    </div>
-    <div class="col row">
-      <div class="col-12" style="min-height: 200px">
-        <VueApexCharts :options="options" :series="series" class="" height="100%" style="z-index: 1"/>
+  <div class="row relative-position text-white">
+<!--    <div class="absolute column column no-wrap text-no-wrap text-uppercase q-ma-lg"-->
+<!--         style="z-index: 1; margin-left: 3rem">-->
+<!--      &lt;!&ndash;      <div class="col text-body2">promedio dia</div>&ndash;&gt;-->
+<!--      <div class="col text-secondary text-h6 text-weight-bolder">1.2 Watts</div>-->
+<!--    </div>-->
+    <div class="col-12 row">
+      <div class="col-12 row" style="min-height: 200px">
+        <RadarView class="col-12" v-if="radar"/>
+        <AreaView class="col-12" v-else :second-data="secondData"/>
       </div>
     </div>
-    <div class="col-2 row items-end q-pa-md text-uppercase" style="margin-left: 2em">
-      <div class="col flex items-end">historico 100 dias</div>
-      <div class="col text-right">
-        <span>max 32.3 | 12-2-21</span><br/>
-        <span class="text-accent">MIN 16.0 | 18-3-21</span>
-      </div>
+    <div class="col-12" style="min-height: 50px; max-height: 100px">
+      <VueApexCharts :options="options2" :series="series2" height="100%"/>
     </div>
-    <div class="col-2" style="padding-right:1em">
-      <div style="max-height: 100px;">
-        <div class="absolute-top-left row q-pa-md"
-             style="height: 100%; width: 100%; padding-left: 3em; padding-right: 0">
-          <div :key="n" class="col-3 relative-position" style="border: solid rgba(255, 255, 255, 0.2) 1px"
-               v-for="n in months">
-            <div class="absolute text-white" style="opacity: 1;bottom: -1.5em; left: calc(50% - 1em)">{{n}}</div>
-          </div>
-        </div>
-        <VueApexCharts :options="options2" :series="series2" height="100%"
-                       type="line"/>
-      </div>
-    </div>
+    <div class="col-1"/>
   </div>
 </template>
 
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
   import { colors } from 'quasar';
-  import VueApexCharts from 'vue-apexcharts/dist/vue-apexcharts';
+  import AreaView from 'components/AreaView.vue';
+  import RadarView from 'components/RadarView.vue';
 
 
   const palette = colors.getPaletteColor;
 
-  let day: any = [];
-  for (let i = 0; i < 24; i += 2) {
-    day.push(i);
-  }
-
-  let hundred: any = [];
-  for (let i = 0; i < 20; i++) {
-    hundred.push(Math.floor(Math.random() * 800));
-  }
 
   export default defineComponent({
     name: 'GraphView',
-    components: { VueApexCharts },
-
+    components: { RadarView, AreaView },
+    props: {
+      radar: {
+        type: Boolean,
+        default: false
+      },
+      secondData: {
+        type: Boolean,
+        default: null
+      }
+    },
     data() {
       return {
-        months: ['NOV', 'DIC', 'ENE', 'FEB'],
-        series: [
+
+        series2: [
           {
-            name: 'Series 1',
-            data: [450, 300, 120, 25, 222, 45, 180]
-          }
-        ],
-        options: {
+            name: 'Series 2',
+            data: [
+              { x: '01/01/2021', y: 54 }, { x: '02/05/2021', y: 600 },
+              { x: '03/07/2021', y: 20 }, { x: '04/31/2021', y: 500 }
+              // { x: '11/07/2021', y: 20 }, { x: '01/31/2022', y: 500 },
+            ]
+          }],
+        options2: {
           chart: {
-            height: 350,
             type: 'area',
+            height: 100,
             toolbar: {
               show: false
             },
             zoom: {
               enabled: false
             }
+          },
+          stroke: {
+            curve: 'straight',
+            width: 1,
           },
           dataLabels: {
             enabled: false
           },
-          stroke: {
-            colors: [palette('accent')]
-          },
-          fill: {
-            colors: [palette('accent')],
-            type: 'gradient',
-            gradient: {
-              shade: 'dark',
-              shadeIntensity: 0.5,
-              opacityFrom: 0.8,
-              opacityTo: 0.2,
-              stops: [0, 90, 100]
-            }
-          },
           grid: {
-            borderColor: palette('grey-8'),
-            strokeDashArray: 5,
+            show: true,
             xaxis: {
               lines: {
-                show: true
+                show: false
               }
             },
             yaxis: {
               lines: {
-                show: true
+                show: false
               }
             }
           },
           xaxis: {
-            categories: day,
-            labels: {
-              style: {
-                colors: '#FFF'
-              },
-              formatter: function(value: number) {
-                if (value === 0) return '';
-                return value;
-              }
-            },
-            max: 13
-          },
-          yaxis: {
-            min: 0,
-            max: 900,
-            tickAmount: 9,
-            labels: {
-              style: {
-                colors: ['#FFF']
-              },
-              formatter: function(value: number) {
-                if (value === 0) return '';
-                return value;
-              }
-            }
-          }
-        },
-        series2: [{
-          name: 'Series 2',
-          data: hundred
-        }],
-        options2: {
-          chart: {
-            toolbar: {
-              show: false
-            },
-            zoom: {
-              enabled: false
-            }
-          },
-          grid: {
-            show: false,
-            xaxis: {
-              lines: {
-                show: true
-              }
-            }
-          },
-          xaxis: {
-
+            type: 'datetime',
+            // max: new Date().getTime(),
+            // min: new Date().setMonth(new Date().getMonth() - 12),
+            min: new Date().setMonth(-1),
+            max: new Date(new Date().getFullYear() + 1, 0, 1).getTime(),
+            tickAmount: 2,
             axisBorder: {
-              show: false
+              show: true
             },
             axisTicks: {
-              show: false
+              show: true
             },
             labels: {
-              show: false,
+              show: true,
               style: {
                 colors: '#FFF'
-              }
+              },
+              format: 'MMM'
             }
           },
           yaxis: {
