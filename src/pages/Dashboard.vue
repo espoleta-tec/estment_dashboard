@@ -7,7 +7,7 @@
       <q-space/>
       <div class="col-auto row">
         <div :key="elem.text" class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm" v-for="elem in fourthBar">
-          <q-btn :to="elem.to" :class="`col-12 row q-pa-sm ${ $route.path === elem.to ? 'text-secondary' : 'text-white'}`" outline v-ripple:secondary>
+          <q-btn :to="elem.to" :class="`col-12 row q-pa-sm ${ $route.path === elem.to ? 'bg-secondary' : 'text-white'}`" outline v-ripple:secondary>
             <div class="col-12 flex flex-center">
              <!-- <div class="text-no-wrap text-secondary" style="font-size: 8pt">{{elem.text}}</div><q-space/>
              <div style="flex-basis: 100%; height: 1px"/> -->
