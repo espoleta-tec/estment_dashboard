@@ -23,7 +23,7 @@
           <div class="text-secondary">1.8W</div>
         </div>
         <div class="col flex flex-center no-wrap">
-          <q-icon name="001-sun" class="text-h4 q-pa-md"/>
+          <q-icon name="radiation" class="text-h4 q-pa-md"/>
           <div class="text-secondary">8 W/m</div>
         </div>
       </div>

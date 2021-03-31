@@ -37,7 +37,7 @@
         default: false
       },
       secondData: {
-        type: Boolean,
+        type: Object,
         default: null
       }
     },

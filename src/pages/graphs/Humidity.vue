@@ -1,7 +1,7 @@
 <template>
   <div class="row no-wrap text-white">
     <!-- content -->
-    <GraphView class="col-12" :secondData="true"/>
+    <GraphView class="col-12" :secondData="{}"/>
   </div>
 </template>
 

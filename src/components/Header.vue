@@ -20,7 +20,6 @@
   import { AppFullscreen } from 'quasar';
 
 
-
   export default defineComponent({
     // name: 'ComponentName'
     data() {

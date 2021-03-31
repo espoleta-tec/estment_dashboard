@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center items-stretch text-white" padding>
-    <form @submit.prevent.stop="onSubmit">
+    <form @submit.prevent.stop="onSubmit" class="flex flex-center">
       <!-- content -->
       <div class="column no-wrap q-gutter-md">
         <div class="col-auto flex flex-center">

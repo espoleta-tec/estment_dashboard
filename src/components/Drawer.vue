@@ -23,7 +23,7 @@
         text-h5 ${$route.path === n.to ? 'text-secondary bg-dark' : ''}`"
           :key="n.to"
           @click="$router.push(n.to)"
-          clickable v-for="n in drawerRoutes">
+          clickable v-for="n in drawerRoutes" style="font-weight: 300">
           <q-icon :name="n.icon"/>
           <span style="margin-left: 0.2rem;">{{n.name}}</span>
         </q-item>

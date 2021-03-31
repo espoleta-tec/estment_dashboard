@@ -6,7 +6,7 @@
       <router-view class="col"/>
       <q-space/>
       <div class="col-auto row">
-        <div :key="elem.text" class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm" v-for="elem in fourthBar">
+        <div :key="elem.icon" class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm" v-for="elem in fourthBar">
           <q-btn :to="elem.to" :class="`col-12 row q-pa-sm ${ $route.path === elem.to ? 'bg-secondary' : 'text-white'}`" outline v-ripple:secondary>
             <div class="col-12 flex flex-center">
              <!-- <div class="text-no-wrap text-secondary" style="font-size: 8pt">{{elem.text}}</div><q-space/>
@@ -38,15 +38,16 @@
         colors,
         twoBar: [],
         fourthBar: [
-          { text: 'ESTE', icon: 'vane', to: '/wind' },
+          // { text: 'ESTE', icon: 'vane', to: '/wind' },
+          { text: '70mm', icon: '028-drop', to: '/precipitation' },
+          { text: '70mm', icon: 'missing' },
+          { text: '254 lum', icon: 'temperature', to: '/humidity' },
           { text: '5 m/s', icon: '032-windsock', to: '/wind' },
+          { text: '', icon: 'home_filled', to: '/' },
           { text: '1002hpa', icon: 'barometer', to: '/pressure' },
           { text: '1.8 W', icon: 'wind_turbine', to: '/power' },
-          { text: '', icon: 'home_filled', to: '/' },
-          { text: '70mm', icon: '028-drop', to: '/precipitation' },
-          { text: '254 lum', icon: 'temperature', to: '/humidity' },
-          { text: 'lol', icon: '022-sunrise' },
-          { text: 'fefe', icon: '022-sunrise' }
+          { text: 'lol', icon: '001-sun' },
+          { text: 'fefe', icon: 'earthquake-and-home' }
         ],
         selected: 1,
 
