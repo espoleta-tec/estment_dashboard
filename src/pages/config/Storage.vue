@@ -6,7 +6,7 @@
       <FreeMemory :value="freeMemory"/>
     </div>
     <div class="col-6 column q-gutter-md q-pa-md">
-      <div class="col-auto text-uppercase" v-for="n in 4">
+      <div :key="n" class="col-auto text-uppercase" v-for="n in 4">
         <span class="text-body2">Capacidad Maxima</span><br/>
         <span class="text-secondary text-h6" style="font-weight: 300">16GB</span></div>
     </div>

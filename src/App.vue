@@ -33,6 +33,17 @@
           return { icon: icons[passName] };
         }
       });
+
+      const ws = new WebSocket('ws://localhost:8999');
+      ws.onopen = (event) => {
+        ws.send('vue client connected');
+        ws.onmessage = (event) => {
+          console.log(event.data);
+          if (!event.data.startsWith('temp')) return;
+          this.$store.commit('data/updateState', event.data);
+        };
+      };
+
     }
   });
 </script>

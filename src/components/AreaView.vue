@@ -1,7 +1,9 @@
 <template>
   <div class="row relative-position">
     <div class="absolute text-h5 row" style="z-index: 2;top: 2rem; left: 3rem;">
-        <div class="text-bold">1002</div><pre> </pre>hpa
+      <div class="text-bold">1002</div>
+      <pre> </pre>
+      hpa
     </div>
     <div class="absolute text-right row" style="right: 1rem; top: 2rem; z-index: 2">
       <table class="text-left text-body2">
@@ -17,7 +19,7 @@
         </tr>
       </table>
     </div>
-    <VueApexCharts class="col-12" :options="options" :series="series" height="100%" style="z-index: 1; margin-top: 0"/>
+    <VueApexCharts :options="options" :series="series" class="col-12" height="100%" style="z-index: 1; margin-top: 0"/>
   </div>
 </template>
 
@@ -162,7 +164,7 @@
               },
               formatter: function(value: number) {
                 if (value > 100) return '';
-                return value + (value > 0 ? '%' : '');
+                return `${value}${(value > 0 ? '%' : '')}`;
               }
             }
           });

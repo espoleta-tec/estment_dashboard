@@ -14,7 +14,6 @@
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
   import { colors } from 'quasar';
-  // noinspection TypeScriptCheckImport
   import { VueSvgGauge } from 'vue-svg-gauge';
 
   export default defineComponent({

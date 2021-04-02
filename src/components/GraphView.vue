@@ -1,14 +1,14 @@
 <template>
   <div class="row relative-position text-white">
-<!--    <div class="absolute column column no-wrap text-no-wrap text-uppercase q-ma-lg"-->
-<!--         style="z-index: 1; margin-left: 3rem">-->
-<!--      &lt;!&ndash;      <div class="col text-body2">promedio dia</div>&ndash;&gt;-->
-<!--      <div class="col text-secondary text-h6 text-weight-bolder">1.2 Watts</div>-->
-<!--    </div>-->
+    <!--    <div class="absolute column column no-wrap text-no-wrap text-uppercase q-ma-lg"-->
+    <!--         style="z-index: 1; margin-left: 3rem">-->
+    <!--      &lt;!&ndash;      <div class="col text-body2">promedio dia</div>&ndash;&gt;-->
+    <!--      <div class="col text-secondary text-h6 text-weight-bolder">1.2 Watts</div>-->
+    <!--    </div>-->
     <div class="col-12 row">
       <div class="col-12 row" style="min-height: 200px">
         <RadarView class="col-12" v-if="radar"/>
-        <AreaView class="col-12" v-else :second-data="secondData"/>
+        <AreaView :second-data="secondData" class="col-12" v-else/>
       </div>
     </div>
     <div class="col-12" style="min-height: 50px; max-height: 100px">
@@ -66,7 +66,7 @@
           },
           stroke: {
             curve: 'straight',
-            width: 1,
+            width: 1
           },
           dataLabels: {
             enabled: false

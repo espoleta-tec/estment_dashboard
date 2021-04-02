@@ -16,7 +16,7 @@
         <div class="col-1"/>
       </div>
       <div class="col-6 column items-center">
-        <div class="col-auto text-secondary text-h1 flex flex-center">31°</div>
+        <div class="col-auto text-secondary text-h1 flex flex-center">{{$store.state.data.temperature}}</div>
         <MyGauge class="col" style="max-width: 100px" :value="0.8"/>
         <div class="col flex flex-center no-wrap">
           <Helix/>

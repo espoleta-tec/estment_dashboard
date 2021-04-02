@@ -23,7 +23,7 @@
         text-h5 ${$route.path === n.to ? 'text-secondary bg-dark' : ''}`"
           :key="n.to"
           @click="$router.push(n.to)"
-          clickable v-for="n in drawerRoutes" style="font-weight: 300">
+          clickable style="font-weight: 300" v-for="n in drawerRoutes">
           <q-icon :name="n.icon"/>
           <span style="margin-left: 0.2rem;">{{n.name}}</span>
         </q-item>
@@ -61,8 +61,8 @@
     methods: {
       requetsFullscreen() {
         if (AppFullscreen.isActive) {
-          AppFullscreen.exit()
-          return
+          AppFullscreen.exit().then().catch(err => console.log(err.message));
+          return;
         }
         AppFullscreen.request().then(() => {
           console.log('entered fullscreen');
