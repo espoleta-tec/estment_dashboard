@@ -1,4 +1,5 @@
 export interface DataStateInterface {
+  [index: string]: number,
   temperature: number,
   humidity: number,
   windSpeed: number
