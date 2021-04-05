@@ -44,7 +44,6 @@
           this.$store.commit('data/updateState', event.data);
         };
       };
-
     }
   });
 </script>
