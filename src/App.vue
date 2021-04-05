@@ -35,7 +35,8 @@
       });
 
       const ws = new WebSocket('ws://localhost:8999');
-      ws.onopen = (event) => {
+      ws.onopen = () => {
+        console.log('websocket connection opened');
         ws.send('vue client connected');
         ws.onmessage = (event) => {
           console.log(event.data);
