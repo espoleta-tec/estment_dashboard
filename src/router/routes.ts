@@ -24,7 +24,7 @@ const routes: RouteConfig[] = [
         path: '', component: Dashboard,
         children: [
           { path: '', component: Monitor, name: 'Tablero' },
-          { path: 'humidity', component: Humidity, name: 'Humedad', meta: { icon: '' } },
+          { path: 'humidity', component: Humidity, name: 'Humedad y Temperatura', meta: { icon: '' } },
           { path: 'power', component: Power, name: 'Generacion Electrica', meta: { icon: 'wind_turbine' } },
           { path: 'precipitation', component: Precipitation, name: 'Precipitaciones', meta: { icon: '028-drop' } },
           { path: 'pressure', component: Pressure, name: 'Presion Atmosferica', meta: { icon: 'barometer' } },

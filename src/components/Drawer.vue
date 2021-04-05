@@ -11,19 +11,20 @@
       <!-- Content here -->
       <div class="col-12 text-dark">
         <div class="row no-wrap items-center absolute-top-right" style="height: auto; width: 100%">
-          <q-btn @click="requetsFullscreen" flat icon="arrows-fullscreen" round/>
+          <!--          <q-btn @click="requetsFullscreen" flat icon="arrows-fullscreen" round/>-->
           <q-space/>
-          <q-btn @click="leftDrawer = false" class="text-h6" color="primary" flat icon="close-circle-f" round
-                 v-if="$q.screen.lt.md"/>
+          <!--          <q-btn @click="leftDrawer = false" class="text-h6" color="primary" flat icon="close-circle-f" round-->
+          <!--                 v-if="$q.screen.lt.md"/>-->
         </div>
-        <Logo class="text-h4 q-ma-lg"/>
+        <Logo class="text-h5 q-ma-lg"/>
         <div class="q-pa-md"/>
         <q-item
           :class="`text-uppercase text-bold row no-wrap flex items-center
-        text-h5 ${$route.path === n.to ? 'text-secondary bg-dark' : ''}`"
+        text-h6 q-ma-md ${$route.path === n.to ? 'text-secondary bg-dark' : ''}`"
           :key="n.to"
-          @click="$router.push(n.to)"
-          clickable style="font-weight: 300" v-for="n in drawerRoutes">
+          :style="`font-weight: 300; ${idx === drawerRoutes.length - 1 ? 'margin-top: 3rem': ''}`"
+          @click="$router.push(n.to)" clickable
+          v-for="(n, idx) in drawerRoutes">
           <q-icon :name="n.icon"/>
           <span style="margin-left: 0.2rem;">{{n.name}}</span>
         </q-item>
@@ -54,7 +55,8 @@
           { to: '/user', name: 'usuario', icon: 'user_filled' },
           { to: '/sensors', name: 'sensores', icon: 'microchip' },
           { to: '/connectivity', name: 'conectividad', icon: 'wifi_router' },
-          { to: '/storage', name: 'almacenamiento', icon: 'sd_filled' }
+          { to: '/storage', name: 'almacenamiento', icon: 'sd_filled' },
+          { to: '/about', name: 'Acerca de', icon: 'info_filled' }
         ];
       }
     },

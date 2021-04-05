@@ -35,6 +35,7 @@
     "gulp": "^4.0.2",
     "html-webpack-inline-source-plugin": "1.0.0-beta.2",
     "inline-source": "^7.2.0",
+    "moment": "^2.29.1",
     "quasar": "^1.0.0",
     "svg-stringify": "^3.2.6",
     "vue-apexcharts": "^1.6.0",

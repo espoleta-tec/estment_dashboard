@@ -39,7 +39,7 @@
         console.log('websocket connection opened');
         ws.send('vue client connected');
         ws.onmessage = (event) => {
-          console.log(event.data);
+          // console.log(event.data);
           if (!event.data.startsWith('temp')) return;
           this.$store.commit('data/updateState', event.data);
         };

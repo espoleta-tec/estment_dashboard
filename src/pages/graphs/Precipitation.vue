@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <!-- content -->
-    <GraphView class="col-12"/>
+    <GraphView :bar="true" class="col-12"/>
   </div >
 </template>
 

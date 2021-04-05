@@ -4,7 +4,7 @@
       <VueSvgGauge :base-color="baseColor" :gauge-color="gaugeColor" :max="1" :min="0"
                    :scale-interval="0" :separator-step="0.25" :separator-thickness="4"
                    v-model="value">
-        <q-icon name="035-humidity" style="position: absolute; bottom: 0.5rem; left: calc(50% - 0.5em)"/>
+        <q-icon name="028-drop" style="position: absolute; bottom: 0.5rem; left: calc(50% - 0.5em)"/>
       </VueSvgGauge>
       <div class="text-body2 text-secondary" style="position:absolute; bottom: 0; right: 2vw;">{{value*100}}%</div>
     </div>

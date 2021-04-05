@@ -1,15 +1,20 @@
 export interface DataStateInterface {
-  [index: string]: number,
+  [index: string]: any,
+
   temperature: number,
   humidity: number,
-  windSpeed: number
+  windSpeed: number,
+  windDirection: string,
+  pressure: number,
+  power: number,
+  precipitation: number,
 }
 
 function state(): DataStateInterface {
   return {
-    temperature: 0,
-    humidity: 0,
-    windSpeed: 0
+    power: 0, precipitation: 0, pressure: 0,
+    temperature: 0, humidity: 0, windSpeed: 0,
+    windDirection: ''
   };
 }
 

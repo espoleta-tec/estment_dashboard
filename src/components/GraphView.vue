@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="col-12" style="min-height: 50px; max-height: 100px">
-      <VueApexCharts :options="options2" :series="series2" height="100%"/>
+      <VueApexCharts :options="options2" :series="series2" :type="bar ? 'bar' : 'area'" height="100%"/>
     </div>
     <div class="col-1"/>
   </div>
@@ -20,12 +20,8 @@
 
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
-  import { colors } from 'quasar';
   import AreaView from 'components/AreaView.vue';
   import RadarView from 'components/RadarView.vue';
-
-
-  const palette = colors.getPaletteColor;
 
 
   export default defineComponent({
@@ -39,6 +35,10 @@
       secondData: {
         type: Object,
         default: null
+      },
+      bar: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -49,11 +49,21 @@
             name: 'Series 2',
             data: [
               { x: '01/01/2021', y: 54 }, { x: '02/05/2021', y: 600 },
-              { x: '03/07/2021', y: 20 }, { x: '04/31/2021', y: 500 }
-              // { x: '11/07/2021', y: 20 }, { x: '01/31/2022', y: 500 },
+              { x: '03/07/2021', y: 20 }, { x: '04/31/2021', y: 500 },
+              { x: '05/07/2021', y: 20 }, { x: '06/31/2021', y: 50 },
+              { x: '07/07/2021', y: 89 }, { x: '08/31/2021', y: 500 },
+              { x: '09/07/2021', y: 20 }, { x: '10/31/2021', y: 700 },
+              { x: '11/07/2021', y: 150 }, { x: '12/31/2021', y: 300 }
             ]
           }],
         options2: {
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              borderRadius: 100,
+              columnWidth: '100%'
+            }
+          },
           chart: {
             type: 'area',
             height: 100,
@@ -88,9 +98,9 @@
             type: 'datetime',
             // max: new Date().getTime(),
             // min: new Date().setMonth(new Date().getMonth() - 12),
-            min: new Date().setMonth(-1),
-            max: new Date(new Date().getFullYear() + 1, 0, 1).getTime(),
-            tickAmount: 2,
+            min: new Date(new Date().getFullYear(), 0, 1).getTime(),
+            max: new Date(new Date().getFullYear(), 11, 31).getTime(),
+            // tickAmount: 3,
             axisBorder: {
               show: true
             },
@@ -103,6 +113,9 @@
                 colors: '#FFF'
               },
               format: 'MMM'
+              // formatter: function(val: string, timestamp: string) {
+              //   return  Intl.DateTimeFormat('es', {month: 'short'}).format(new Date(timestamp))
+              // }
             }
           },
           yaxis: {
