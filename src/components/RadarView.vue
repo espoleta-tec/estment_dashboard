@@ -1,6 +1,6 @@
 <template>
   <div class="row relative-position">
-    <div class="absolute-bottom-right text-h6" style="right: 1rem; bottom: 0">
+    <div class="absolute-top-left text-h6 q-ma-lg" style="right: 1rem; bottom: 0">
       <q-icon name="032-windsock"/>
       <span>3 M/S</span>
     </div>
@@ -34,7 +34,7 @@
           plotOptions: {
             radar: {
               size: undefined,
-              offsetX: 0,
+              offsetX: 50,
               offsetY: 0,
               polygons: {
                 strokeColors: 'rgba(255, 255, 255, 0.2)',

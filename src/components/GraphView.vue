@@ -49,19 +49,19 @@
             name: 'Series 2',
             data: [
               { x: '01/01/2021', y: 54 }, { x: '02/05/2021', y: 600 },
-              { x: '03/07/2021', y: 20 }, { x: '04/31/2021', y: 500 },
-              { x: '05/07/2021', y: 20 }, { x: '06/31/2021', y: 50 },
-              { x: '07/07/2021', y: 89 }, { x: '08/31/2021', y: 500 },
-              { x: '09/07/2021', y: 20 }, { x: '10/31/2021', y: 700 },
-              { x: '11/07/2021', y: 150 }, { x: '12/31/2021', y: 300 }
+              { x: '03/07/2021', y: 20 }, { x: '04/30/2021', y: 500 },
+              { x: '05/07/2021', y: 20 }, { x: '06/30/2021', y: 50 },
+              { x: '07/07/2021', y: 89 }, { x: '08/30/2021', y: 500 },
+              { x: '09/07/2021', y: 20 }, { x: '10/30/2021', y: 700 },
+              { x: '11/07/2021', y: 150 }, { x: '12/30/2021', y: 300 }
             ]
           }],
         options2: {
           plotOptions: {
             bar: {
               horizontal: false,
-              borderRadius: 100,
-              columnWidth: '100%'
+              borderRadius: 100
+              // columnWidth: '100%'
             }
           },
           chart: {
@@ -95,7 +95,8 @@
             }
           },
           xaxis: {
-            type: 'datetime',
+            type: this.bar ? 'category' : 'datetime',
+            // type: 'category',
             // max: new Date().getTime(),
             // min: new Date().setMonth(new Date().getMonth() - 12),
             min: new Date(new Date().getFullYear(), 0, 1).getTime(),
@@ -105,17 +106,17 @@
               show: true
             },
             axisTicks: {
-              show: true
+              show: false
             },
             labels: {
               show: true,
               style: {
                 colors: '#FFF'
               },
-              format: 'MMM'
-              // formatter: function(val: string, timestamp: string) {
-              //   return  Intl.DateTimeFormat('es', {month: 'short'}).format(new Date(timestamp))
-              // }
+              format: 'MMM',
+              formatter: function(val: string) {
+                return Intl.DateTimeFormat('en', { month: 'short' }).format(new Date(val));
+              }
             }
           },
           yaxis: {
