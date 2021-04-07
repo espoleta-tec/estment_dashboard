@@ -44,6 +44,11 @@
           this.$store.commit('data/updateState', event.data);
         };
       };
+
+      this.$store.commit('time/setPhases');
+      setInterval(() => {
+        this.$store.commit('time/setPhases');
+      }, 10000);
     }
   });
 </script>

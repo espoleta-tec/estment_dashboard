@@ -6,8 +6,10 @@ import net from './net';
 import { NetState } from 'src/store/net/state';
 import login from './login';
 import { LoginStateInterface } from 'src/store/login/state';
-import data from './data'
-import {DataStateInterface} from 'src/store/data/state';
+import data from './data';
+import { DataStateInterface } from 'src/store/data/state';
+import time from './time';
+import { TimeStateInterface } from 'src/store/time/state';
 
 // import example from './module-example';
 // import { ExampleStateInterface } from './module-example/state';
@@ -25,7 +27,8 @@ export interface StateInterface {
   layout: LayoutState,
   net: NetState,
   login: LoginStateInterface,
-  data: DataStateInterface
+  data: DataStateInterface,
+  time: TimeStateInterface
 }
 
 export default store(function({ Vue }) {
@@ -37,7 +40,8 @@ export default store(function({ Vue }) {
       layout,
       net,
       login,
-      data
+      data,
+      time
     },
 
     // enable strict mode (adds overhead!)

@@ -4,10 +4,10 @@
       <div class="col-12 row">
         <div class="col-6 column items-stretch justify-center">
           <div class="col-auto q-pa-md row no-wrap">
-            <q-icon :key="n.icon" :name="n.icon" :style="idx !== selected ? 'opacity: 0.2' : ''"
+            <q-icon :key="n.icon" :name="n.icon" :style="idx !== $store.state.time.currentMoon ? 'opacity: 0.2' : ''"
                     class="col" v-for="(n, idx) in moonPhases"/>
           </div>
-          <div class="col-auto no-wrap text-secondary text-center">14-19 mar</div>
+          <div class="col-auto no-wrap text-secondary text-uppercase text-center">{{$store.getters['time/currentCycle']}}</div>
         </div>
         <div class="col-6 text-secondary text-h1 flex flex-center">{{$store.getters['data/temperature']}}</div>
       </div>
