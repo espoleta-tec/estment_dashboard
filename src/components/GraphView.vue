@@ -101,10 +101,11 @@
             // min: new Date().setMonth(new Date().getMonth() - 12),
             min: new Date(new Date().getFullYear(), 0, 1).getTime(),
             max: new Date(new Date().getFullYear(), 11, 31).getTime(),
-            // tickAmount: 3,
+            tickAmount: 3,
             axisBorder: {
               show: true
             },
+            endOnTick: true,
             axisTicks: {
               show: false
             },
@@ -114,9 +115,10 @@
                 colors: '#FFF'
               },
               format: 'MMM',
-              formatter: function(val: string) {
+              formatter: this.bar ? function(val: string) {
                 return Intl.DateTimeFormat('en', { month: 'short' }).format(new Date(val));
-              }
+                // return new Date(val).getMonth() + 1
+              } : undefined
             }
           },
           yaxis: {

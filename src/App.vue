@@ -34,21 +34,29 @@
         }
       });
 
-      const ws = new WebSocket('ws://localhost:8999');
-      ws.onopen = () => {
-        console.log('websocket connection opened');
-        ws.send('vue client connected');
-        ws.onmessage = (event) => {
-          // console.log(event.data);
-          if (!event.data.startsWith('temp')) return;
-          this.$store.commit('data/updateState', event.data);
-        };
-      };
+      this.openWebSocket();
 
       this.$store.commit('time/setPhases');
       setInterval(() => {
         this.$store.commit('time/setPhases');
       }, 10000);
+    },
+    methods: {
+      openWebSocket() {
+        const ws = new WebSocket('ws://10.0.17.135:81');
+        ws.onopen = () => {
+          console.log('websocket connection opened');
+          ws.send('vue client connected');
+          ws.onmessage = (event) => {
+            this.$store.commit('data/updateState', event.data);
+          };
+          ws.onclose = (event) => {
+            setTimeout(() => {
+              this.openWebSocket();
+            }, 500);
+          };
+        };
+      }
     }
   });
 </script>

@@ -56,6 +56,7 @@
           { to: '/sensors', name: 'sensores', icon: 'microchip' },
           { to: '/connectivity', name: 'conectividad', icon: 'wifi_router' },
           { to: '/storage', name: 'almacenamiento', icon: 'sd_filled' },
+          { to: '/update', name: 'update', icon: 'folder-f' },
           { to: '/about', name: 'Acerca de', icon: 'info_filled' }
         ];
       }
