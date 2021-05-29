@@ -61,11 +61,19 @@
           gateway: this.data.ipAddress
         };
 
-        this.$axios.post('/net', form).catch(e => {
+        this.$axios('net', {
+          method: 'POST',
+          data: form
+        }).catch(e => {
           console.log(e.message);
+          this.$q.notify({
+              message: e.message,
+              color: 'negative'
+            }
+          );
         });
       },
-      filterFn(val: any, update: any) {
+      filterFn(val: any, update: any, abort: any) {
         if (this.wifiOptions.length > 0) {
           update();
           return;

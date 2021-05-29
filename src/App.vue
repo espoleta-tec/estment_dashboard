@@ -1,6 +1,6 @@
-<template :key="$store.state.api.masterUri">
+<template>
   <div id="q-app">
-    <router-view/>
+    <router-view :key="$store.state.api.masterUri"/>
   </div>
 </template>
 <script lang="ts">
@@ -11,8 +11,8 @@
   export default defineComponent({
     name: 'App',
     created(): void {
-      this.$axios.defaults.baseURL = `http://${this.$store.state.api.masterUri}/`;
-      console.log(this.$axios.defaults.baseURL);
+      // this.$axios.defaults.baseURL = `http://${this.$store.state.api.masterUri}/`;
+      // console.log(this.$axios.defaults.baseURL);
       this.$axios.interceptors.response.use((response) => {
         return response;
       }, error => {
@@ -22,6 +22,10 @@
             console.log(e.message);
           });
         }
+      });
+
+      this.$store.dispatch('api/changeMaster').catch(e => {
+        console.log(e.message);
       });
 
       this.$q.iconMapFn = (iconName => {
@@ -39,29 +43,27 @@
         }
       });
 
-      this.openWebSocket();
-
       this.$store.commit('time/setPhases');
       setInterval(() => {
         this.$store.commit('time/setPhases');
       }, 10000);
     },
     methods: {
-      openWebSocket() {
-        const ws = new WebSocket(`ws://${this.$store.state.api.masterUri}/`);
-        ws.onopen = () => {
-          console.log('websocket connection opened');
-          ws.send('vue client connected');
-          ws.onmessage = (event) => {
-            this.$store.commit('data/updateState', event.data);
-          };
-          ws.onclose = () => {
-            setTimeout(() => {
-              this.openWebSocket();
-            }, 500);
-          };
-        };
-      }
+      // openWebSocket() {
+      //   const ws = new WebSocket(`ws://${this.$store.state.api.masterUri}/`);
+      //   ws.onopen = () => {
+      //     console.log('websocket connection opened');
+      //     ws.send('vue client connected');
+      //     ws.onmessage = (event) => {
+      //       this.$store.commit('data/updateState', event.data);
+      //     };
+      //     ws.onclose = () => {
+      //       setTimeout(() => {
+      //         this.openWebSocket();
+      //       }, 500);
+      //     };
+      //   };
+      // }
     }
   });
 </script>

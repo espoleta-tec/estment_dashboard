@@ -120,13 +120,13 @@ module.exports = configure(function(ctx) {
       https: false,
       port: 8080,
       open: true,
-      proxy: {
-        // proxy all requests starting with /api to jsonplaceholder
-        '/': {
-          target: 'http://192.168.4.1',
-          changeOrigin: false
-        }
-      }
+      // proxy: {
+      //   // proxy all requests starting with /api to jsonplaceholder
+      //   '/': {
+      //     target: 'http://192.168.4.1',
+      //     changeOrigin: false
+      //   }
+      // }
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
