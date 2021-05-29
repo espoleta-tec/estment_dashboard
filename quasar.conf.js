@@ -123,8 +123,8 @@ module.exports = configure(function(ctx) {
       proxy: {
         // proxy all requests starting with /api to jsonplaceholder
         '/': {
-          target: 'http://10.0.17.135',
-          changeOrigin: true
+          target: 'http://192.168.4.1',
+          changeOrigin: false
         }
       }
     },
@@ -246,6 +246,9 @@ module.exports = configure(function(ctx) {
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
       }
+    },
+    bin: {
+      linuxAndroidStudio: '/usr/local/bin/idea'
     }
   };
 });

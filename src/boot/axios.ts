@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { boot } from 'quasar/wrappers';
 
 const api = axios.create({
-  baseURL: process.env.DEV ? 'http://localhost/' : '/'
+  baseURL: process.env.DEV ? '/' : 'http://192.168.4.1/'
 });
 
 

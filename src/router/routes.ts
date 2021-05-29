@@ -15,6 +15,7 @@ import Sensors from 'pages/config/Sensors.vue';
 import Storage from 'pages/config/Storage.vue';
 import User from 'pages/config/User.vue';
 import Update from 'pages/config/Update.vue';
+import Settings from 'pages/config/Settings.vue';
 
 const routes: RouteConfig[] = [
   {
@@ -46,7 +47,11 @@ const routes: RouteConfig[] = [
         path: 'user', component: User, name: 'Usuario'
       }, {
         path: 'update', component: Update, name: 'Actualizacion'
-      }]
+      },
+      {
+        path: 'settings', component: Settings, name: 'Ajustes'
+      }
+      ]
   },
   {
     path: '/login', component: Login

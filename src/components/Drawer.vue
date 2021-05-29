@@ -53,10 +53,11 @@
         return [
           { to: '/', name: 'Tablero', icon: 'home_filled' },
           { to: '/user', name: 'usuario', icon: 'user_filled' },
-          { to: '/sensors', name: 'sensores', icon: 'microchip' },
+          // { to: '/sensors', name: 'sensores', icon: 'microchip' },
           { to: '/connectivity', name: 'conectividad', icon: 'wifi_router' },
           { to: '/storage', name: 'almacenamiento', icon: 'sd_filled' },
           { to: '/update', name: 'update', icon: 'folder-f' },
+          { to: '/settings', name: 'Ajustes', icon: 'settings_filled' },
           { to: '/about', name: 'Acerca de', icon: 'info_filled' }
         ];
       }

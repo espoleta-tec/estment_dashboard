@@ -5,15 +5,18 @@
     <div class="q-pa-md"/>
 
     <form @submit.prevent.stop="onSubmit" class="q-pa-md text-h5 q-gutter-md">
-      <q-input label="Nombre de equipo" color="secondary" dark v-model="hostname"/>
-      <q-select label="Modo de trabajo"  color="secondary" dark v-model="mode" :options="options.modeOptions"/>
-      <q-select v-if="mode.value === 'sta'" label="SSID"  color="secondary" dark v-model="ssid" :options="wifiOptions"/>
-      <q-input v-else label="SSID" color="secondary" dark v-model="ssid"/>
-      <q-input label="Contraseña" color="secondary" dark v-model="password" type="password"/>
-      <q-select label="Asignacion de ip"  color="secondary" dark v-model="ipMode" :options="options.ipOptions"/>
-      <q-input :disable="ipMode.value === 'auto'" label="Direccion IP"  color="secondary" dark v-model="ipAddress"/>
+      <q-input color="secondary" dark label="Nombre de equipo" v-model="data.hostname"/>
+      <q-select :options="data.options.modeOptions" color="secondary" dark label="Modo de trabajo" v-model="data.mode"/>
+      <q-select :options="wifiOptions" @filter="filterFn" color="secondary" dark label="SSID"
+                v-if="data.mode.value === 'sta'" v-model="data.ssid"/>
+      <q-input color="secondary" dark label="SSID" v-else v-model="data.ssid"/>
+      <q-input color="secondary" dark label="Contraseña" type="password" v-model="data.password"/>
+      <q-select :options="data.options.ipOptions" color="secondary" dark label="Asignacion de ip"
+                v-model="data.ipMode"/>
+      <q-input :disable="data.ipMode.value === 'auto'" color="secondary" dark label="Direccion IP"
+               v-model="data.ipAddress"/>
       <div class="text-center q-pa-md">
-        <q-btn class="text-h4" type="submit" color="secondary" flat icon="save" round/>
+        <q-btn class="text-h4" color="secondary" flat icon="save" round type="submit"/>
       </div>
     </form>
   </q-page>
@@ -22,37 +25,77 @@
 <script lang="ts">
   import { defineComponent } from '@vue/composition-api';
 
+  let mode: any = '';
   export default defineComponent({
     // name: 'PageName'
     data() {
       return {
-        isMounted: false,
-        hostname: '',
-        mode: '',
-        ssid: '',
-        password: '',
-        ipMode: '',
-        ipAddress: '',
-        options: {
-          ipOptions: [
-            {value: 'auto', label: 'Automatico'},
-            {value: 'manual', label: 'Manual'}],
-          modeOptions: [
-            {label: 'Punto de acceso', value: 'ap'},
-            {label: 'Estacion', value: 'sta'},
-          ]
-        }
+        wifiOptions: [],
+        data: {
+          hostname: '',
+          mode,
+          ssid: '',
+          password: '',
+          ipMode: '',
+          ipAddress: '',
+          options: {
+            ipOptions: [
+              { value: 'auto', label: 'Automatico' },
+              { value: 'manual', label: 'Manual' }],
+            modeOptions: [
+              { label: 'Punto de acceso', value: 'ap' },
+              { label: 'Estacion', value: 'sta' }
+            ]
+          }
+        },
+        isMounted: false
       };
     },
     methods: {
       onSubmit() {
-        console.log('ok')
+        let form = {
+          ssid: this.data.ssid,
+          password: this.data.password,
+          mode: this.data.mode.value == 'ap',
+          ip: this.data.ipAddress,
+          gateway: this.data.ipAddress
+        };
+
+        this.$axios.post('/net', form).catch(e => {
+          console.log(e.message);
+        });
+      },
+      filterFn(val: any, update: any) {
+        if (this.wifiOptions.length > 0) {
+          update();
+          return;
+        }
+
+        update(() => {
+          this.getNetworks().catch(e => {
+            console.log(e.message);
+          });
+        });
+      },
+      async getNetworks() {
+        let response: any = await this.$axios.get('/wifis').catch(e => {
+          console.log(e.message);
+          return;
+        });
+        this.wifiOptions = response.data;
+        console.log(this.wifiOptions);
       }
     },
     computed: {
-      wifiOptions() {
-        return ['ESPOLETA', 'WIFI ETECSA', 'NAUTA HOGAR']
-      }
+      // wifiOptionsComputed() {
+      //   this.$axios.get('/wifis').then((response: any) => {
+      //     console.log(response);
+      //     return response.data;
+      //   }).catch((e) => {
+      //     console.log(e.message);
+      //     return [];
+      //   });
+      // }
     }
   });
 </script>

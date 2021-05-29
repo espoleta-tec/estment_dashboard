@@ -9,7 +9,8 @@
         <q-form class="col-12 col-sm-6 flex flex-center column q-gutter-lg text-white">
           <div class="q-ma-lg"/>
           <q-input v-model="user" outlined dark color="secondary" label="Usario" label-color="white"/>
-          <q-input v-model="password" outlined dark color="secondary" label="Contraseña" label-color="white" type="password"/>
+          <q-input v-model="password" outlined dark color="secondary" label="Contraseña" label-color="white"
+                   type="password"/>
           <div class="q-ma-md"/>
           <q-btn @click="authenticate" color="secondary" outline label="Entrar" class="text-h6"/>
         </q-form>
@@ -34,7 +35,7 @@
       authenticate() {
         let data = {
           name: this.user,
-          pswd: this.password
+          password: this.password
         };
         this.$axios.request({
           url: 'authenticate',

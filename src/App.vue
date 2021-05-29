@@ -1,4 +1,4 @@
-<template>
+<template :key="$store.state.api.masterUri">
   <div id="q-app">
     <router-view/>
   </div>
@@ -11,11 +11,16 @@
   export default defineComponent({
     name: 'App',
     created(): void {
+      this.$axios.defaults.baseURL = `http://${this.$store.state.api.masterUri}/`;
+      console.log(this.$axios.defaults.baseURL);
       this.$axios.interceptors.response.use((response) => {
         return response;
       }, error => {
         if (error.response.status === 401) {
           this.$store.commit('login/resetToken');
+          this.$router.push('/login').catch(e => {
+            console.log(e.message);
+          });
         }
       });
 
@@ -43,14 +48,14 @@
     },
     methods: {
       openWebSocket() {
-        const ws = new WebSocket('ws://10.0.17.135:81');
+        const ws = new WebSocket(`ws://${this.$store.state.api.masterUri}/`);
         ws.onopen = () => {
           console.log('websocket connection opened');
           ws.send('vue client connected');
           ws.onmessage = (event) => {
             this.$store.commit('data/updateState', event.data);
           };
-          ws.onclose = (event) => {
+          ws.onclose = () => {
             setTimeout(() => {
               this.openWebSocket();
             }, 500);

@@ -10,6 +10,8 @@ import data from './data';
 import { DataStateInterface } from 'src/store/data/state';
 import time from './time';
 import { TimeStateInterface } from 'src/store/time/state';
+import api from './api'
+import {ApiStateInterface} from 'src/store/api/state';
 
 // import example from './module-example';
 // import { ExampleStateInterface } from './module-example/state';
@@ -28,7 +30,8 @@ export interface StateInterface {
   net: NetState,
   login: LoginStateInterface,
   data: DataStateInterface,
-  time: TimeStateInterface
+  time: TimeStateInterface,
+  api: ApiStateInterface
 }
 
 export default store(function({ Vue }) {
@@ -41,7 +44,8 @@ export default store(function({ Vue }) {
       net,
       login,
       data,
-      time
+      time,
+      api
     },
 
     // enable strict mode (adds overhead!)

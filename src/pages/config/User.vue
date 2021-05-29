@@ -78,15 +78,23 @@
         this.password = og.password;
       },
       onSubmit() {
+        let form = {
+          name: this.name,
+          password: this.password
+        };
         this.$q.dialog({
           title: 'Confirmar',
           message: 'Guardar cambios?',
           cancel: true,
           persistent: true
         }).onOk(() => {
-          console.log('OK');
+          this.$axios.post('/user', form).then(resp => {
+            console.log(resp);
+          }).catch(e => {
+            console.log(e.message);
+          });
         }).onCancel(() => {
-          console.log('Cancelled')
+          console.log('Cancelled');
         });
       }
     }
