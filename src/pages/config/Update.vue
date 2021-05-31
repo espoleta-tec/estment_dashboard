@@ -93,6 +93,10 @@
         }).catch(e => {
           this.uploading = false;
           console.log(e.message);
+          this.$q.notify({
+            message: `Error ${e.message}`,
+            color: 'negative'
+          });
         });
       }
     }
