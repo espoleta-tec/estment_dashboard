@@ -18,7 +18,8 @@
     </div>
     <q-btn @click="upload" icon="upload" outline v-if="!uploading"/>
     <div class="q-pa-md self-stretch" v-else>
-      <q-linear-progress track-color="accent" color="white" v-model="progress"/>
+      <q-linear-progress color="white" indeterminate track-color="accent" v-model="progress"/>
+      <q-inner-loading/>
     </div>
   </q-page>
 </template>
@@ -39,7 +40,7 @@
     },
     methods: {
       upload() {
-        const request = new XMLHttpRequest();
+        // const request = new XMLHttpRequest();
         const formData = new FormData();
 
         if (this.file == null) {
@@ -47,34 +48,52 @@
         }
         if (this.file.length === 0) return;
         formData.append(this.type, this.file);
-        request.addEventListener('load', () => {
-          if (request.status === 200) {
-            console.log(request.responseText);
-            this.OTASuccess = true;
-          } else if (request.status !== 500) {
-            console.log(request.statusText);
-          } else {
-            request.responseText;
-          }
-          this.uploading = false;
-          this.progress = 0;
-        });
-        request.upload.addEventListener('progress', (e) => {
-          this.progress = Math.trunc((e.loaded / e.total));
-          console.log(this.progress * 100, '%');
-        });
-
-        request.open('post', 'esp/update');
-        request.send(formData);
-        this.uploading = true;
-        // this.$axios.post('http://127.0.0.1/api/v1/update', formData, {
-        //   headers: {
-        //     'Content-Type': 'multipart/form-data'
-        //   },
-        //   onUploadProgress: progress => {
-        //     console.log(Math.trunc(progress.loaded / progress.total));
+        // request.addEventListener('load', () => {
+        //   if (request.status === 200) {
+        //     console.log(request.responseText);
+        //     this.OTASuccess = true;
+        //   } else if (request.status !== 500) {
+        //     console.log(request.statusText);
+        //     this.$q.notify({
+        //       message: request.statusText,
+        //       color: 'negative'
+        //     });
+        //   } else {
+        //     request.responseText;
         //   }
+        //   this.uploading = false;
+        //   this.progress = 0;
         // });
+        // request.upload.addEventListener('progress', (e) => {
+        //   this.progress = Math.trunc((e.loaded / e.total));
+        //   console.log(this.progress * 100, '%');
+        // });
+
+        // request.open('post', `http://${this.$store.state.api.masterUri}/update`);
+        // request.send(formData);
+        this.uploading = true;
+        this.$axios.post('update', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          onUploadProgress: progress => {
+            this.progress = Math.trunc((progress.loaded / progress.total));
+            console.log(Math.trunc(progress.loaded / progress.total));
+          }
+        }).then((resp) => {
+          this.uploading = false;
+          console.log(resp.statusText);
+          if (resp.status === 200) {
+            this.$q.notify({
+              message: 'Actualizacion exitosa',
+              color: 'positive',
+              position: 'top'
+            });
+          }
+        }).catch(e => {
+          this.uploading = false;
+          console.log(e.message);
+        });
       }
     }
   });
