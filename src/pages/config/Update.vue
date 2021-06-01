@@ -75,8 +75,8 @@
           headers: {
             'Content-Type': 'multipart/form-data'
           },
-          onUploadProgress: progress => {
-            this.progress = progress;
+          onUploadProgress: (progress: ProgressEvent) => {
+            this.progress = progress.loaded/progress.total;
             console.log(progress);
           }
         }).then((resp) => {

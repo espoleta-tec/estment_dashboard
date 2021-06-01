@@ -11,7 +11,7 @@
             {{$store.getters['time/currentCycle']}}
           </div>
         </div>
-        <div class="col-6 text-secondary text-h1 flex flex-center">{{$store.getters['data/temperature']}}</div>
+        <div class="col-6 text-secondary text-h1 flex flex-center">{{$store.getters['api/temperature']}}</div>
       </div>
       <div class="col-6 column">
         <div class="col flex flex-center">
@@ -20,14 +20,14 @@
         <div class="col-1"/>
       </div>
       <div class="col-6 column items-center">
-        <MyGauge :value="$store.state.data.humidity/100" class="col" style="max-width: 100px"/>
+        <MyGauge :value="$store.state.api.humidity/100" class="col" style="max-width: 100px"/>
         <div class="col flex flex-center no-wrap">
           <Helix/>
           <div class="text-secondary">1.8W</div>
         </div>
         <div class="col flex flex-center no-wrap">
           <q-icon class="text-h4 q-pa-md" name="radiation"/>
-          <div class="text-secondary">{{$store.state.data.light}} lux</div>
+          <div class="text-secondary">{{$store.state.api.light}} lux</div>
         </div>
       </div>
     </div>

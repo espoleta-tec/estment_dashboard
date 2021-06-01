@@ -11,12 +11,12 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
     openWebSocket();
 
     function openWebSocket() {
-      const ws = new WebSocket(`ws://${context.state.masterUri}/`);
+      const ws = new WebSocket(`ws://${context.state.masterUri}:81/`);
       ws.onopen = () => {
         console.log('websocket connection opened');
         ws.send('vue client connected');
         ws.onmessage = (event) => {
-          context.commit('data/updateState', event.data);
+          context.commit('updateState', event.data);
         };
         ws.onclose = () => {
           setTimeout(() => {

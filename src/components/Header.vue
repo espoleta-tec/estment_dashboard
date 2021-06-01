@@ -35,7 +35,6 @@
           return this.$store.state.layout.leftDrawer;
         },
         set: function(payload: boolean) {
-          console.log('toggling');
           this.$store.commit('layout/toggleDrawer', payload);
         }
       }

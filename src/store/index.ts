@@ -6,12 +6,11 @@ import net from './net';
 import { NetState } from 'src/store/net/state';
 import login from './login';
 import { LoginStateInterface } from 'src/store/login/state';
-import data from './data';
 import { DataStateInterface } from 'src/store/data/state';
 import time from './time';
 import { TimeStateInterface } from 'src/store/time/state';
-import api from './api'
-import {ApiStateInterface} from 'src/store/api/state';
+import api from './api';
+import { ApiStateInterface } from 'src/store/api/state';
 
 // import example from './module-example';
 // import { ExampleStateInterface } from './module-example/state';
@@ -34,16 +33,17 @@ export interface StateInterface {
   api: ApiStateInterface
 }
 
+let theStore: any;
+
 export default store(function({ Vue }) {
   Vue.use(Vuex);
 
-  return new Vuex.Store<StateInterface>({
+  theStore = new Vuex.Store<StateInterface>({
     modules: {
       // example
       layout,
       net,
       login,
-      data,
       time,
       api
     },
@@ -52,4 +52,8 @@ export default store(function({ Vue }) {
     // for dev mode only
     strict: !!process.env.DEBUGGING
   });
+
+  return theStore;
 });
+
+

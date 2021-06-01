@@ -60,7 +60,7 @@
           // { text: 'ESTE', icon: 'vane', to: '/wind' },
           { text: '70mm', icon: '028-drop', to: '/precipitation' },
           { text: '70mm', icon: '028-drop' },
-          { text: this.$store.getters['data/temperature'], icon: 'temperature', to: '/humidity' },
+          { text: this.$store.getters['api/temperature'], icon: 'temperature', to: '/humidity' },
           { text: '5 m/s', icon: '032-windsock', to: '/wind' },
           { text: '', icon: 'home_filled', to: '/' },
           { text: '1002hpa', icon: 'barometer', to: '/pressure' },
