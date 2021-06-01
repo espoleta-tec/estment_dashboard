@@ -18,8 +18,7 @@
     </div>
     <q-btn @click="upload" icon="upload" outline v-if="!uploading"/>
     <div class="q-pa-md self-stretch" v-else>
-      <q-linear-progress color="white" indeterminate track-color="accent" v-model="progress"/>
-      <q-inner-loading/>
+      <q-linear-progress color="white" track-color="accent" v-model="progress"/>
     </div>
   </q-page>
 </template>
@@ -77,8 +76,8 @@
             'Content-Type': 'multipart/form-data'
           },
           onUploadProgress: progress => {
-            this.progress = Math.trunc((progress.loaded / progress.total));
-            console.log(Math.trunc(progress.loaded / progress.total));
+            this.progress = progress;
+            console.log(progress);
           }
         }).then((resp) => {
           this.uploading = false;
