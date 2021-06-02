@@ -6,7 +6,6 @@ import net from './net';
 import { NetState } from 'src/store/net/state';
 import login from './login';
 import { LoginStateInterface } from 'src/store/login/state';
-import { DataStateInterface } from 'src/store/data/state';
 import time from './time';
 import { TimeStateInterface } from 'src/store/time/state';
 import api from './api';
@@ -28,7 +27,6 @@ export interface StateInterface {
   layout: LayoutState,
   net: NetState,
   login: LoginStateInterface,
-  data: DataStateInterface,
   time: TimeStateInterface,
   api: ApiStateInterface
 }

@@ -1,12 +1,11 @@
 import { MutationTree } from 'vuex';
 import { ApiStateInterface } from './state';
-import { DataStateInterface } from 'src/store/data/state';
 
 const mutation: MutationTree<ApiStateInterface> = {
   changeMasterUri(state: ApiStateInterface, payload: string) {
     state.masterUri = payload;
   },
-  updateState(state: DataStateInterface, payload: string) {
+  updateState(state: ApiStateInterface, payload: string) {
     const values = payload.split(',');
     values.forEach(x => {
       const pair = x.split('=');

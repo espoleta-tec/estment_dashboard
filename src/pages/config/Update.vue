@@ -76,8 +76,7 @@
             'Content-Type': 'multipart/form-data'
           },
           onUploadProgress: (progress: ProgressEvent) => {
-            this.progress = progress.loaded/progress.total;
-            console.log(progress);
+            this.progress = progress.loaded / progress.total;
           }
         }).then((resp) => {
           this.uploading = false;
