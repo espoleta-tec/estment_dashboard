@@ -22,10 +22,6 @@
       <div class="col-6 column items-center">
         <MyGauge :value="$store.state.api.humidity/100" class="col" style="max-width: 100px"/>
         <div class="col flex flex-center no-wrap">
-          <Helix/>
-          <div class="text-secondary">1.8W</div>
-        </div>
-        <div class="col flex flex-center no-wrap">
           <q-icon class="text-h4 q-pa-md" name="radiation"/>
           <div class="text-secondary">{{$store.state.api.light}} lux</div>
         </div>

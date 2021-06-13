@@ -56,6 +56,7 @@
           ssid: this.data.ssid,
           password: this.data.password,
           mode: this.data.mode.value == 'ap',
+          dhcp: this.data.ipMode.value === 'auto',
           ip: this.data.ipAddress,
           gateway: this.data.ipAddress
         };

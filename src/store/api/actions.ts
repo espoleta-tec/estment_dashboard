@@ -3,6 +3,10 @@ import { StateInterface } from '../index';
 import { ApiStateInterface } from './state';
 import { api } from 'boot/axios';
 
+let ws: WebSocket;
+
+export { ws };
+
 const actions: ActionTree<ApiStateInterface, StateInterface> = {
   changeMaster(context) {
     api.defaults.baseURL = `http://${context.state.masterUri}/`;
@@ -11,7 +15,7 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
     openWebSocket();
 
     function openWebSocket() {
-      const ws = new WebSocket(`ws://${context.state.masterUri}:81/`);
+      ws = new WebSocket(`ws://${context.state.masterUri}:81/`);
       ws.onopen = () => {
         console.log('websocket connection opened');
         ws.send('vue client connected');
@@ -25,6 +29,12 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
         };
       };
     }
+  },
+  syncTime(context) {
+    const updateMessage = `time=${Math.floor(Date.now() / 1000)}`;
+    console.log(`${Date.now()} ${updateMessage}`);
+    console.log(Intl.DateTimeFormat().format(Date.now()));
+    ws.send(updateMessage);
   }
 };
 
