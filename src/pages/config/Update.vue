@@ -9,7 +9,7 @@
       <span>Version Actual</span>
       <span class="text-secondary text-h6">0.5</span>
     </div>
-    <div style="width: 80vw">
+    <div style="width: 20em">
       <q-file dark v-model="file">
         <template v-slot:append>
           <q-icon name="folder-f"/>

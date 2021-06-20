@@ -27,9 +27,9 @@ const routes: RouteConfig[] = [
         children: [
           { path: '', component: Monitor, name: 'Tablero' },
           { path: 'humidity', component: Humidity, name: 'Humedad y Temperatura', meta: { icon: '' } },
-          { path: 'power', component: Power, name: 'Generacion Electrica', meta: { icon: 'wind_turbine' } },
+          { path: 'power', component: Power, name: 'Generación Eléctrica', meta: { icon: 'wind_turbine' } },
           { path: 'precipitation', component: Precipitation, name: 'Precipitaciones', meta: { icon: '028-drop' } },
-          { path: 'pressure', component: Pressure, name: 'Presion Atmosferica', meta: { icon: 'barometer' } },
+          { path: 'pressure', component: Pressure, name: 'Presión Atmosférica', meta: { icon: 'barometer' } },
           { path: 'temperature', component: Temperature, name: 'Temperatura' },
           { path: 'wind', component: Wind, name: 'Viento', meta: { icon: 'vane' } }
         ]
@@ -46,12 +46,12 @@ const routes: RouteConfig[] = [
       {
         path: 'user', component: User, name: 'Usuario'
       }, {
-        path: 'update', component: Update, name: 'Actualizacion'
+        path: 'update', component: Update, name: 'Actualización'
       },
       {
         path: 'settings', component: Settings, name: 'Ajustes'
       }
-      ]
+    ]
   },
   {
     path: '/login', component: Login
