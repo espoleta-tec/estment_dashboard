@@ -119,7 +119,7 @@ module.exports = configure(function(ctx) {
     devServer: {
       https: false,
       port: 8080,
-      open: true,
+      open: true
       // proxy: {
       //   // proxy all requests starting with /api to jsonplaceholder
       //   '/': {
@@ -133,7 +133,11 @@ module.exports = configure(function(ctx) {
     framework: {
       // iconSet: 'svg-material-icons', // Quasar icon set
       lang: 'en-us', // Quasar language pack
-      config: {},
+      config: {
+        loadingBar: {
+          skipHijack: true
+        }
+      },
 
       // Possible values for "importStrategy":
       // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
