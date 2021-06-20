@@ -14,12 +14,14 @@
 
   export default defineComponent({
     data: function() {
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      const vm: any = this;
       return {
         ip: '',
         buttons: [
-          { label: 'probar ip', onClick: this.testConn },
-          { label: 'Sincronizar Fecha y Hora', onClick: this.timeSync },
-          { label: 'resetear configuración', onClick: this.resetConfiguration }
+          { label: 'probar ip', onClick: vm.testConn },
+          { label: 'Sincronizar Fecha y Hora', onClick: vm.timeSync },
+          { label: 'resetear configuración', onClick: vm.resetConfiguration }
         ]
       };
     },

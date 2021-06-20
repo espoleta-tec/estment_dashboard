@@ -30,7 +30,7 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
       };
     }
   },
-  syncTime(context) {
+  syncTime() {
     const updateMessage = `time=${Math.floor(Date.now() / 1000)}`;
     console.log(`${Date.now()} ${updateMessage}`);
     console.log(Intl.DateTimeFormat().format(Date.now()));

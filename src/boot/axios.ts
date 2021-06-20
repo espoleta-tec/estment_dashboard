@@ -17,4 +17,4 @@ export default boot(({ Vue }) => {
   Vue.prototype.$axios = api;
 });
 
-export { api, axios };
+export { api };
