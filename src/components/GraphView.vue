@@ -5,16 +5,15 @@
     <!--      &lt;!&ndash;      <div class="col text-body2">promedio dia</div>&ndash;&gt;-->
     <!--      <div class="col text-secondary text-h6 text-weight-bolder">1.2 Watts</div>-->
     <!--    </div>-->
-    <div class="col-12 row">
+    <div class="col-12 row q-pa-md">
       <div class="col-12 row" style="min-height: 200px">
         <RadarView class="col-12" v-if="radar"/>
         <AreaView :second-data="secondData" class="col-12" v-else/>
       </div>
     </div>
-    <div class="col-12" style="min-height: 50px; max-height: 100px">
-      <VueApexCharts :options="options2" :series="series2" :type="bar ? 'bar' : 'area'" height="100%"/>
-    </div>
-    <div class="col-1"/>
+<!--    <div class="col-12" style="min-height: 50px; max-height: 100px">-->
+<!--      <VueApexCharts :options="options2" :series="series2" :type="bar ? 'bar' : 'area'" height="100%"/>-->
+<!--    </div>-->
   </div>
 </template>
 

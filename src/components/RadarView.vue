@@ -1,10 +1,10 @@
 <template>
   <div class="row relative-position">
-    <div class="absolute-top-left text-h6 q-ma-lg" style="right: 1rem; bottom: 0">
-      <q-icon name="032-windsock"/>
-      <span>3 M/S</span>
-    </div>
     <VueApexCharts :options="options" :series="series" class="col-12" height="100%" type="radar"/>
+    <div class="text-h6 q-ma-lg col-grow text-center" style="right: 1rem; bottom: 0">
+      <q-icon name="032-windsock"/>
+      <span style="margin-left: .5em">3 M/S</span>
+    </div>
   </div>
 </template>
 
@@ -34,7 +34,7 @@
           plotOptions: {
             radar: {
               size: undefined,
-              offsetX: 50,
+              offsetX: 0,
               offsetY: 0,
               polygons: {
                 strokeColors: 'rgba(255, 255, 255, 0.2)',

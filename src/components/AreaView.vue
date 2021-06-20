@@ -1,6 +1,6 @@
 <template>
   <div class="row relative-position">
-    <div class="absolute text-h5 row" style="z-index: 2;top: 2rem; left: 3rem;">
+    <div class="absolute text-body1 row" style="z-index: 2;top: 2rem; left: 3rem;">
       <div class="text-bold">1002</div>
       <pre> </pre>
       hpa
@@ -8,14 +8,19 @@
     <div class="absolute text-right row" style="right: 1rem; top: 2rem; z-index: 2">
       <table class="text-left text-body2">
         <tr>
-          <td>Max 31.3</td>
-          <td>|</td>
-          <td>12-2-21</td>
+          <td class="text-positive">Max</td>
+          <td></td>
+          <td class="text-warning">Min</td>
         </tr>
-        <tr>
-          <td>Min 25</td>
+        <tr class="text-green">
+          <td>Temp 31.3</td>
           <td>|</td>
-          <td>1-3-20</td>
+          <td>Max 31.3</td>
+        </tr>
+        <tr class="text-accent">
+          <td>Hum 25</td>
+          <td>|</td>
+          <td>Min 25</td>
         </tr>
       </table>
     </div>

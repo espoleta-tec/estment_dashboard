@@ -16,7 +16,7 @@
         </template>
       </q-file>
     </div>
-    <q-btn @click="upload" icon="upload" outline v-if="!uploading"/>
+    <q-btn @click="upload" icon="upload" label="actualizar" outline v-if="!uploading"/>
     <div class="q-pa-md self-stretch" v-else>
       <q-linear-progress color="white" track-color="accent" v-model="progress"/>
     </div>

@@ -7,20 +7,18 @@
       <q-space/>
       <div class="col-auto row">
         <div :key="elem.to" class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm" v-for="elem in fourthBar">
-          <q-btn :class="`col-12 row q-pa-sm ${ $route.path === elem.to ? 'bg-secondary text-white' : ''}`"
+          <q-btn :class="`col-12 row ${ $route.path === elem.to ? 'bg-secondary text-white' : ''}`"
                  :to="elem.to"
                  outline style="border-radius: 0.6rem" v-ripple:secondary>
-            <div class="col-12 row items-stretch">
+            <div class="col row items-stretch self-stretch">
               <div
                 :class="`col-12 text-left text-no-wrap ${ $route.path === elem.to ? 'text-white' : 'text-secondary'}`"
-                style="font-size: 10pt">
+                style="font-size: 10pt; text-transform: none">
                 {{elem.text}}
               </div>
-              <!--              <q-space/>-->
-              <div :class="`col-12 flex ${elem.text.length === 0 ? 'flex-center' : 'items-end justify-end'}`">
+              <div :class="`col-grow flex ${elem.text.length === 0 ? 'flex-center' : 'items-end justify-end'}`">
                 <q-icon :name="elem.icon" style="font-size: 2rem"/>
               </div>
-              <div class="col"></div>
             </div>
           </q-btn>
         </div>
@@ -41,34 +39,24 @@
     },
     data() {
       return {
-        temp: 0.5,
-        humidity: 0.8,
         colors,
         twoBar: [],
 
         selected: 1
-
-        // gaugeColors: [
-        //   { offset: 0, color: '#808080' },
-        //   { offset: 100, color: '#00d6fc' }
-        // ]
       };
     },
     computed: {
       fourthBar() {
         return [
-          // { text: 'ESTE', icon: 'vane', to: '/wind' },
-          { text: '70mm', icon: '028-drop', to: '/precipitation' },
-          { text: '70mm', icon: '028-drop' },
+          { text: `${this.$store.state.api.precipitation} mm`, icon: '028-drop', to: '/precipitation' },
+          { text: `${this.$store.state.api.humidity}%`, icon: 'humidity', to: '/humidity' },
           { text: this.$store.getters['api/temperature'], icon: 'temperature', to: '/humidity' },
-          { text: '5 m/s', icon: '032-windsock', to: '/wind' },
+          { text: `${this.$store.state.api.windSpeed} m/s`, icon: '032-windsock', to: '/wind' },
           { text: '', icon: 'home_filled', to: '/' },
-          { text: '1002hpa', icon: 'barometer', to: '/pressure' },
-          // { text: '1.8 W', icon: '', to: '/power' },
-          { text: '' },
-          { text: 'lol', icon: '001-sun' },
-          { text: '' }
-          // { text: 'fefe', icon: 'earthquake-and-home' }
+          { text: `${this.$store.state.api.pressure} hpa`, icon: 'barometer', to: '/pressure' },
+          { text: 'Noreste', icon: 'vane', to: '/wind' },
+          { text: `${this.$store.state.api.light} lux`, icon: 'sun' },
+          { text: '30M', icon: 'lightning-bolt' }
         ];
       }
     }

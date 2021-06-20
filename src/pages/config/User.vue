@@ -1,8 +1,8 @@
 <template>
-  <q-page class="flex flex-center items-stretch text-white" padding>
+  <q-page class="column items-stretch text-white" padding>
     <form @submit.prevent.stop="onSubmit" class="flex flex-center">
       <!-- content -->
-      <div class="column no-wrap q-gutter-md">
+      <div class="column items-center content-center no-wrap">
         <div class="col-auto flex flex-center">
           <q-icon class="text-h1" name="user_filled"/>
         </div>
@@ -18,24 +18,8 @@
 
           <div class="col flex flex-center">
             <q-btn :color="changes > 0 ? 'secondary': 'white'" :disable="changes === 0"
-                   icon="save" outline type="submit"/>
-          </div>
-          <!--          <div class="col flex flex-center">-->
-          <!--            <q-btn :color="edit ? 'secondary' : 'white'" @click="edit = !edit"-->
-          <!--                   icon="pencil-f" outline/>-->
-          <!--          </div>-->
-          <!--        <div class="col flex flex-center">-->
-          <!--          <q-btn :color="changes > 0 ? 'secondary': 'white'" icon="close"-->
-          <!--                 outline @click="reset"/>-->
-          <!--        </div>-->
-        </div>
-        <q-space/>
-        <div class="col-auto column text-uppercase q-pa-md">
-          <div class="text-h6 text-bold">Registro de accesos</div>
-          <div class="flex items-center text-body2 no-wrap">
-            <div>crear registro de accesos</div>
-            <q-space/>
-            <q-toggle color="secondary" size="lg" v-model="records"/>
+                   icon="save" outline label="guardar"
+                   style="width: 12em" type="submit"/>
           </div>
         </div>
         <q-space/>

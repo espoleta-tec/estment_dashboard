@@ -2,10 +2,9 @@
   <q-page class="text-white column items-center" padding>
     <logo class="text-h4"/>
     <div class="q-pa-lg"/>
-    <q-input dark debounce="1000" label="IP de estacion" v-model="masterUri"/>
-    <q-btn @click="testConn" class="q-pa-sm q-ma-md" label="probar"/>
-    <div class="q-pa-md"/>
-    <q-btn @click="timeSync" label="Sincronizar Fecha y Hora"/>
+    <q-input dark debounce="1000" label="IP de estación" style="width: 20em" v-model="masterUri"/>
+    <q-btn :key="b.label" :label="b.label" @click="b.onClick" class="q-ma-md" color="secondary" style="width: 20em"
+           v-for="b in buttons"/>
     <q-space/>
   </q-page>
 </template>
@@ -14,9 +13,14 @@
 
 
   export default defineComponent({
-    data() {
+    data: function() {
       return {
-        ip: ''
+        ip: '',
+        buttons: [
+          { label: 'probar ip', onClick: this.testConn },
+          { label: 'Sincronizar Fecha y Hora', onClick: this.timeSync },
+          { label: 'resetear configuración', onClick: this.resetConfiguration }
+        ]
       };
     },
     mounted(): void {
@@ -56,6 +60,27 @@
       timeSync() {
         this.$store.dispatch('api/syncTime').catch(e => {
           console.log(e.message);
+        });
+      },
+      resetConfiguration() {
+        this.$q.dialog({
+          title: 'Confirmar',
+          message: 'Esta acción restablecerá los valores por defecto del dispositivo. Está acción no es reversible',
+          cancel: true
+        }).onOk(() => {
+          this.$axios.get('/reset').then(resp => {
+            console.log(resp.data);
+            this.$q.notify({
+              message: 'valores de fábrica restablecidos',
+              color: 'positive'
+            });
+          }).catch(e => {
+            this.$q.notify({
+              message: 'error al reestablecer valores de fábrica',
+              color: 'negative'
+            });
+            console.log(e.message);
+          });
         });
       }
     },

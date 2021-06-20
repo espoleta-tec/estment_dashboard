@@ -1,24 +1,28 @@
 <template>
-  <q-page class="text-white" padding>
+  <q-page class="text-white text-center column" padding>
     <!-- content -->
     <Logo class="text-h4"/>
     <div class="q-pa-md"/>
-
-    <form @submit.prevent.stop="onSubmit" class="q-pa-md text-h5 q-gutter-md">
-      <q-input color="secondary" dark label="Nombre de equipo" v-model="data.hostname"/>
-      <q-select :options="data.options.modeOptions" color="secondary" dark label="Modo de trabajo" v-model="data.mode"/>
-      <q-select :options="wifiOptions" @filter="filterFn" color="secondary" dark label="SSID"
-                v-if="data.mode.value === 'sta'" v-model="data.ssid"/>
-      <q-input color="secondary" dark label="SSID" v-else v-model="data.ssid"/>
-      <q-input color="secondary" dark label="Contraseña" type="password" v-model="data.password"/>
-      <q-select :options="data.options.ipOptions" color="secondary" dark label="Asignacion de ip"
-                v-model="data.ipMode"/>
-      <q-input :disable="data.ipMode.value === 'auto'" color="secondary" dark label="Direccion IP"
-               v-model="data.ipAddress"/>
-      <div class="text-center q-pa-md">
-        <q-btn class="text-h4" color="secondary" flat icon="save" round type="submit"/>
-      </div>
-    </form>
+    <div class="text-center row justify-center">
+      <form @submit.prevent.stop="onSubmit" class="col-12 q-pa-md text-h5" style="max-width: 12em">
+        <q-input color="secondary" dark label="Nombre de equipo" v-model="data.hostname"/>
+        <q-select :options="data.options.modeOptions" color="secondary" dark label="Modo de trabajo"
+                  v-model="data.mode"/>
+        <q-select :options="wifiOptions" @filter="filterFn" color="secondary" dark label="SSID"
+                  v-if="data.mode.value === 'sta'" v-model="data.ssid"/>
+        <q-input color="secondary" dark label="SSID" v-else v-model="data.ssid"/>
+        <q-input color="secondary" dark label="Contraseña" type="password" v-model="data.password"/>
+        <q-select :options="data.options.ipOptions" color="secondary" dark label="Asignacion de ip"
+                  v-model="data.ipMode"/>
+        <q-input :disable="data.ipMode.value === 'auto'" color="secondary" dark label="Direccion IP"
+                 v-model="data.ipAddress"/>
+        <div class="text-center q-pa-md">
+          <q-btn color="secondary"
+                 icon="save" label="guardar" outline
+                 style="width: 12em" type="submit"/>
+        </div>
+      </form>
+    </div>
   </q-page>
 </template>
 <script lang="ts">
@@ -26,7 +30,6 @@
 
   let mode: any = '';
   export default defineComponent({
-    // name: 'PageName'
     data() {
       return {
         wifiOptions: [],
@@ -39,11 +42,11 @@
           ipAddress: '',
           options: {
             ipOptions: [
-              { value: 'auto', label: 'Automatico' },
+              { value: 'auto', label: 'Automático' },
               { value: 'manual', label: 'Manual' }],
             modeOptions: [
               { label: 'Punto de acceso', value: 'ap' },
-              { label: 'Estacion', value: 'sta' }
+              { label: 'Estación', value: 'sta' }
             ]
           }
         },
@@ -73,7 +76,7 @@
           );
         });
       },
-      filterFn(val: any, update: any, abort: any) {
+      filterFn(val: any, update: any) {
         if (this.wifiOptions.length > 0) {
           update();
           return;
@@ -94,16 +97,11 @@
         console.log(this.wifiOptions);
       }
     },
-    computed: {
-      // wifiOptionsComputed() {
-      //   this.$axios.get('/wifis').then((response: any) => {
-      //     console.log(response);
-      //     return response.data;
-      //   }).catch((e) => {
-      //     console.log(e.message);
-      //     return [];
-      //   });
-      // }
+    computed: {},
+    created(): void {
+      this.getNetworks().catch(e => {
+        console.log(e.message);
+      });
     }
   });
 </script>
