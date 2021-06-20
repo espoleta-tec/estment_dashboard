@@ -1,7 +1,7 @@
 <template>
   <div class="relative-position text-white">
 
-    <div class="q-pa-md self-stretch" style="height: 100%">
+    <div class="q-pa-md flex content-stretch self-stretch" style="height: 100%">
       <div class="row" style="min-height: 20em">
         <RadarView class="col-12" v-if="radar"/>
         <AreaView :second-data="secondData" class="col-12" v-else/>

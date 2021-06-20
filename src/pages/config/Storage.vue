@@ -13,9 +13,9 @@
       </div>
     </div>
     <q-space/>
-    <div class="col-12 flex flex-center" style="margin-bottom: 5em">
-      <q-btn class="text-h5" color="secondary" label="borrar datos" unelevated/>
-    </div>
+    <!--    <div class="col-12 flex flex-center" style="margin-bottom: 5em">-->
+    <!--      <q-btn class="text-h5" color="secondary" label="borrar datos" unelevated/>-->
+    <!--    </div>-->
   </q-page>
 </template>
 
