@@ -6,8 +6,11 @@
         <span class="text-bold" style="font-size: 4em">{{freeMemory}}%</span>
         <FreeMemory :value="freeMemory"/>
       </div>
-      <div :class="`col-12 col-sm-6 flex ${!$q.screen.gt.xs ? 'flex-center' : ''}  q-pa-md`">
-        <div :key="n" class="col-auto text-uppercase" v-for="n in 1">
+      <div :class="`col-12 col-sm-6 column q-pa-lg ${!$q.screen.gt.xs ? '' : ''}`">
+        <div :key="n" class="col-auto text-uppercase">
+          <span class="text-body2">Espacio Usado</span><br/>
+          <span class="text-secondary text-h6" style="font-weight: 300">{{used}}MB</span></div>
+        <div :key="n" class="col-auto text-uppercase">
           <span class="text-body2">Capacidad Máxima</span><br/>
           <span class="text-secondary text-h6" style="font-weight: 300">{{total}}MB</span></div>
       </div>
