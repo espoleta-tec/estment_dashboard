@@ -9,7 +9,7 @@
       <div :class="`col-12 col-sm-6 flex ${!$q.screen.gt.xs ? 'flex-center' : ''}  q-pa-md`">
         <div :key="n" class="col-auto text-uppercase" v-for="n in 1">
           <span class="text-body2">Capacidad Máxima</span><br/>
-          <span class="text-secondary text-h6" style="font-weight: 300">16GB</span></div>
+          <span class="text-secondary text-h6" style="font-weight: 300">{{total}}MB</span></div>
       </div>
     </div>
     <q-space/>
@@ -30,15 +30,27 @@
     },
     data() {
       return {
-        freeMemory: 0
+        used: 0,
+        total: 0
       };
     },
     mounted(): void {
       this.$axios.get('/storage').then(resp => {
-        console.log(resp);
+        console.log(resp.data);
+        this.used = resp.data.used;
+        this.total = resp.data.total;
       }).catch(e => {
         console.log(e.message);
       });
+    },
+    computed: {
+      freeMemory() {
+        let result = this.used / this.total * 100;
+        if (isNaN(result)) {
+          result = 0;
+        }
+        return result;
+      }
     }
   });
 </script>
