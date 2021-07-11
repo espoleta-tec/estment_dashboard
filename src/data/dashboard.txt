@@ -1,23 +1,32 @@
-ESTADO
-Ofrece una panoramica general del estado actual de la Estacion Meteorologica.
-Mediante el desglose de sus diferentes secciones, podra el usuario estar al tanto de las configuraciones principales del equipo.
-
-LAN
-Seccion de informacion acerca de la configuracion de red cableada ETHERNET detectada en el sistema.
-
-Direccion MAC
-Direccion fisica del dispositivo de red.
-
-Direccion IP
-Direccion IP asignada al dispositivo fisico de red.
-
-La marcacion ESTATICA | DHCP informa acerca del tipo de asignacion de direccion IP establecida.
-
-WIFI
-Descripcion de la conectividad inalambrica del dispositivo.
-
-RSSID
-Red inalambrica a la cual se ha establecido conexion.
-
-Direccion IP
-Direccion IP asignada al dispositivo mediante conexion de red inalambrica.
+,temperature_c=30.60,pressure=101403,altitude=-6.08,pressure_sl=101399,date="2021/7/10 2:38:41"
+,light=30.00,temperature_c=31.10,pressure=101403,altitude=-6.66,pressure_sl=101408,date="2021/7/10 2:41:53"
+,light=30.00,temperature_c=31.40,pressure=101407,altitude=-6.99,pressure_sl=101405,date="2021/7/10 2:42:56"
+,light=30.00,temperature_c=31.50,pressure=101404,altitude=-6.49,pressure_sl=101402,date="2021/7/10 2:43:41"
+,temperature_c=32.10,pressure=101407,altitude=-6.91,pressure_sl=101410,date="2021/7/10 2:46:24"
+,light=29.17,temperature_c=32.20,pressure=101412,altitude=-6.99,pressure_sl=101410,date="2021/7/10 2:46:49"
+,light=29.17,temperature_c=32.20,pressure=101410,altitude=-6.99,pressure_sl=101411,date="2021/7/10 2:47:3"
+,light=30.00,temperature_c=32.30,pressure=101406,altitude=-7.49,pressure_sl=101409,date="2021/7/10 2:47:56"
+,light=29.17,temperature_c=32.40,pressure=101412,altitude=-6.99,pressure_sl=101415,date="2021/7/10 2:49:13"
+,light=28.33,temperature_c=32.60,pressure=101410,altitude=-6.83,pressure_sl=101409,date="2021/7/10 2:51:24"
+,temperature_c=32.70,pressure=101409,altitude=-7.07,pressure_sl=101415,date="2021/7/10 2:52:42"
+,light=28.33,temperature_c=32.70,pressure=101409,altitude=-6.99,pressure_sl=101404,date="2021/7/10 2:53:31"
+,light=25.83,temperature_c=32.70,pressure=101423,altitude=-7.82,pressure_sl=101424,date="2021/7/10 2:57:42"
+,light=25.00,temperature_c=32.70,pressure=101418,altitude=-7.49,pressure_sl=101420,date="2021/7/10 2:58:39"
+,light=25.00,temperature_c=32.80,pressure=101423,altitude=-8.82,pressure_sl=101432,date="2021/7/10 3:2:42"
+,temperature_c=32.80,pressure=101421,altitude=-7.82,pressure_sl=101420,date="2021/7/10 3:6:53"
+,light=25.83,temperature_c=32.70,pressure=101419,altitude=-7.99,pressure_sl=101430,date="2021/7/10 3:7:20"
+,temperature_c=32.30,pressure=101419,altitude=-7.91,pressure_sl=101421,date="2021/7/10 3:11:36"
+,light=22.50,temperature_c=32.40,pressure=101419,altitude=-7.82,pressure_sl=101421,date="2021/7/10 3:11:59"
+,light=24.17,temperature_c=32.40,pressure=101429,altitude=-8.57,pressure_sl=101432,date="2021/7/10 3:16:36"
+,temperature_c=32.40,pressure=101434,altitude=-8.99,pressure_sl=101432,date="2021/7/10 3:20:20"
+,light=23.33,temperature_c=32.40,pressure=101429,altitude=-8.90,pressure_sl=101434,date="2021/7/10 3:20:45"
+,light=23.33,temperature_c=32.40,pressure=101437,altitude=-9.07,pressure_sl=101437,date="2021/7/10 3:21:2"
+,temperature_c=32.30,pressure=101433,altitude=-9.07,pressure_sl=101434,date="2021/7/10 3:23:1"
+,light=23.33,temperature_c=32.30,pressure=101434,altitude=-9.24,pressure_sl=101435,date="2021/7/10 3:23:21"
+,light=23.33,temperature_c=32.30,pressure=101431,altitude=-8.57,pressure_sl=101433,date="2021/7/10 3:26:39"
+,light=23.33,temperature_c=32.30,pressure=101424,altitude=-8.66,pressure_sl=101428,date="2021/7/10 3:28:1"
+,light=23.33,temperature_c=32.40,pressure=101426,altitude=-8.41,pressure_sl=101428,date="2021/7/10 3:29:25"
+,light=23.33,temperature_c=32.30,pressure=101428,altitude=-8.32,pressure_sl=101428,date="2021/7/10 3:29:54"
+,temperature_c=30.00,pressure=101417,altitude=-7.66,pressure_sl=101419,date="2021/7/10 4:23:7"
+,light=3.33,temperature_c=30.10,pressure=101419,altitude=-7.91,pressure_sl=101426,date="2021/7/10 4:23:25"
+,light=3.33,temperature_c=30.10,pressure=101417,altitude=-7.49,pressure_sl=101424,date="2021/7/10 4:23:37"

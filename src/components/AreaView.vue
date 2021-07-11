@@ -1,84 +1,53 @@
 <template>
   <div class="row relative-position">
     <div class="absolute text-body1 row" style="z-index: 2;top: 2rem; left: 3rem;">
-      <div class="text-bold">1002</div>
-      <pre> </pre>
-      hpa
+      <slot name="left"></slot>
     </div>
     <div class="absolute text-right row" style="right: 1rem; top: 2rem; z-index: 2">
-      <table class="text-left text-body2">
-        <tr>
-          <td class="text-positive">Max</td>
-          <td></td>
-          <td class="text-warning">Min</td>
-        </tr>
-        <tr class="text-green">
-          <td>Temp 31.3</td>
-          <td>|</td>
-          <td>Max 31.3</td>
-        </tr>
-        <tr class="text-accent">
-          <td>Hum 25</td>
-          <td>|</td>
-          <td>Min 25</td>
-        </tr>
-      </table>
+      <slot name="right"></slot>
     </div>
-    <VueApexCharts :options="options" :series="series" class="col-12" height="100%" style="z-index: 1; margin-top: 0"/>
+    <VueApexCharts :options="options" :series="series" class="col-12" height="100%"
+                   style="z-index: 1; margin-top: 0"/>
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent, PropType } from '@vue/composition-api';
-  import { colors } from 'quasar';
-  import VueApexCharts from 'vue-apexcharts/dist/vue-apexcharts';
-  import { DataSet } from 'components/models';
+  import { defineComponent, PropType } from '@vue/composition-api'
+  import { colors } from 'quasar'
+  import VueApexCharts from 'vue-apexcharts/dist/vue-apexcharts'
 
-  let day: any = [];
-  for (let i = 0; i < 24; i += 2) {
-    day.push(i);
-  }
 
-  let hundred: any = [];
+  let hundred: any = []
   for (let i = 0; i < 20; i++) {
-    hundred.push(Math.floor(Math.random() * 800));
+    hundred.push(Math.floor(Math.random() * 800))
   }
 
-  const palette = colors.getPaletteColor;
+  const palette = colors.getPaletteColor
   export default defineComponent({
     // name: 'ComponentName'
     components: {
       VueApexCharts
     },
     props: {
-      secondData: {
-        type: (Object as unknown) as PropType<DataSet>,
-        required: false
+      series: {
+        type: Array as PropType<{ name: string, data: any }[]>,
+        required: true,
+        default: () => ([{}])
       }
     },
     computed: {
-      series(): any {
-        let series = [{
-          name: 'Temperatura',
-          data: [450, 300, 120, 25, 222, 45, 180]
-        }];
-        if (this.secondData) {
-          series.push({
-            name: 'Humedad',
-            data: [20, 5, 30, 35, 50, 55, 80]
-          });
-        }
-        return series;
-      },
       options(): any {
-        let options = {
+        return {
           legend: {
             labels: {
               colors: [palette('white')]
+            },
+            markers: {
+              fillColors: [palette('green-12'), palette('accent')]
             }
           },
           chart: {
-            stacked: true,
+            // stacked: true,
             height: 350,
             type: 'area',
             toolbar: {
@@ -93,10 +62,10 @@
           },
           stroke: {
             width: 1,
-            colors: [palette('accent'), palette('green')]
+            colors: [palette('green-12'), palette('accent')]
           },
           fill: {
-            colors: [palette('accent'), palette('green')],
+            colors: [palette('green-12'), palette('accent')],
             type: 'gradient',
             gradient: {
               shade: 'dark',
@@ -118,64 +87,33 @@
               lines: {
                 show: false
               }
-            },
-            row: {
-              colors: [palette('dark')],
-              opacity: 1
             }
-            // column: {
-            //   colors: ['transparent', palette('dark')],
-            //   opacity: 1
-            // },
           },
           xaxis: {
-            categories: day,
+            type: 'datetime',
             labels: {
               style: {
                 colors: '#FFF'
-              },
-              formatter: function(value: number) {
-                if (value === 0) return '';
-                return value;
               }
-            },
-            max: 13
+            }
           },
           yaxis: [{
             min: 0,
-            max: 900,
+            max: 2 * Math.max(...this.series[0].data.map((d: any) => d.y)),
             opposite: false,
-            tickAmount: 9,
+            tickAmount: 5,
             labels: {
               style: {
                 colors: [palette('accent')]
               },
               formatter: function(value: number): string | number {
-                if (value === 0) return '';
-                return value;
+                if (value === 0) return ''
+                return Math.ceil(value)
               }
             }
           }]
-        };
-        if (this.secondData) {
-          options.yaxis.push({
-            min: 0,
-            max: 200,
-            opposite: true,
-            tickAmount: 10,
-            labels: {
-              style: {
-                colors: [palette('green')]
-              },
-              formatter: function(value: number) {
-                if (value > 100) return '';
-                return `${value}${(value > 0 ? '%' : '')}`;
-              }
-            }
-          });
         }
-        return options;
       }
     }
-  });
+  })
 </script>

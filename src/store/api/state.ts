@@ -9,18 +9,22 @@ export interface ApiStateInterface {
   power: number,
   precipitation: number,
   light: number,
+  date: number
+  logs: string
 
   [index: string]: any,
 }
 
 function state(): ApiStateInterface {
   return {
+    date: 0,
     masterUri: '192.168.4.1',
     light: 0,
     power: 0, precipitation: 0, pressure: 0,
     temperature_c: 0, humidity: 0, windSpeed: 0,
-    windDirection: ''
-  };
+    windDirection: '',
+    logs: ''
+  }
 }
 
-export default state;
+export default state

@@ -31,7 +31,7 @@ export interface StateInterface {
   api: ApiStateInterface
 }
 
-let theStore: any;
+export let theStore: any;
 
 export default store(function({ Vue }) {
   Vue.use(Vuex);

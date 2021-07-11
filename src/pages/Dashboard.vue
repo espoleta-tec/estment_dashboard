@@ -6,7 +6,7 @@
       <router-view class="col"/>
       <q-space/>
       <div class="col-auto row">
-        <div :key="elem.to" class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm" v-for="elem in fourthBar">
+        <div :key="elem.icon" class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm" v-for="elem in fourthBar">
           <q-btn :class="`col-12 row ${ $route.path === elem.to ? 'bg-secondary text-white' : ''}`"
                  :to="elem.to"
                  outline style="border-radius: 0.6rem" v-ripple:secondary>
@@ -28,9 +28,9 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
-  import { colors } from 'quasar';
-  import Helix from 'components/Helix.vue';
+  import { defineComponent } from '@vue/composition-api'
+  import { colors } from 'quasar'
+  import Helix from 'components/Helix.vue'
 
   export default defineComponent({
     name: 'PageName',
@@ -43,7 +43,7 @@
         twoBar: [],
 
         selected: 1
-      };
+      }
     },
     computed: {
       fourthBar() {
@@ -53,15 +53,14 @@
           { text: this.$store.getters['api/temperature'], icon: 'temperature', to: '/humidity' },
           { text: `${this.$store.state.api.windSpeed} m/s`, icon: '032-windsock', to: '/wind' },
           { text: '', icon: 'home_filled', to: '/' },
-          { text: `${this.$store.state.api.pressure} hpa`, icon: 'barometer', to: '/pressure' },
+          { text: `${this.$store.getters['api/pressure']} hpa`, icon: 'barometer', to: '/pressure' },
           { text: 'Noreste', icon: 'vane', to: '/wind' },
           { text: `${this.$store.state.api.light} lux`, icon: 'sun' },
           { text: '30M', icon: 'lightning-bolt' }
-        ];
+        ]
       }
-    }
-
-  });
+    },
+  })
 </script>
 <style lang="scss">
   $theBorder: solid rgba(255, 255, 255, 0.1) 1px;

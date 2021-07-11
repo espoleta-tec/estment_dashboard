@@ -1,17 +1,20 @@
-import { MutationTree } from 'vuex';
-import { ApiStateInterface } from './state';
+import { MutationTree } from 'vuex'
+import { ApiStateInterface } from './state'
 
 const mutation: MutationTree<ApiStateInterface> = {
   changeMasterUri(state: ApiStateInterface, payload: string) {
-    state.masterUri = payload;
+    state.masterUri = payload
   },
   updateState(state: ApiStateInterface, payload: string) {
-    const values = payload.split(',');
+    const values = payload.split(',')
     values.forEach(x => {
-      const pair = x.split('=');
-      state[pair[0]] = pair[1];
-    });
+      const pair = x.split('=')
+      state[pair[0]] = pair[1]
+    })
+  },
+  updateLogs(state: ApiStateInterface, payload: string) {
+    state.logs = payload
   }
-};
+}
 
-export default mutation;
+export default mutation

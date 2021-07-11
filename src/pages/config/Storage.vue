@@ -3,28 +3,25 @@
     <!-- content -->
     <div class="row justify-evenly">
       <div class="col-6 column items-center">
-        <span class="text-bold" style="font-size: 4em">{{freeMemory}}%</span>
+        <span class="text-bold" style="font-size: 4em">{{formatted}}%</span>
         <FreeMemory :value="freeMemory"/>
       </div>
       <div :class="`col-12 col-sm-6 column q-pa-lg ${!$q.screen.gt.xs ? '' : ''}`">
-        <div :key="n" class="col-auto text-uppercase">
+        <div class="col-auto text-uppercase">
           <span class="text-body2">Espacio Usado</span><br/>
-          <span class="text-secondary text-h6" style="font-weight: 300">{{used}}MB</span></div>
-        <div :key="n" class="col-auto text-uppercase">
+          <span class="text-secondary text-h6" style="font-weight: 300">{{freeMemoryFormat(used)}}</span></div>
+        <div class="col-auto text-uppercase">
           <span class="text-body2">Capacidad Máxima</span><br/>
-          <span class="text-secondary text-h6" style="font-weight: 300">{{total}}MB</span></div>
+          <span class="text-secondary text-h6" style="font-weight: 300">{{freeMemoryFormat(total)}}</span></div>
       </div>
     </div>
     <q-space/>
-    <!--    <div class="col-12 flex flex-center" style="margin-bottom: 5em">-->
-    <!--      <q-btn class="text-h5" color="secondary" label="borrar datos" unelevated/>-->
-    <!--    </div>-->
   </q-page>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
-  import FreeMemory from 'components/FreeMemory.vue';
+  import { defineComponent } from '@vue/composition-api'
+  import FreeMemory from 'components/FreeMemory.vue'
 
   export default defineComponent({
     // name: 'PageName'
@@ -35,27 +32,44 @@
       return {
         used: 0,
         total: 0
-      };
+      }
     },
     mounted(): void {
       this.$axios.get('/storage').then(resp => {
-        console.log(resp.data);
-        this.used = resp.data.used;
-        this.total = resp.data.total;
+        console.log(resp.data)
+        this.used = resp.data.used
+        this.total = resp.data.total
       }).catch(e => {
-        console.log(e.message);
-      });
+        console.log(e.message)
+      })
     },
     computed: {
       freeMemory() {
-        let result = this.used / this.total * 100;
+        let result: number
+        result = this.used / this.total * 100
         if (isNaN(result)) {
-          result = 0;
+          result = 0
         }
-        return result;
+        return result
+      },
+      formatted(): string {
+        return this.freeMemory.toFixed(0)
+      }
+    },
+    methods: {
+      freeMemoryFormat(sizeInBytes: number) {
+        let i = -1
+        let byteUnits = [' kB', ' MB', ' GB', 'TB', ' PB', 'EB']
+
+        do {
+          sizeInBytes = sizeInBytes / 1024
+          i++
+        } while (sizeInBytes > 1024)
+
+        return Math.max(sizeInBytes, 0.1).toFixed(1) + byteUnits[i]
       }
     }
-  });
+  })
 </script>
 <style lang="scss">
 </style>
