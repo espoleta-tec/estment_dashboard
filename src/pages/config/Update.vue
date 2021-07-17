@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
+  import { defineComponent } from '@vue/composition-api'
 
   export default defineComponent({
     // name: 'PageName'
@@ -35,68 +35,46 @@
         type: 'firmware',
         uploading: false,
         progress: 0
-      };
+      }
     },
     methods: {
       upload() {
         // const request = new XMLHttpRequest();
-        const formData = new FormData();
+        const formData = new FormData()
 
         if (this.file == null) {
-          return;
+          return
         }
-        if (this.file.length === 0) return;
-        formData.append(this.type, this.file);
-        // request.addEventListener('load', () => {
-        //   if (request.status === 200) {
-        //     console.log(request.responseText);
-        //     this.OTASuccess = true;
-        //   } else if (request.status !== 500) {
-        //     console.log(request.statusText);
-        //     this.$q.notify({
-        //       message: request.statusText,
-        //       color: 'negative'
-        //     });
-        //   } else {
-        //     request.responseText;
-        //   }
-        //   this.uploading = false;
-        //   this.progress = 0;
-        // });
-        // request.upload.addEventListener('progress', (e) => {
-        //   this.progress = Math.trunc((e.loaded / e.total));
-        //   console.log(this.progress * 100, '%');
-        // });
+        if (this.file.length === 0) return
+        formData.append(this.type, this.file)
 
-        // request.open('post', `http://${this.$store.state.api.masterUri}/update`);
-        // request.send(formData);
-        this.uploading = true;
+        this.uploading = true
         this.$axios.post('update', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           },
           onUploadProgress: (progress: ProgressEvent) => {
-            this.progress = progress.loaded / progress.total;
+            this.progress = progress.loaded / progress.total
           }
         }).then((resp) => {
-          this.uploading = false;
-          console.log(resp.statusText);
+          this.uploading = false
+          console.log(resp.statusText)
           if (resp.status === 200) {
             this.$q.notify({
               message: 'Actualizacion exitosa',
               color: 'positive',
               position: 'top'
-            });
+            })
           }
         }).catch(e => {
-          this.uploading = false;
-          console.log(e.message);
+          this.uploading = false
+          console.log(e.message)
           this.$q.notify({
             message: `Error ${e.message}`,
             color: 'negative'
-          });
-        });
+          })
+        })
       }
     }
-  });
+  })
 </script>
