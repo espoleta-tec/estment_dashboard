@@ -16,6 +16,9 @@
       </div>
     </div>
     <q-space/>
+    <div class="flex flex-center q-pa-lg">
+      <q-btn @click="formatSDCard" class="q-pr-md q-pl-md text-h6" color="secondary" label="Borrar SD"/>
+    </div>
   </q-page>
 </template>
 
@@ -67,9 +70,28 @@
         } while (sizeInBytes > 1024)
 
         return Math.max(sizeInBytes, 0.1).toFixed(1) + byteUnits[i]
+      },
+      formatSDCard() {
+        this.$q.dialog({
+          title: 'Confirmar',
+          message: 'Esta acción borrará todos los datos almacenados en la SD. Esta acción no es reversible',
+          cancel: true
+        }).onOk(() => {
+          this.$axios.get('/format').then(resp => {
+            console.log(resp.data)
+            this.$q.notify({
+              message: 'Borrando tarjeta sd',
+              color: 'positive'
+            })
+          }).catch(e => {
+            this.$q.notify({
+              message: 'error al borrar tarjeta sd',
+              color: 'negative'
+            })
+            console.log(e.message)
+          })
+        })
       }
     }
   })
 </script>
-<style lang="scss">
-</style>

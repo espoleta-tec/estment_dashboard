@@ -10,7 +10,8 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build",
-    "android-build": "quasar build --debug -m capacitor -T android",
+    "android-debug-build": "quasar build --debug -m capacitor -T android",
+    "android-debug": "quasar dev -m capacitor -T android",
     "gen-icons": "svg-stringify src/assets/icons",
     "gen-styled": "svg-stringify src/assets/icons/styled --styles"
   },

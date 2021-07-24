@@ -5,12 +5,39 @@
     <q-input dark debounce="1000" label="IP de estación" style="width: 20em" v-model="masterUri"/>
     <q-btn :key="b.label" :label="b.label" @click="b.onClick" class="q-ma-md" color="secondary" style="width: 20em"
            v-for="b in buttons"/>
+    <q-select :options="frequencyOptions" class="text-uppercase q-pr-md q-pl-md" dark hide-dropdown-icon
+              label="Frecuencia de muestreo" name="label" options-selected-class="text-secondary"
+              style="width: 20em"
+              v-model="selectedFreq">
+      <template v-slot:append>
+        <q-btn @click="saveFreqs" color="white" icon="save" round text-color="secondary"/>
+      </template>
+    </q-select>
     <q-space/>
   </q-page>
 </template>
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api'
+  import { defineComponent, ref } from '@vue/composition-api'
 
+  const frequencies = [
+    {
+      label: '15m', value: 15
+    }, {
+      label: '30m', value: 30
+    }, {
+      label: '1h', value: 60
+    }, {
+      label: '2h', value: 60 * 2
+    }, {
+      label: '5h', value: 60 * 5
+    }, {
+      label: '10h', value: 60 * 10
+    }, {
+      label: '1d', value: 60 * 24
+    }, {
+      label: '1w', value: 60 * 24 * 7
+    }
+  ]
 
   export default defineComponent({
     data: function() {
@@ -109,6 +136,23 @@
         }).onCancel(() => {
           console.log('Cancelled')
         })
+      },
+      async saveFreqs() {
+        console.log(this.selectedFreq.value)
+        const response = await this.$axios.post('/frequency', { frequency: this.selectedFreq.value }).catch(() => {
+          this.$q.notify({
+            message: 'Error al cambiar la frecuencia',
+            color: 'negative',
+            position: 'top'
+          })
+        })
+        if (response) {
+          this.$q.notify({
+            message: 'Frecuencia cambiada con exito',
+            color: 'positive',
+            position: 'top'
+          })
+        }
       }
     },
     computed: {
@@ -120,6 +164,12 @@
           this.ip = value
           this.$store.commit('api/changeMasterUri', value)
         }
+      }
+    },
+    setup() {
+      return {
+        frequencyOptions: frequencies,
+        selectedFreq: ref(frequencies[0])
       }
     }
   })

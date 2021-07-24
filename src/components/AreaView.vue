@@ -32,7 +32,7 @@
       series: {
         type: Array as PropType<{ name: string, data: any }[]>,
         required: true,
-        default: () => ([{}])
+        default: () => ([{ name: '', data: null }])
       }
     },
     computed: {
