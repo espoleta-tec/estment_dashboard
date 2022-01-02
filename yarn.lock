@@ -5,7 +5,7 @@
 "@amcharts/amcharts4@^4.10.16":
   version "4.10.16"
   resolved "https://registry.yarnpkg.com/@amcharts/amcharts4/-/amcharts4-4.10.16.tgz#6da21413d9c7190ab19e81339182a8044cc85546"
-  integrity sha512-RCXQ/7g6DXTQ2owEgDWojVD1FSe+6oiKeNWNxC9+miDNgX2OU/y2g8rDo65OXf5/7ZhD5uvu7msh/Ma4vw9EtA==
+  integrity "sha1-baIUE9nHGQqxnoEzkYKoBEzIVUY= sha512-RCXQ/7g6DXTQ2owEgDWojVD1FSe+6oiKeNWNxC9+miDNgX2OU/y2g8rDo65OXf5/7ZhD5uvu7msh/Ma4vw9EtA=="
   dependencies:
     "@babel/runtime" "^7.6.3"
     core-js "^3.0.0"
@@ -1088,7 +1088,7 @@
 "@quasar/extras@^1.9.19":
   version "1.9.19"
   resolved "https://registry.yarnpkg.com/@quasar/extras/-/extras-1.9.19.tgz#8e511117ccd8ec5bbed7038b9dad1749052376b8"
-  integrity sha512-A1IO0dzfUtRkyKq3QC7ZQNvhLeJey2ET8MvRX7oV0Qe+g30jy/4pr1ZhO7GylkDAoLT3C9eY8t2/5Anrl0AHdA==
+  integrity "sha1-jlERF8zY7Fu+1wOLna0XSQUjdrg= sha512-A1IO0dzfUtRkyKq3QC7ZQNvhLeJey2ET8MvRX7oV0Qe+g30jy/4pr1ZhO7GylkDAoLT3C9eY8t2/5Anrl0AHdA=="
 
 "@quasar/fastclick@1.1.4":
   version "1.1.4"
@@ -1815,7 +1815,7 @@ anymatch@~3.1.1:
 apexcharts@^3.25.0:
   version "3.25.0"
   resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.25.0.tgz#f3f0f9f344f997230f5c7f2918408aa072627496"
-  integrity sha512-uM7OF+jLL4ba79noYcrMwMgJW8DI+Ff28CCQoGq23g25z8nGSQEoU+u12YWlECA9gBA5tbmdaQhMxjlK+M6B9Q==
+  integrity "sha1-8/D580T5lyMPXH8pGECKoHJidJY= sha512-uM7OF+jLL4ba79noYcrMwMgJW8DI+Ff28CCQoGq23g25z8nGSQEoU+u12YWlECA9gBA5tbmdaQhMxjlK+M6B9Q=="
   dependencies:
     svg.draggable.js "^2.2.2"
     svg.easing.js "^2.0.0"
@@ -7964,7 +7964,7 @@ pbkdf2@^3.0.3:
 pdfkit@>=0.8.1, pdfkit@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/pdfkit/-/pdfkit-0.11.0.tgz#9cdb2fc42bd2913587fe3ddf48cc5bbb3c36f7de"
-  integrity sha512-1s9gaumXkYxcVF1iRtSmLiISF2r4nHtsTgpwXiK8Swe+xwk/1pm8FJjYqN7L3x13NsWnGyUFntWcO8vfqq+wwA==
+  integrity "sha1-nNsvxCvSkTWH/j3fSMxbuzw2994= sha512-1s9gaumXkYxcVF1iRtSmLiISF2r4nHtsTgpwXiK8Swe+xwk/1pm8FJjYqN7L3x13NsWnGyUFntWcO8vfqq+wwA=="
   dependencies:
     crypto-js "^3.1.9-1"
     fontkit "^1.8.0"
@@ -7974,7 +7974,7 @@ pdfkit@>=0.8.1, pdfkit@^0.11.0:
 pdfmake@^0.1.36:
   version "0.1.70"
   resolved "https://registry.yarnpkg.com/pdfmake/-/pdfmake-0.1.70.tgz#b5102799deef264defa675dbb2dbf12ad49a9bae"
-  integrity sha512-xPhkblaQ71U97qhRTPj/1HknAHHFZ3cPRmRdrqEWD2xXBcEjEM3Yw0MIjML8DRy9Dt9n6QRjHVf662f0eLtd7Q==
+  integrity "sha1-tRAnmd7vJk3vpnXbstvxKtSam64= sha512-xPhkblaQ71U97qhRTPj/1HknAHHFZ3cPRmRdrqEWD2xXBcEjEM3Yw0MIjML8DRy9Dt9n6QRjHVf662f0eLtd7Q=="
   dependencies:
     iconv-lite "^0.6.2"
     linebreak "^1.0.2"
@@ -11328,7 +11328,7 @@ ws@^7.4.4:
 xlsx@^0.16.4:
   version "0.16.9"
   resolved "https://registry.yarnpkg.com/xlsx/-/xlsx-0.16.9.tgz#dacd5bb46bda6dd3743940c9c3dc1e2171826256"
-  integrity sha512-gxi1I3EasYvgCX1vN9pGyq920Ron4NO8PNfhuoA3Hpq6Y8f0ECXiy4OLrK4QZBnj1jx3QD+8Fq5YZ/3mPZ5iXw==
+  integrity "sha1-2s1btGvabdN0OUDJw9weIXGCYlY= sha512-gxi1I3EasYvgCX1vN9pGyq920Ron4NO8PNfhuoA3Hpq6Y8f0ECXiy4OLrK4QZBnj1jx3QD+8Fq5YZ/3mPZ5iXw=="
   dependencies:
     adler-32 "~1.2.0"
     cfb "^1.1.4"

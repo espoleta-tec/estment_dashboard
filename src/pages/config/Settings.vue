@@ -9,7 +9,7 @@
               label="Frecuencia de muestreo" name="label" options-selected-class="text-secondary"
               style="width: 20em"
               v-model="selectedFreq">
-      <template v-slot:append>
+      <template v-slot:after>
         <q-btn @click="saveFreqs" color="white" icon="save" round text-color="secondary"/>
       </template>
     </q-select>
