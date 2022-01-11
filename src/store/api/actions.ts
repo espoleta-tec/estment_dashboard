@@ -5,8 +5,6 @@ import { api } from 'boot/axios'
 
 let ws: WebSocket
 
-export { ws }
-
 const actions: ActionTree<ApiStateInterface, StateInterface> = {
   changeMaster(context) {
     api.defaults.baseURL = `http://${context.state.masterUri}/`
@@ -15,7 +13,10 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
     openWebSocket()
 
     function openWebSocket() {
-      ws = new WebSocket(`ws://${context.state.masterUri}:81/`)
+      context.commit('updateWs', new WebSocket(`ws://${context.state.masterUri}:81/`))
+      if (!context.state.ws) return
+      ws = context.state.ws
+
       ws.onopen = () => {
         console.log('websocket connection opened')
         ws.send('vue client connected')

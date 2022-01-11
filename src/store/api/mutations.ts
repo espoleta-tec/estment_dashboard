@@ -14,6 +14,9 @@ const mutation: MutationTree<ApiStateInterface> = {
   },
   updateLogs(state: ApiStateInterface, payload: string) {
     state.logs = payload
+  },
+  updateWs(state: ApiStateInterface, payload: WebSocket) {
+    state.ws = payload
   }
 }
 

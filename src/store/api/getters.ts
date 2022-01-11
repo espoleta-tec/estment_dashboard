@@ -59,6 +59,9 @@ const getters: GetterTree<ApiStateInterface, StateInterface> = {
   },
   pressure(context): number {
     return Math.round(context.pressure / 100)
+  },
+  websocket(context) {
+    return context.ws?.readyState
   }
 }
 

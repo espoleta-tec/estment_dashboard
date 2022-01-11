@@ -1,3 +1,4 @@
+
 export interface ApiStateInterface {
   masterUri: string;
 
@@ -11,6 +12,8 @@ export interface ApiStateInterface {
   light: number,
   date: number
   logs: string
+
+  ws?: WebSocket
 
   [index: string]: any,
 }
