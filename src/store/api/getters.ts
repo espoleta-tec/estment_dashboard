@@ -61,6 +61,9 @@ const getters: GetterTree<ApiStateInterface, StateInterface> = {
   },
   websocket(context) {
     return context.ws?.readyState
+  },
+  lastWindDirection(context) {
+    return context.state
   }
 }
 

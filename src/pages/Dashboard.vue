@@ -58,7 +58,7 @@ export default defineComponent({
         { text: `${this.$store.getters['api/pressure']} hpa`, icon: 'barometer', to: '/pressure' },
         { text: 'Noreste', icon: 'vane', to: '/wind' },
         { text: `${this.$store.state.api.light} lux`, icon: 'sun' },
-        { text: '30M', icon: 'lightning-bolt', to: '/lightnings' }
+        { text: this.$store.state.api.lightningCount, icon: 'lightning-bolt', to: '/lightnings' }
       ]
     }
   },
