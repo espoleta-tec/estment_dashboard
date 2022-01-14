@@ -1,7 +1,6 @@
 <template>
   <div class="row">
     <!-- content -->
-    {{ series }}
     <GraphView :series="series" :radar="true" class="col-12"/>
   </div>
 </template>
@@ -18,7 +17,7 @@ export default defineComponent({
       for (let i = 0; i < array.length; i++) {
         array[i] = 0
       }
-      this.$store.getters['api/gData']('wind_direction_average').forEach(elem => {
+      this.$store.getters['api/gData']('wind_direction_average').forEach((elem: any) => {
         if (elem.y > 0) {
           array[elem.y - 1]++
         }

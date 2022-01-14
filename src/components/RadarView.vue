@@ -3,11 +3,11 @@
     <VueApexCharts :options="options" :series="series" class="col-12" type="radar"/>
     <div class="text-h6 col-grow text-center">
       <q-icon name="032-windsock"/>
-      <span style="margin-left: .5em">3 M/S</span>
+      <span style="margin-left: .5em">{{ $store.state.api.wind_speed_average }} m/s</span>
     </div>
     <div class="text-h6 col-grow text-center">
       <q-icon name="vane"/>
-      <span style="margin-left: .5em">Noreste</span>
+      <span style="margin-left: .5em">{{ $store.getters['api/lastWindDirection'] }}</span>
     </div>
   </div>
 </template>

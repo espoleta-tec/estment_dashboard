@@ -17,10 +17,10 @@
     </div>
     <q-space/>
     <div class="column content-center">
-      <a :href="`${$axios.defaults.baseURL}bulk`" style="text-decoration: none"
-         :download="`lecturas_${new Date().toISOString()}.txt`">
-        <q-btn class="q-pr-md q-pl-md text-h6" color="secondary" label="Descargar Lecturas"/>
-      </a>
+      <!--      <a :href="`${$axios.defaults.baseURL}logs-global`" style="text-decoration: none"-->
+      <!--         :download="`lecturas_${new Date().toISOString()}.txt`">-->
+      <!--      </a>-->
+      <q-btn @click="requestDownload" class="q-pr-md q-pl-md text-h6" color="secondary" label="Descargar Lecturas"/>
       <div style="height: 20px"></div>
       <q-btn @click="formatSDCard" class="q-pr-md q-pl-md text-h6" color="negative" label="Borrar SD"/>
     </div>
@@ -96,6 +96,16 @@ export default defineComponent({
           console.log(e.message)
         })
       })
+    },
+    requestDownload() {
+      this.$axios.get('/logs-global').then((response) => {
+        const url = window.URL.createObjectURL(new Blob(([response.data])))
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', `lecturas_${new Date().toISOString()}.txt`)
+        document.body.appendChild(link)
+        link.click()
+      }).catch((error) => console.log(error))
     }
   }
 })

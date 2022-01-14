@@ -1,7 +1,6 @@
 <template>
   <q-page class="row text-white">
     <div class="col-12 column">
-      {{ readyStateWatch(ticker) }} {{ ticker }}
       <div class="text-red-6 text-h5 text-center" v-if="readyStateWatch(ticker) !== 1 && false">
         No se encuentra conectado a ninguna estación.
       </div>
@@ -56,7 +55,7 @@ export default defineComponent({
         { text: `${this.$store.state.api.windSpeed} m/s`, icon: '032-windsock', to: '/wind' },
         { text: '', icon: 'home_filled', to: '/' },
         { text: `${this.$store.getters['api/pressure']} hpa`, icon: 'barometer', to: '/pressure' },
-        { text: 'Noreste', icon: 'vane', to: '/wind' },
+        { text: `${this.$store.getters['api/lastWindDirection']}`, icon: 'vane', to: '/wind' },
         { text: `${this.$store.state.api.light} lux`, icon: 'sun' },
         { text: this.$store.state.api.lightningCount, icon: 'lightning-bolt', to: '/lightnings' }
       ]

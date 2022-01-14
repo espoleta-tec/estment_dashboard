@@ -63,7 +63,13 @@ const getters: GetterTree<ApiStateInterface, StateInterface> = {
     return context.ws?.readyState
   },
   lastWindDirection(context) {
-    return context.state
+    const direction: Record<number, string> = {
+      1: 'Norte',
+      2: 'Este',
+      3: 'Sur',
+      4: 'Oeste'
+    }
+    return direction[context.wind_direction_average] || 'desconocida'
   }
 }
 
