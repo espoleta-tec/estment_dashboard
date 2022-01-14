@@ -1,21 +1,22 @@
-import { RouteConfig } from 'vue-router';
-import ResponsiveLayout from 'layouts/ResponsiveLayout.vue';
-import Error404 from 'pages/Error404.vue';
-import Login from 'pages/Login.vue';
-import Dashboard from 'pages/Dashboard.vue';
-import Humidity from 'pages/graphs/Humidity.vue';
-import Power from 'pages/graphs/Power.vue';
-import Pressure from 'pages/graphs/Pressure.vue';
-import Temperature from 'pages/graphs/Temperature.vue';
-import Wind from 'pages/graphs/Wind.vue';
-import Precipitation from 'pages/graphs/Precipitation.vue';
-import Monitor from 'pages/Monitor.vue';
-import Connectivity from 'pages/config/Connectivity.vue';
-import Sensors from 'pages/config/Sensors.vue';
-import Storage from 'pages/config/Storage.vue';
-import User from 'pages/config/User.vue';
-import Update from 'pages/config/Update.vue';
-import Settings from 'pages/config/Settings.vue';
+import { RouteConfig } from 'vue-router'
+import ResponsiveLayout from 'layouts/ResponsiveLayout.vue'
+import Error404 from 'pages/Error404.vue'
+import Login from 'pages/Login.vue'
+import Dashboard from 'pages/Dashboard.vue'
+import Humidity from 'pages/graphs/Humidity.vue'
+import Power from 'pages/graphs/Power.vue'
+import Pressure from 'pages/graphs/Pressure.vue'
+import Temperature from 'pages/graphs/Temperature.vue'
+import Wind from 'pages/graphs/Wind.vue'
+import Precipitation from 'pages/graphs/Precipitation.vue'
+import Monitor from 'pages/Monitor.vue'
+import Connectivity from 'pages/config/Connectivity.vue'
+import Sensors from 'pages/config/Sensors.vue'
+import Storage from 'pages/config/Storage.vue'
+import User from 'pages/config/User.vue'
+import Update from 'pages/config/Update.vue'
+import Settings from 'pages/config/Settings.vue'
+import Lightnings from 'pages/graphs/Lightnings.vue'
 
 const routes: RouteConfig[] = [
   {
@@ -31,7 +32,8 @@ const routes: RouteConfig[] = [
           { path: 'precipitation', component: Precipitation, name: 'Precipitaciones', meta: { icon: '028-drop' } },
           { path: 'pressure', component: Pressure, name: 'Presión Atmosférica', meta: { icon: 'barometer' } },
           { path: 'temperature', component: Temperature, name: 'Temperatura' },
-          { path: 'wind', component: Wind, name: 'Viento', meta: { icon: 'vane' } }
+          { path: 'wind', component: Wind, name: 'Viento', meta: { icon: 'vane' } },
+          { path: 'lightnings', component: Lightnings, name: 'Rayos', meta: { icon: 'lightning-bolt' } }
         ]
       },
       {
@@ -64,6 +66,6 @@ const routes: RouteConfig[] = [
     path: '*',
     component: Error404
   }
-];
+]
 
-export default routes;
+export default routes

@@ -1,7 +1,8 @@
 <template>
   <q-page class="row text-white">
     <div class="col-12 column">
-      <div class="text-red-6 text-h5 text-center" v-if="$store.getters['api/websocket'] === 0">
+      {{ readyStateWatch(ticker) }} {{ ticker }}
+      <div class="text-red-6 text-h5 text-center" v-if="readyStateWatch(ticker) !== 1 && false">
         No se encuentra conectado a ninguna estación.
       </div>
       <router-view v-else class="col"/>
@@ -29,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, onMounted, ref } from '@vue/composition-api'
 import { colors } from 'quasar'
 import Helix from 'components/Helix.vue'
 
@@ -47,7 +48,7 @@ export default defineComponent({
     }
   },
   computed: {
-    fourthBar() {
+    fourthBar(): Record<string, any>[] {
       return [
         { text: `${this.$store.state.api.precipitation} mm`, icon: '028-drop', to: '/precipitation' },
         { text: `${this.$store.state.api.humidity}%`, icon: 'humidity', to: '/humidity' },
@@ -57,9 +58,23 @@ export default defineComponent({
         { text: `${this.$store.getters['api/pressure']} hpa`, icon: 'barometer', to: '/pressure' },
         { text: 'Noreste', icon: 'vane', to: '/wind' },
         { text: `${this.$store.state.api.light} lux`, icon: 'sun' },
-        { text: '30M', icon: 'lightning-bolt' }
+        { text: '30M', icon: 'lightning-bolt', to: '/lightnings' }
       ]
     }
+  },
+  methods: {
+    readyStateWatch(ticker: any) {
+      ticker.value
+      return this.$store.state.api.ws.readyState
+    }
+  },
+  setup() {
+    const ticker = ref(0)
+    onMounted(() => {
+      setInterval(() => ticker.value++, 1000)
+    })
+
+    return { ticker }
   }
 })
 </script>

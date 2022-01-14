@@ -1,4 +1,3 @@
-
 export interface ApiStateInterface {
   masterUri: string;
 
@@ -10,10 +9,11 @@ export interface ApiStateInterface {
   power: number,
   water_count: number,
   light: number,
+  lightningCount: number,
   date: number
   logs: string
 
-  ws?: WebSocket
+  ws: WebSocket
 
   [index: string]: any,
 }
@@ -26,8 +26,8 @@ function state(): ApiStateInterface {
     power: 0, precipitation: 0, pressure: 0,
     temperature_c: 0, humidity: 0, windSpeed: 0,
     windDirection: '', wind_direction_average: 0, water_count: 0,
-    wind_speed_average: 0,
-    logs: ''
+    wind_speed_average: 0, lightningCount: 0,
+    logs: '', ws: new WebSocket('ws://localhost:4321')
   }
 }
 

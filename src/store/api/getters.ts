@@ -48,7 +48,6 @@ const getters: GetterTree<ApiStateInterface, StateInterface> = {
           obj[key] = new Date(unquote(value)).getTime() || unquote(value)
         }
       })
-      console.log(obj)
       return obj
     }).filter((o: any) => {
       if (o !== undefined && o.date !== undefined) {

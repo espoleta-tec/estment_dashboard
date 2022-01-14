@@ -13,9 +13,11 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
     openWebSocket()
 
     function openWebSocket() {
-      context.commit('updateWs', new WebSocket(`ws://${context.state.masterUri}:81/`))
-      if (!context.state.ws) return
-      ws = context.state.ws
+      // context.commit('updateWs', new WebSocket(`ws://${context.state.masterUri}:81/`))
+      console.log('starting websocket')
+      ws = new WebSocket(`ws://${context.state.masterUri}:81/`)
+      // if (!context.state.ws) return
+      // ws = context.state.ws
 
       ws.onopen = () => {
         console.log('websocket connection opened')
