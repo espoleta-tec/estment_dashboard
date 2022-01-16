@@ -1,0 +1,7 @@
+{
+  "appId": "com.espoleta.vortex.v1.app",
+  "appName": "Vortex Visor",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www"
+}

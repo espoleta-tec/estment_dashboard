@@ -13,7 +13,7 @@ export interface ApiStateInterface {
   date: number
   logs: string
 
-  ws: WebSocket
+  ws: WebSocket | null
 
   [index: string]: any,
 }
@@ -27,7 +27,7 @@ function state(): ApiStateInterface {
     temperature_c: 0, humidity: 0, windSpeed: 0,
     windDirection: '', wind_direction_average: 0, water_count: 0,
     wind_speed_average: 0, lightningCount: 0,
-    logs: '', ws: new WebSocket('ws://localhost:4321')
+    logs: '', ws: null
   }
 }
 

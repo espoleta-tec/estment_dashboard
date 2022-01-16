@@ -30,7 +30,9 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import FreeMemory from 'components/FreeMemory.vue'
+import { FilesystemDirectory, FilesystemEncoding, Plugins } from '@capacitor/core'
 
+const { Filesystem } = Plugins
 export default defineComponent({
   // name: 'PageName'
   components: {
@@ -98,14 +100,57 @@ export default defineComponent({
       })
     },
     requestDownload() {
+      Filesystem.writeFile({
+        data: 'me cago en dios',
+        path: `lecturas_${new Date().toISOString()}.txt`,
+        directory: FilesystemDirectory.ExternalStorage,
+        encoding: FilesystemEncoding.UTF8
+      })
+        .then((result: any) => {
+          this.$q.notify({
+            message: `${result} stuff`,
+            color: 'positive',
+            position: 'top'
+          })
+        }).catch(error => {
+        console.log(error)
+        this.$q.notify({
+          message: `${error} stuff`,
+          color: 'negative',
+          position: 'top'
+        })
+      })
+
       this.$axios.get('/logs-global').then((response) => {
         const url = window.URL.createObjectURL(new Blob(([response.data])))
-        const link = document.createElement('a')
-        link.href = url
-        link.setAttribute('download', `lecturas_${new Date().toISOString()}.txt`)
-        document.body.appendChild(link)
-        link.click()
-      }).catch((error) => console.log(error))
+        // const link = document.createElement('a')
+        // link.href = url
+        // link.setAttribute('download', `lecturas_${new Date().toISOString()}.txt`)
+        // document.body.appendChild(link)
+        // link.click()
+        Filesystem.writeFile({
+          data: response.data,
+          path: `vortice/lecturas_${new Date().toISOString()}.txt`,
+          directory: FilesystemDirectory.ExternalStorage,
+          encoding: FilesystemEncoding.UTF8
+        })
+          .then(() => {
+            this.$q.notify({
+              message: 'lecturas guardadas con éxito',
+              color: 'positive',
+              position: 'top'
+            })
+          }).catch(e => {
+          throw e
+        })
+      }).catch(error => {
+        console.log(error)
+        this.$q.notify({
+          message: 'error al guardar lecturas',
+          color: 'negative',
+          position: 'top'
+        })
+      })
     }
   }
 })

@@ -64,7 +64,7 @@ export default defineComponent({
   methods: {
     readyStateWatch(ticker: any) {
       ticker.value
-      return this.$store.state.api.ws.readyState
+      return this.$store.state.api.ws?.readyState | -1
     }
   },
   setup() {
