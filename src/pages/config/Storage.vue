@@ -100,26 +100,26 @@ export default defineComponent({
       })
     },
     requestDownload() {
-      Filesystem.writeFile({
-        data: 'me cago en dios',
-        path: `lecturas_${new Date().toISOString()}.txt`,
-        directory: FilesystemDirectory.ExternalStorage,
-        encoding: FilesystemEncoding.UTF8
-      })
-        .then((result: any) => {
-          this.$q.notify({
-            message: `${result} stuff`,
-            color: 'positive',
-            position: 'top'
-          })
-        }).catch(error => {
-        console.log(error)
-        this.$q.notify({
-          message: `${error} stuff`,
-          color: 'negative',
-          position: 'top'
-        })
-      })
+      // Filesystem.writeFile({
+      //   data: 'me cago en dios',
+      //   path: `lecturas_${new Date().toISOString()}.txt`,
+      //   directory: FilesystemDirectory.ExternalStorage,
+      //   encoding: FilesystemEncoding.UTF8
+      // })
+      //   .then((result: any) => {
+      //     this.$q.notify({
+      //       message: `${result} stuff`,
+      //       color: 'positive',
+      //       position: 'top'
+      //     })
+      //   }).catch(error => {
+      //   console.log(error)
+      //   this.$q.notify({
+      //     message: `${error} stuff`,
+      //     color: 'negative',
+      //     position: 'top'
+      //   })
+      // })
 
       this.$axios.get('/logs-global').then((response) => {
         const url = window.URL.createObjectURL(new Blob(([response.data])))

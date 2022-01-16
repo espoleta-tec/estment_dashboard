@@ -5,14 +5,6 @@
     <q-input dark debounce="1000" label="IP de estación" style="width: 20em" v-model="masterUri"/>
     <q-btn :key="b.label" :label="b.label" @click="b.onClick" class="q-ma-md" color="secondary" style="width: 20em"
            v-for="b in buttons"/>
-    <!--    <q-select :options="frequencyOptions" class="text-uppercase q-pr-md q-pl-md" dark hide-dropdown-icon-->
-    <!--              label="Frecuencia de muestreo" name="label" options-selected-class="text-secondary"-->
-    <!--              style="width: 20em"-->
-    <!--              v-model="selectedFreq">-->
-    <!--      <template v-slot:after>-->
-    <!--        <q-btn @click="saveFreqs" color="white" icon="save" round text-color="secondary"/>-->
-    <!--      </template>-->
-    <!--    </q-select>-->
     <q-space/>
   </q-page>
 </template>
@@ -68,7 +60,7 @@ export default defineComponent({
       return this.$store.state.api.masterUri
     },
     testConn() {
-      this.$axios.get(`http://${this.$store.state.api.masterUri}/`).then(resp => {
+      this.$axios.get(`http://${this.$store.state.api.masterUri}/testconn`).then(resp => {
         console.log(resp.status)
         this.updateUri(this.$store.state.api.masterUri)
         this.$q.notify({
