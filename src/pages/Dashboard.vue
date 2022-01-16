@@ -49,7 +49,7 @@ export default defineComponent({
   computed: {
     fourthBar(): Record<string, any>[] {
       return [
-        { text: `${this.$store.state.api.precipitation} mm`, icon: '028-drop', to: '/precipitation' },
+        { text: `${this.$store.state.api.water_count} mm`, icon: '028-drop', to: '/precipitation' },
         { text: `${this.$store.state.api.humidity}%`, icon: 'humidity', to: '/humidity' },
         { text: this.$store.getters['api/temperature'], icon: 'temperature', to: '/humidity' },
         { text: `${this.$store.state.api.windSpeed} m/s`, icon: '032-windsock', to: '/wind' },

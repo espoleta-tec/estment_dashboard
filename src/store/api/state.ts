@@ -23,7 +23,7 @@ function state(): ApiStateInterface {
     date: 0,
     masterUri: '192.168.4.1',
     light: 0,
-    power: 0, precipitation: 0, pressure: 0,
+    power: 0, pressure: 0,
     temperature_c: 0, humidity: 0, windSpeed: 0,
     windDirection: '', wind_direction_average: 0, water_count: 0,
     wind_speed_average: 0, lightningCount: 0,
