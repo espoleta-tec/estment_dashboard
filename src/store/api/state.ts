@@ -11,7 +11,8 @@ export interface ApiStateInterface {
   light: number,
   lightningCount: number,
   date: number
-  logs: string
+  logs: string,
+  dew_point_c: number,
 
   ws: WebSocket | null
 
@@ -27,7 +28,7 @@ function state(): ApiStateInterface {
     temperature_c: 0, humidity: 0, windSpeed: 0,
     windDirection: '', wind_direction_average: 0, water_count: 0,
     wind_speed_average: 0, lightningCount: 0,
-    logs: '', ws: null
+    logs: '', ws: null, dew_point_c: 0
   }
 }
 
