@@ -36,7 +36,6 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { mapData } from 'src/utils/helpers'
 
 export default defineComponent({
   // name: 'PageName'
@@ -46,11 +45,11 @@ export default defineComponent({
       return [
         {
           name: 'Temperatura',
-          data: mapData(this.$store.getters['api/graphData'], 'temperature_c') || [{ x: 0, y: 0 }]
+          data: this.$store.getters['api/gData']('temperature_c')
         },
         {
           name: 'Humedad',
-          data: mapData(this.$store.getters['api/graphData'], 'humidity') || [{ x: 0, y: 0 }]
+          data: this.$store.getters['api/gData']('humidity')
         }
       ]
     },

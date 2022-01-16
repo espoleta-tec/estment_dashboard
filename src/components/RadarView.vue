@@ -68,8 +68,8 @@ export default defineComponent({
           opacity: 0.2,
           colors: [palette('green')]
         },
-        // labels: ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'],
-        labels: ['N', 'E', 'S', 'O'],
+        labels: ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'],
+        // labels: ['N', 'E', 'S', 'O'],
         xaxis: {
           labels: {
             show: true,

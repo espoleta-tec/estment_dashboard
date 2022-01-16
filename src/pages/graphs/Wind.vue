@@ -13,7 +13,7 @@ export default defineComponent({
   components: {},
   computed: {
     series() {
-      const array = new Array(4)
+      const array = new Array(8)
       for (let i = 0; i < array.length; i++) {
         array[i] = 0
       }

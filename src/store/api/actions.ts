@@ -4,7 +4,6 @@ import { ApiStateInterface } from './state'
 import { api } from 'boot/axios'
 
 let ws: WebSocket
-
 const actions: ActionTree<ApiStateInterface, StateInterface> = {
   changeMaster(context) {
     api.defaults.baseURL = `http://${context.state.masterUri}/`
@@ -27,6 +26,7 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
           context.commit('updateState', event.data)
         }
         ws.onclose = () => {
+          console.log('websocket closed')
           setTimeout(() => {
             openWebSocket()
           }, 500)
@@ -42,10 +42,12 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
   },
   async getLogs(context) {
     const logs = await api.get('logs')
+    if (!logs.data) return
 
     context.commit('updateLogs', logs.data)
   }
 }
+
 
 
 export default actions

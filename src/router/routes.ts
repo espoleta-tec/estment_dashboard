@@ -17,6 +17,7 @@ import User from 'pages/config/User.vue'
 import Update from 'pages/config/Update.vue'
 import Settings from 'pages/config/Settings.vue'
 import Lightnings from 'pages/graphs/Lightnings.vue'
+import Light from 'pages/graphs/Light.vue'
 
 const routes: RouteConfig[] = [
   {
@@ -33,7 +34,8 @@ const routes: RouteConfig[] = [
           { path: 'pressure', component: Pressure, name: 'Presión Atmosférica', meta: { icon: 'barometer' } },
           { path: 'temperature', component: Temperature, name: 'Temperatura' },
           { path: 'wind', component: Wind, name: 'Viento', meta: { icon: 'vane' } },
-          { path: 'lightnings', component: Lightnings, name: 'Rayos', meta: { icon: 'lightning-bolt' } }
+          { path: 'lightnings', component: Lightnings, name: 'Rayos', meta: { icon: 'lightning-bolt' } },
+          { path: 'light', component: Light, name: 'Iluminación', meta: { icon: 'sun' } }
         ]
       },
       {

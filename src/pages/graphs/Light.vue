@@ -45,12 +45,8 @@ export default defineComponent({
       return [
         {
           name: 'Temperatura',
-          data: this.$store.getters['api/gData']('lightningCount')
+          data: this.$store.getters['api/gData']('light')
         }
-        // {
-        //   name: 'Humedad',
-        //   data: mapData(this.$store.getters['api/graphData'], 'humidity') || [{ x: 0, y: 0 }]
-        // }
       ]
     },
     minTemp(): number {

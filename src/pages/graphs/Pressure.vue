@@ -7,7 +7,6 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { mapData } from 'src/utils/helpers'
 
 export default defineComponent({
   // name: 'PageName'
@@ -16,7 +15,7 @@ export default defineComponent({
       return [
         {
           name: 'Presión',
-          data: mapData(this.$store.getters['api/graphData'], 'pressure')
+          data: this.$store.getters['api/gData']('pressure')
         }]
     }
   }

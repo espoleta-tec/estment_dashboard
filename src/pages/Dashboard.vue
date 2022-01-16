@@ -1,7 +1,8 @@
 <template>
   <q-page class="row text-white">
+    {{readyStateWatch(ticker)}}
     <div class="col-12 column">
-      <div class="text-red-6 text-h5 text-center" v-if="readyStateWatch(ticker) !== 1 && false">
+      <div class="text-red-6 text-h5 text-center" v-if="readyStateWatch(ticker) !== 1">
         No se encuentra conectado a ninguna estación.
       </div>
       <router-view v-else class="col"/>
@@ -56,15 +57,14 @@ export default defineComponent({
         { text: '', icon: 'home_filled', to: '/' },
         { text: `${this.$store.getters['api/pressure']} hpa`, icon: 'barometer', to: '/pressure' },
         { text: `${this.$store.getters['api/lastWindDirection']}`, icon: 'vane', to: '/wind' },
-        { text: `${this.$store.state.api.light} lux`, icon: 'sun' },
+        { text: `${this.$store.state.api.light} lux`, icon: 'sun', to: '/light' },
         { text: this.$store.state.api.lightningCount, icon: 'lightning-bolt', to: '/lightnings' }
       ]
     }
   },
   methods: {
     readyStateWatch(ticker: any) {
-      ticker.value
-      return this.$store.state.api.ws?.readyState | -1
+      return this.$store.state.api.ws?.readyState
     }
   },
   setup() {
@@ -74,6 +74,9 @@ export default defineComponent({
     })
 
     return { ticker }
+  },
+  mounted() {
+    this.$store.dispatch('api/getLogs')
   }
 })
 </script>
