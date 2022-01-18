@@ -19,14 +19,14 @@
         <Logo class="text-h5 q-ma-lg"/>
         <div class="q-pa-md"/>
         <q-item
-          :class="`text-uppercase text-bold row no-wrap flex items-center
+          :class="`text-uppercase q-pa-md text-bold row no-wrap flex items-center
         text-h6 q-ma-md ${$route.path === n.to ? 'text-secondary bg-dark' : ''}`"
           :key="n.to"
           :style="`font-weight: 300; ${idx === drawerRoutes.length - 1 ? 'margin-top: 3rem': ''}`"
-          @click="$router.push(n.to)" clickable
+          :to="n.to" clickable
           v-for="(n, idx) in drawerRoutes">
           <q-icon :name="n.icon"/>
-          <span style="margin-left: 0.2rem;">{{n.name}}</span>
+          <span style="margin-left: 0.2rem;">{{ n.name }}</span>
         </q-item>
       </div>
     </q-scroll-area>
@@ -34,51 +34,51 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
-  import { AppFullscreen } from 'quasar';
+import { defineComponent } from '@vue/composition-api'
+import { AppFullscreen } from 'quasar'
 
 
-  export default defineComponent({
-    // name: 'ComponentName'
-    computed: {
-      leftDrawer: {
-        get: function() {
-          return this.$store.state.layout.leftDrawer;
-        },
-        set: function(payload) {
-          this.$store.commit('layout/toggleDrawer', payload);
-        }
+export default defineComponent({
+  // name: 'ComponentName'
+  computed: {
+    leftDrawer: {
+      get: function() {
+        return this.$store.state.layout.leftDrawer
       },
-      drawerRoutes() {
-        return [
-          { to: '/', name: 'Tablero', icon: 'home_filled' },
-          { to: '/user', name: 'usuario', icon: 'user_filled' },
-          // { to: '/sensors', name: 'sensores', icon: 'microchip' },
-          { to: '/connectivity', name: 'conectividad', icon: 'wifi_router' },
-          { to: '/storage', name: 'almacenamiento', icon: 'sd_filled' },
-          { to: '/update', name: 'update', icon: 'folder-f' },
-          { to: '/settings', name: 'Ajustes', icon: 'settings_filled' },
-          { to: '/about', name: 'Acerca de', icon: 'info_filled' }
-        ];
+      set: function(payload) {
+        this.$store.commit('layout/toggleDrawer', payload)
       }
     },
-    methods: {
-      requetsFullscreen() {
-        if (AppFullscreen.isActive) {
-          AppFullscreen.exit().then().catch(err => console.log(err.message));
-          return;
-        }
-        AppFullscreen.request().then(() => {
-          console.log('entered fullscreen');
-        }).catch((err) => {
-          console.log(err.message);
-        });
-      }
+    drawerRoutes() {
+      return [
+        { to: '/', name: 'Tablero', icon: 'home_filled' },
+        { to: '/user', name: 'usuario', icon: 'user_filled' },
+        // { to: '/sensors', name: 'sensores', icon: 'microchip' },
+        { to: '/connectivity', name: 'conectividad', icon: 'wifi_router' },
+        { to: '/storage', name: 'almacenamiento', icon: 'sd_filled' },
+        { to: '/update', name: 'update', icon: 'folder-f' },
+        { to: '/settings', name: 'Ajustes', icon: 'settings_filled' },
+        { to: '/about', name: 'Acerca de', icon: 'info_filled' }
+      ]
     }
-  });
+  },
+  methods: {
+    requetsFullscreen() {
+      if (AppFullscreen.isActive) {
+        AppFullscreen.exit().then().catch(err => console.log(err.message))
+        return
+      }
+      AppFullscreen.request().then(() => {
+        console.log('entered fullscreen')
+      }).catch((err) => {
+        console.log(err.message)
+      })
+    }
+  }
+})
 </script>
 <style lang="scss">
-  .bg-drawer {
-    /*filter: blur(50px);*/
-  }
+.bg-drawer {
+  /*filter: blur(50px);*/
+}
 </style>
