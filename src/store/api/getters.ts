@@ -5,7 +5,7 @@ import { unquote } from '@amcharts/amcharts4/.internal/core/utils/Utils'
 
 const getters: GetterTree<ApiStateInterface, StateInterface> = {
   temperature(context): string {
-    return `${leftPadding(Math.ceil(context.temperature_c), 2)}°`
+    return `${leftPadding(context.temperature_c.toFixed(2), 5)}°`
   },
   graphData(context): Record<string, unknown>[] | string[] {
     const logs = context.logs
@@ -75,8 +75,8 @@ const getters: GetterTree<ApiStateInterface, StateInterface> = {
 
 export default getters
 
-function leftPadding(number: number, padding: number, replace: any = 0): string {
-  let sn = String(number)
+function leftPadding(num: number | string, padding: number, replace: any = 0): string {
+  let sn = String(num)
   let prefix = ''
   if (sn.length < padding) {
     for (let i = 0; i < padding - sn.length; i++) {

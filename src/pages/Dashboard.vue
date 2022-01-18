@@ -1,6 +1,6 @@
 <template>
   <q-page class="row text-white">
-    {{readyStateWatch(ticker)}}
+    <!--    {{readyStateWatch(ticker)}}-->
     <div class="col-12 column">
       <div class="text-red-6 text-h5 text-center" v-if="readyStateWatch(ticker) !== 1">
         No se encuentra conectado a ninguna estación.
@@ -50,10 +50,10 @@ export default defineComponent({
   computed: {
     fourthBar(): Record<string, any>[] {
       return [
-        { text: `${this.$store.state.api.water_count} mm`, icon: '028-drop', to: '/precipitation' },
-        { text: `${this.$store.state.api.humidity}%`, icon: 'humidity', to: '/humidity' },
+        { text: `${this.$store.state.api.water_count.toFixed(2)} mm`, icon: '028-drop', to: '/precipitation' },
+        { text: `${this.$store.state.api.humidity.toFixed(2)}%`, icon: 'humidity', to: '/humidity' },
         { text: this.$store.getters['api/temperature'], icon: 'temperature', to: '/humidity' },
-        { text: `${this.$store.state.api.windSpeed} m/s`, icon: '032-windsock', to: '/wind' },
+        { text: `${this.$store.state.api.windSpeed.toFixed(2)} m/s`, icon: '032-windsock', to: '/wind' },
         { text: '', icon: 'home_filled', to: '/' },
         { text: `${this.$store.getters['api/pressure']} hpa`, icon: 'barometer', to: '/pressure' },
         { text: `${this.$store.getters['api/lastWindDirection']}`, icon: 'vane', to: '/wind' },
@@ -64,6 +64,7 @@ export default defineComponent({
   },
   methods: {
     readyStateWatch(ticker: any) {
+      console.log(ticker)
       return this.$store.state.api.ws?.readyState
     }
   },
@@ -75,8 +76,8 @@ export default defineComponent({
 
     return { ticker }
   },
-  mounted() {
-    this.$store.dispatch('api/getLogs')
+  async mounted() {
+    await this.$store.dispatch('api/getLogs')
   }
 })
 </script>
