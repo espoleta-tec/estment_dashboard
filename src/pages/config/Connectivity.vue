@@ -14,7 +14,7 @@
         <q-input color="secondary" dark label="Contraseña" type="password" v-model="data.password"/>
         <q-select :options="data.options.ipOptions" color="secondary" dark label="Asignacion de ip"
                   v-model="data.ipMode"/>
-        <q-input :disable="data.ipMode.value === 'auto'" color="secondary" dark label="Direccion IP"
+        <q-input  color="secondary" dark label="Direccion IP"
                  v-model="data.ipAddress"/>
         <div class="text-center q-pa-md">
           <q-btn color="secondary"
