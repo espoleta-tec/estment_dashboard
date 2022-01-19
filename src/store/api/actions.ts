@@ -23,6 +23,7 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
         console.log('websocket connection opened')
         ws.send('vue client connected')
         ws.onmessage = (event) => {
+          console.log(event.data)
           context.commit('updateState', event.data)
         }
         ws.onclose = () => {
@@ -47,7 +48,6 @@ const actions: ActionTree<ApiStateInterface, StateInterface> = {
     context.commit('updateLogs', logs.data)
   }
 }
-
 
 
 export default actions

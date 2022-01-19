@@ -1,9 +1,8 @@
-import { route } from 'quasar/wrappers';
-import VueRouter from 'vue-router';
-import { Store } from 'vuex';
-import { StateInterface } from '../store';
-import routes from './routes';
-import {theStore} from '../store'
+import { route } from 'quasar/wrappers'
+import VueRouter from 'vue-router'
+import { Store } from 'vuex'
+import { StateInterface, theStore } from '../store'
+import routes from './routes'
 
 /*
  * If not building with SSR mode, you can
@@ -11,7 +10,7 @@ import {theStore} from '../store'
  */
 
 export default route<Store<StateInterface>>(function({ Vue }) {
-  Vue.use(VueRouter);
+  Vue.use(VueRouter)
 
   const router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
@@ -23,14 +22,14 @@ export default route<Store<StateInterface>>(function({ Vue }) {
     // quasar.conf.js -> build -> publicPath
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
-  });
+  })
 
   router.beforeEach((to, from, next) => {
-    // theStore.dispatch('api/getLogs').catch((e: Error) => {
-    //   console.log(e.message)
-    // })
+    theStore.dispatch('api/getLogs').catch((e: Error) => {
+      console.log(e.message)
+    })
     next()
   })
 
   return router
-});
+})

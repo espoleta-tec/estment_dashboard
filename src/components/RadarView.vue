@@ -90,8 +90,8 @@ export default defineComponent({
         },
         yaxis: {
           min: 0,
-          max: 60,
-          tickAmount: 3,
+          max: 100,
+          tickAmount: 4,
           labels: {
             show: true,
             style: {

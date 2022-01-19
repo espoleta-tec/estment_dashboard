@@ -23,7 +23,7 @@
         <MyGauge :value="$store.state.api.humidity/100" class="col" style="max-width: 100px"/>
         <div class="col flex flex-center no-wrap">
           <q-icon class="text-h4 q-pa-md" name="dew_point"/>
-          <div class="text-secondary">{{ $store.state.api.dew_point_c }}</div>
+          <div class="text-secondary">{{ $store.state.api.dew_point_c }}°</div>
         </div>
       </div>
     </div>

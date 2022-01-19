@@ -5,7 +5,7 @@ import { unquote } from '@amcharts/amcharts4/.internal/core/utils/Utils'
 
 const getters: GetterTree<ApiStateInterface, StateInterface> = {
   temperature(context): string {
-    return `${leftPadding(context.temperature_c.toFixed(2), 5)}°`
+    return `${leftPadding(context.temperature_c, 5)}°`
   },
   graphData(context): Record<string, unknown>[] | string[] {
     const logs = context.logs
@@ -65,9 +65,13 @@ const getters: GetterTree<ApiStateInterface, StateInterface> = {
   lastWindDirection(context) {
     const direction: Record<number, string> = {
       1: 'Norte',
-      2: 'Este',
-      3: 'Sur',
-      4: 'Oeste'
+      2: 'Noreste',
+      3: 'Este',
+      4: 'Sureste',
+      5: 'Sur',
+      6: 'Suroeste',
+      7: 'Oeste',
+      8: 'Noroeste'
     }
     return direction[context.wind_direction_average] || 'desconocida'
   }

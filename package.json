@@ -14,7 +14,7 @@
     "android-debug": "quasar dev -m capacitor -T android",
     "gen-icons": "svg-stringify src/assets/icons",
     "gen-styled": "svg-stringify src/assets/icons/styled --styles",
-    "app-icon": "icongenie g -i src/assets/vortex-logo-orange.png"
+    "app-icon": "icongenie g -i src/assets/vortice_logo_v2.png"
   },
   "awot-static": {
     "sources": "./dist/spa/bundled",
