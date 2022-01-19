@@ -5,7 +5,7 @@ export interface LoginStateInterface {
 function state(): LoginStateInterface {
   return {
     token: ''
-  };
+  }
 }
 
-export default state;
+export default state

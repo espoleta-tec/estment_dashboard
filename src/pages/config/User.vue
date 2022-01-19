@@ -29,60 +29,60 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api'
 
-  let changes = 0;
+let changes = 0
 
-  let og = {
-    name: 'admin',
-    password: 'admin'
-  };
+let og = {
+  name: 'admin',
+  password: 'admin'
+}
 
-  export default defineComponent({
-    // name: 'PageName'
-    data() {
-      return {
-        changes,
-        name: '',
-        password: '',
-        edit: false,
-        records: true,
-        confirm: [
-          { icon: 'check', action: null, color: 'positive' },
-          { icon: 'close', action: null, color: 'negative' }
-        ]
-      };
-    },
-    mounted(): void {
-      this.reset();
-    },
-    methods: {
-      reset() {
-        this.name = og.name;
-        this.password = og.password;
-      },
-      onSubmit() {
-        let form = {
-          name: this.name,
-          password: this.password
-        };
-        this.$q.dialog({
-          title: 'Confirmar',
-          message: 'Guardar cambios?',
-          cancel: true,
-          persistent: true
-        }).onOk(() => {
-          this.$axios.post('/user', form).then(resp => {
-            console.log(resp);
-          }).catch(e => {
-            console.log(e.message);
-          });
-        }).onCancel(() => {
-          console.log('Cancelled');
-        });
-      }
+export default defineComponent({
+  // name: 'PageName'
+  data() {
+    return {
+      changes,
+      name: '',
+      password: '',
+      edit: false,
+      records: true,
+      confirm: [
+        { icon: 'check', action: null, color: 'positive' },
+        { icon: 'close', action: null, color: 'negative' }
+      ]
     }
-  });
+  },
+  mounted(): void {
+    this.reset()
+  },
+  methods: {
+    reset() {
+      this.name = og.name
+      this.password = og.password
+    },
+    onSubmit() {
+      let form = {
+        name: this.name,
+        password: this.password
+      }
+      this.$q.dialog({
+        title: 'Confirmar',
+        message: 'Guardar cambios?',
+        cancel: true,
+        persistent: true
+      }).onOk(() => {
+        this.$axios.post('/user', form).then(resp => {
+          console.log(resp)
+        }).catch(e => {
+          console.log(e.message)
+        })
+      }).onCancel(() => {
+        console.log('Cancelled')
+      })
+    }
+  }
+})
 </script>
 <style lang="scss">
 </style>

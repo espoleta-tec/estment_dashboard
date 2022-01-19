@@ -34,24 +34,24 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api'
 
-  export default defineComponent({
-    // name: 'ComponentName',
-    data() {
-      return {
-        loadingProgress: 1
-      };
-    },
-    computed: {
-      leftDrawer: {
-        get(): boolean {
-          return this.$store.state.layout.leftDrawer;
-        },
-        set(payload: boolean) {
-          console.log(payload);
-          this.$store.commit('layout/toggleDrawer', payload)
-        }
+export default defineComponent({
+  // name: 'ComponentName',
+  data() {
+    return {
+      loadingProgress: 1
+    }
+  },
+  computed: {
+    leftDrawer: {
+      get(): boolean {
+        return this.$store.state.layout.leftDrawer
+      },
+      set(payload: boolean) {
+        console.log(payload)
+        this.$store.commit('layout/toggleDrawer', payload)
       }
     }
-  });</script>
+  }
+})</script>

@@ -26,17 +26,17 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api'
 
-  export default defineComponent({
-    // name: 'PageName',
-    data() {
-      return {
-        selected: 1,
-        options: [1, 2, 3],
-        time: 15,
-        timeOptions: [5, 15, 30, 60]
-      };
+export default defineComponent({
+  // name: 'PageName',
+  data() {
+    return {
+      selected: 1,
+      options: [1, 2, 3],
+      time: 15,
+      timeOptions: [5, 15, 30, 60]
     }
-  });
+  }
+})
 </script>

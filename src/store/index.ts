@@ -1,15 +1,15 @@
-import { store } from 'quasar/wrappers';
-import Vuex from 'vuex';
-import layout from './layout';
-import { LayoutState } from 'src/store/layout/state';
-import net from './net';
-import { NetState } from 'src/store/net/state';
-import login from './login';
-import { LoginStateInterface } from 'src/store/login/state';
-import time from './time';
-import { TimeStateInterface } from 'src/store/time/state';
-import api from './api';
-import { ApiStateInterface } from 'src/store/api/state';
+import { store } from 'quasar/wrappers'
+import Vuex from 'vuex'
+import layout from './layout'
+import { LayoutState } from 'src/store/layout/state'
+import net from './net'
+import { NetState } from 'src/store/net/state'
+import login from './login'
+import { LoginStateInterface } from 'src/store/login/state'
+import time from './time'
+import { TimeStateInterface } from 'src/store/time/state'
+import api from './api'
+import { ApiStateInterface } from 'src/store/api/state'
 
 // import example from './module-example';
 // import { ExampleStateInterface } from './module-example/state';
@@ -31,10 +31,10 @@ export interface StateInterface {
   api: ApiStateInterface
 }
 
-export let theStore: any;
+export let theStore: any
 
 export default store(function({ Vue }) {
-  Vue.use(Vuex);
+  Vue.use(Vuex)
 
   theStore = new Vuex.Store<StateInterface>({
     modules: {
@@ -49,9 +49,9 @@ export default store(function({ Vue }) {
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: !!process.env.DEBUGGING
-  });
+  })
 
-  return theStore;
-});
+  return theStore
+})
 
 

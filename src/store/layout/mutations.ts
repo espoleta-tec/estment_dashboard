@@ -1,5 +1,5 @@
-import { MutationTree } from 'vuex';
-import { LayoutState } from './state';
+import { MutationTree } from 'vuex'
+import { LayoutState } from './state'
 
 const mutation: MutationTree<LayoutState> = {
   toggleDrawer(state: LayoutState, payload: boolean) {
@@ -8,6 +8,6 @@ const mutation: MutationTree<LayoutState> = {
   changeCurrentView(state: LayoutState, payload: string) {
     state.currentView = payload
   }
-};
+}
 
-export default mutation;
+export default mutation

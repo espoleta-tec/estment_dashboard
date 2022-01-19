@@ -16,35 +16,35 @@
 
     <q-page-container>
       <!-- This is where pages get injected -->
-<!--      <transition-->
-<!--        :duration="300"-->
-<!--        appear-->
-<!--        enter-active-class="animated fadeIn"-->
-<!--        leave-active-class="animated fadeOut"-->
-<!--      >-->
-        <router-view :style="$store.state.layout.leftDrawer && $q.screen.lt.md ? 'filter: blur(5px)' : ''"/>
-<!--      </transition>-->
+      <!--      <transition-->
+      <!--        :duration="300"-->
+      <!--        appear-->
+      <!--        enter-active-class="animated fadeIn"-->
+      <!--        leave-active-class="animated fadeOut"-->
+      <!--      >-->
+      <router-view :style="$store.state.layout.leftDrawer && $q.screen.lt.md ? 'filter: blur(5px)' : ''"/>
+      <!--      </transition>-->
     </q-page-container>
 
   </q-layout>
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
-  import Header from 'components/Header.vue';
-  import Drawer from 'components/Drawer.vue';
+import { defineComponent } from '@vue/composition-api'
+import Header from 'components/Header.vue'
+import Drawer from 'components/Drawer.vue'
 
-  export default defineComponent({
-    // name: 'LayoutName',
-    components: {
-      Header, Drawer
-    },
+export default defineComponent({
+  // name: 'LayoutName',
+  components: {
+    Header, Drawer
+  },
 
 
-    setup() {
-      // return { leftDrawer: false };
-    }
-  });
+  setup() {
+    // return { leftDrawer: false };
+  }
+})
 </script>
 <style>
 </style>

@@ -19,7 +19,7 @@ function state(): NetState {
     deviceModel: '',
     softVersion: '',
     operationMode: 1
-  };
+  }
 }
 
-export default state;
+export default state

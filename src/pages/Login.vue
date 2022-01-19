@@ -21,44 +21,44 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api'
 
-  export default defineComponent({
-    // name: 'PageName',
-    data() {
-      return {
-        user: '',
-        password: ''
-      };
-    },
-    methods: {
-      authenticate() {
-        let data = {
-          name: this.user,
-          password: this.password
-        };
-        this.$axios.request({
-          url: 'authenticate',
-          method: 'POST',
-          data: data
-        }).then((response) => {
-          console.log(response.data);
-          if ('access_token' in response.data) {
-            this.$store.commit('login/changeToken', response.data['access_token']);
-            console.log(this.$store.state.login.token);
-            this.$router.push('/').catch(error => {
-              console.log(error.message);
-            });
-          }
-        }).catch(error => {
-          console.log(error);
-        });
-      }
+export default defineComponent({
+  // name: 'PageName',
+  data() {
+    return {
+      user: '',
+      password: ''
     }
-  });
+  },
+  methods: {
+    authenticate() {
+      let data = {
+        name: this.user,
+        password: this.password
+      }
+      this.$axios.request({
+        url: 'authenticate',
+        method: 'POST',
+        data: data
+      }).then((response) => {
+        console.log(response.data)
+        if ('access_token' in response.data) {
+          this.$store.commit('login/changeToken', response.data['access_token'])
+          console.log(this.$store.state.login.token)
+          this.$router.push('/').catch(error => {
+            console.log(error.message)
+          })
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+  }
+})
 </script>
 <style lang="scss">
-  //.q-field--outlined:hover .q-field__control:before {
-  //  border-color: $secondary !important;
-  //}
+//.q-field--outlined:hover .q-field__control:before {
+//  border-color: $secondary !important;
+//}
 </style>

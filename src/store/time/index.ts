@@ -1,9 +1,9 @@
-import { Module } from 'vuex';
-import { StateInterface } from '../index';
-import state, { TimeStateInterface } from './state';
-import actions from './actions';
-import getters from './getters';
-import mutations from './mutations';
+import { Module } from 'vuex'
+import { StateInterface } from '../index'
+import state, { TimeStateInterface } from './state'
+import actions from './actions'
+import getters from './getters'
+import mutations from './mutations'
 
 const exampleModule: Module<TimeStateInterface, StateInterface> = {
   namespaced: true,
@@ -11,6 +11,6 @@ const exampleModule: Module<TimeStateInterface, StateInterface> = {
   getters,
   mutations,
   state
-};
+}
 
-export default exampleModule;
+export default exampleModule

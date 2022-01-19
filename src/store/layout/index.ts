@@ -1,6 +1,6 @@
-import state from './state';
+import state from './state'
 // import * as getters from './getters'
-import mutations from './mutations';
+import mutations from './mutations'
 // import * as actions from './actions'
 
 export default {
@@ -9,4 +9,4 @@ export default {
   // getters,
   mutations
   // actions
-};
+}

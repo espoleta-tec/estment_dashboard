@@ -3,8 +3,8 @@
     <div class=" flex flex-center flex-inline no-wrap text-uppercase">
       <q-img ratio="1" :src="img" width="50px"/>
       <div class="column text-left q-ma-sm">
-        <span class="text-h6">{{state}}</span>
-        <span>{{label}}</span>
+        <span class="text-h6">{{ state }}</span>
+        <span>{{ label }}</span>
       </div>
     </div>
   </q-route-tab>
@@ -13,7 +13,7 @@
 <script lang="ts">
 export default {
   // name: 'ComponentName',
-  data () {
+  data() {
     return {}
   },
   props: {

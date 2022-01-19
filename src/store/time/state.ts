@@ -12,7 +12,7 @@ export const MOONS: MoonPhase = {
   FIRST: 1,
   FULL: 2,
   THIRD: 3
-};
+}
 
 export interface TimeStateInterface {
   currentMoon: number,
@@ -25,7 +25,7 @@ function state(): TimeStateInterface {
   return {
     phaseEnd: new Date(), phaseStart: new Date(),
     currentMoon: MOONS.UNDEF
-  };
+  }
 }
 
-export default state;
+export default state

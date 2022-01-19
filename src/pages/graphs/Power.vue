@@ -6,12 +6,12 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api'
 
-  export default defineComponent({
-    // name: 'PageName',
-    mounted() {
-      this.$store.commit('layout/changeCurrentView', 'Generacion Electrica');
-    }
-  });
+export default defineComponent({
+  // name: 'PageName',
+  mounted() {
+    this.$store.commit('layout/changeCurrentView', 'Generacion Electrica')
+  }
+})
 </script>

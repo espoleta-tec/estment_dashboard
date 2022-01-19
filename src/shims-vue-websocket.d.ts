@@ -1,4 +1,4 @@
 declare module 'vue-native-websocket' {
-  const value: any;
-  export default value;
+  const value: any
+  export default value
 }

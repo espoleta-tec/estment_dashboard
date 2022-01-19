@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="col">{{label}}</div>
-    <div class="col text-lowercase">{{value}}</div>
+    <div class="col">{{ label }}</div>
+    <div class="col text-lowercase">{{ value }}</div>
     <div v-if="badge" class="col">
       <q-badge :label="badge"/>
     </div>
@@ -12,7 +12,7 @@
 
 export default {
   // name: 'ComponentName',
-  data () {
+  data() {
     return {}
   },
   props: {
@@ -32,8 +32,8 @@ export default {
 }
 </script>
 <style lang="scss">
-  .container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 </style>

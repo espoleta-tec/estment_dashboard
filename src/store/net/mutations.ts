@@ -1,32 +1,32 @@
-import { MutationTree } from 'vuex';
-import { NetState } from './state';
+import { MutationTree } from 'vuex'
+import { NetState } from './state'
 
 const mutation: MutationTree<NetState> = {
-  changeSSID (state: NetState, payload: string) {
+  changeSSID(state: NetState, payload: string) {
     state.ssid = payload
   },
-  changeIP (state: NetState, payload: string) {
+  changeIP(state: NetState, payload: string) {
     state.ip = payload
   },
-  changeIpMask (state: NetState, payload: string) {
+  changeIpMask(state: NetState, payload: string) {
     state.ipmask = payload
   },
-  changeMac (state: NetState, payload: string) {
+  changeMac(state: NetState, payload: string) {
     state.mac = payload
   },
-  changeDeviceId (state: NetState, payload: string) {
+  changeDeviceId(state: NetState, payload: string) {
     state.deviceId = payload
   },
-  changedeviceModel (state: NetState, payload: string) {
+  changedeviceModel(state: NetState, payload: string) {
     state.deviceModel = payload
   },
-  changesoftVersion (state: NetState, payload: string) {
+  changesoftVersion(state: NetState, payload: string) {
     state.softVersion = payload
   },
-  changeoperationMode (state: NetState, payload: number) {
+  changeoperationMode(state: NetState, payload: number) {
     state.operationMode = payload
   }
 
-};
+}
 
-export default mutation;
+export default mutation

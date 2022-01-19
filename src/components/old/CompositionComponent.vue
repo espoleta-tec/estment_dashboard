@@ -13,24 +13,23 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent, PropType, computed, ref, toRef, Ref,
-} from '@vue/composition-api';
-import { Todo, Meta } from './models';
+import { computed, defineComponent, PropType, ref, Ref, toRef } from '@vue/composition-api'
+import { Meta, Todo } from './models'
 
 function useClickCount() {
-  const clickCount = ref(0);
+  const clickCount = ref(0)
+
   function increment() {
     clickCount.value += 1
-    return clickCount.value;
+    return clickCount.value
   }
 
-  return { clickCount, increment };
+  return { clickCount, increment }
 }
 
 function useDisplayTodo(todos: Ref<Todo[]>) {
-  const todoCount = computed(() => todos.value.length);
-  return { todoCount };
+  const todoCount = computed(() => todos.value.length)
+  return { todoCount }
 }
 
 export default defineComponent({
@@ -53,7 +52,7 @@ export default defineComponent({
     }
   },
   setup(props) {
-    return { ...useClickCount(), ...useDisplayTodo(toRef(props, 'todos')) };
-  },
-});
+    return { ...useClickCount(), ...useDisplayTodo(toRef(props, 'todos')) }
+  }
+})
 </script>

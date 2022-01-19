@@ -24,57 +24,57 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 
-  export default defineComponent({
-    // name: 'PageName'
-    data() {
-      return {
-        OTASuccess: false,
-        file: '',
-        type: 'firmware',
-        uploading: false,
-        progress: 0
-      }
-    },
-    methods: {
-      upload() {
-        // const request = new XMLHttpRequest();
-        const formData = new FormData()
-
-        if (this.file == null) {
-          return
-        }
-        if (this.file.length === 0) return
-        formData.append(this.type, this.file)
-
-        this.uploading = true
-        this.$axios.post('update', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
-          onUploadProgress: (progress: ProgressEvent) => {
-            this.progress = progress.loaded / progress.total
-          }
-        }).then((resp) => {
-          this.uploading = false
-          console.log(resp.statusText)
-          if (resp.status === 200) {
-            this.$q.notify({
-              message: 'Actualizacion exitosa',
-              color: 'positive',
-              position: 'top'
-            })
-          }
-        }).catch(e => {
-          this.uploading = false
-          console.log(e.message)
-          this.$q.notify({
-            message: `Error ${e.message}`,
-            color: 'negative'
-          })
-        })
-      }
+export default defineComponent({
+  // name: 'PageName'
+  data() {
+    return {
+      OTASuccess: false,
+      file: '',
+      type: 'firmware',
+      uploading: false,
+      progress: 0
     }
-  })
+  },
+  methods: {
+    upload() {
+      // const request = new XMLHttpRequest();
+      const formData = new FormData()
+
+      if (this.file == null) {
+        return
+      }
+      if (this.file.length === 0) return
+      formData.append(this.type, this.file)
+
+      this.uploading = true
+      this.$axios.post('update', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        onUploadProgress: (progress: ProgressEvent) => {
+          this.progress = progress.loaded / progress.total
+        }
+      }).then((resp) => {
+        this.uploading = false
+        console.log(resp.statusText)
+        if (resp.status === 200) {
+          this.$q.notify({
+            message: 'Actualizacion exitosa',
+            color: 'positive',
+            position: 'top'
+          })
+        }
+      }).catch(e => {
+        this.uploading = false
+        console.log(e.message)
+        this.$q.notify({
+          message: `Error ${e.message}`,
+          color: 'negative'
+        })
+      })
+    }
+  }
+})
 </script>

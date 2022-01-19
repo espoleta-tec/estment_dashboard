@@ -1,9 +1,9 @@
-import { Module } from 'vuex';
-import { StateInterface } from '../index';
-import state, { NetState } from './state';
-import actions from './actions';
-import getters from './getters';
-import mutations from './mutations';
+import { Module } from 'vuex'
+import { StateInterface } from '../index'
+import state, { NetState } from './state'
+import actions from './actions'
+import getters from './getters'
+import mutations from './mutations'
 
 const net: Module<NetState, StateInterface> = {
   namespaced: true,
@@ -11,6 +11,6 @@ const net: Module<NetState, StateInterface> = {
   getters,
   mutations,
   state
-};
+}
 
-export default net;
+export default net

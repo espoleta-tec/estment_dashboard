@@ -25,12 +25,12 @@ export interface StationSettingsField {
   valueLabel: string,
 }
 
-export const Masks: string[] = ['255.0.0.0', '255.255.0.0', '255.255.255.0'];
-const WiFis: string[] = ['dota', 'espiral ap', 'wifi etecsa'];
-const IpModes: string[] = ['DHCP', 'Estatica'];
+export const Masks: string[] = ['255.0.0.0', '255.255.0.0', '255.255.255.0']
+const WiFis: string[] = ['dota', 'espiral ap', 'wifi etecsa']
+const IpModes: string[] = ['DHCP', 'Estatica']
 
 export const StationNoms = {
   ssid: WiFis,
   ip: IpModes
-};
+}
 

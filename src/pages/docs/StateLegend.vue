@@ -47,13 +47,13 @@
 </template>
 
 <script>
-  export default {
-    // name: 'PageName',
-  };
+export default {
+  // name: 'PageName',
+}
 </script>
 
 <style scoped lang="scss">
-  .text-body2 {
-    font-size: 9pt;
-  }
+.text-body2 {
+  font-size: 9pt;
+}
 </style>
