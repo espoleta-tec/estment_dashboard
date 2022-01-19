@@ -5,7 +5,7 @@
     <div class="q-pa-md"/>
     <div class="text-center row justify-center">
       <form @submit.prevent.stop="onSubmit" class="col-12 q-pa-md text-h5" style="max-width: 12em">
-        <q-input color="secondary" dark label="Nombre de equipo" v-model="data.hostname"/>
+        <!--        <q-input color="secondary" dark label="Nombre de equipo" v-model="data.hostname"/>-->
         <q-select :options="data.options.modeOptions" color="secondary" dark label="Modo de trabajo"
                   v-model="data.mode"/>
         <q-select :options="wifiOptions" @filter="filterFn" color="secondary" dark label="SSID"
@@ -29,16 +29,18 @@
 import { defineComponent } from '@vue/composition-api'
 
 let mode: any = ''
+let ipMode: any = ''
 export default defineComponent({
   data() {
     return {
+      config: {},
       wifiOptions: [],
       data: {
         hostname: '',
         mode,
         ssid: '',
         password: '',
-        ipMode: '',
+        ipMode,
         ipAddress: '',
         options: {
           ipOptions: [
@@ -102,6 +104,17 @@ export default defineComponent({
     this.getNetworks().catch(e => {
       console.log(e.message)
     })
+  },
+  async mounted() {
+    const response = await this.$axios.get('net')
+    console.log(response.data)
+    this.config = response.data
+    this.data.ipAddress = response.data.ip.value || response.data.ip.default
+    const apMode = response.data.AP.value !== -1 ? response.data.AP.value : response.data.AP.default
+    this.data.mode = !!apMode ? this.data.options.modeOptions.find(e => e.value === 'ap') : this.data.options.modeOptions.find(e => e.value === 'sta')
+
+    const autoIp = response.data.AP.value !== -1 ? response.data.dhcp.value : response.data.dhcp.default
+    this.data.ipMode = !!autoIp ? this.data.options.ipOptions.find(e => e.value === 'auto') : this.data.options.ipOptions.find(e => e.value === 'manual')
   }
 })
 </script>
