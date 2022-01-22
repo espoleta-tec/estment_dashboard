@@ -76,7 +76,7 @@ const getters: GetterTree<ApiStateInterface, StateInterface> = {
     return direction[context.wind_direction_average] || 'desconocida'
   },
   climateIcon(context) {
-
+    console.log('ll')
   }
 }
 
