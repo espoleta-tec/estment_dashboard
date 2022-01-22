@@ -10,6 +10,9 @@ const mutation: MutationTree<ApiStateInterface> = {
     values.forEach(x => {
       const [key, value] = x.split('=')
       state[key] = value
+      if (!isNaN(Number.parseFloat(value))) {
+        state[key] = Number.parseFloat(value)
+      }
     })
   },
   updateLogs(state: ApiStateInterface, payload: string) {

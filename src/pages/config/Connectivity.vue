@@ -118,8 +118,4 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
-/*.q-field__native {
-  color: $secondary !important;
-}*/
-</style>
+

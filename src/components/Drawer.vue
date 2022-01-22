@@ -19,13 +19,13 @@
         <Logo class="text-h5 q-ma-lg"/>
         <div class="q-pa-md"/>
         <q-item
-          :class="`text-uppercase q-pa-md text-bold row no-wrap flex items-center
+          :class="`text-uppercase text-bold row no-wrap flex items-center
         text-h6 q-ma-md ${$route.path === n.to ? 'text-secondary bg-dark' : ''}`"
           :key="n.to"
           :style="`font-weight: 300; ${idx === drawerRoutes.length - 1 ? 'margin-top: 3rem': ''}`"
           :to="n.to" clickable
           v-for="(n, idx) in drawerRoutes">
-          <q-icon :name="n.icon"/>
+          <q-icon :name="n.icon" class="q-pr-sm"/>
           <span style="margin-left: 0.2rem;">{{ n.name }}</span>
         </q-item>
       </div>
