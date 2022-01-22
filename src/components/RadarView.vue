@@ -54,7 +54,7 @@ export default defineComponent({
           }
         },
         tooltip: {
-          enabled: true
+          enabled: true,
         },
         markers: {
           colors: [palette('white')],

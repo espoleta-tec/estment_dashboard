@@ -1,5 +1,6 @@
 <template>
   <div class="row relative-position">
+    <!--    <div class="absolute bg-primary" style="height: 50%; width: 100%; top: 0; left: 0; z-index: 2"></div>-->
     <div class="absolute text-body1 row" style="z-index: 2;top: 2rem; left: 3rem;">
       <slot name="left"></slot>
     </div>
@@ -15,6 +16,7 @@
 import { defineComponent, PropType } from '@vue/composition-api'
 import { colors } from 'quasar'
 import VueApexCharts from 'vue-apexcharts/dist/vue-apexcharts'
+import { ApexOptions } from 'apexcharts'
 
 
 let hundred: any = []
@@ -37,7 +39,7 @@ export default defineComponent({
   },
   computed: {
     options(): any {
-      return {
+      const options: ApexOptions = {
         legend: {
           labels: {
             colors: [palette('white')]
@@ -46,9 +48,25 @@ export default defineComponent({
             fillColors: [palette('green-12'), palette('accent')]
           }
         },
+        tooltip: {
+          enabled: false
+          // fillSeriesColor: true,
+          // marker: {
+          //   // fillColors: [palette('green-12'), palette('accent')]
+          // }
+        },
+        annotations: {
+          points: [
+            {
+              marker: {
+                fillColor: palette('white')
+              }
+            }
+          ]
+        },
         chart: {
           // stacked: true,
-          height: 350,
+          // height: 350,
           type: 'area',
           toolbar: {
             show: false
@@ -61,6 +79,7 @@ export default defineComponent({
           enabled: false
         },
         stroke: {
+          curve: 'smooth',
           width: 1,
           colors: [palette('green-12'), palette('accent')]
         },
@@ -99,8 +118,29 @@ export default defineComponent({
         },
         yaxis: [{
           min: 0,
-          max: 2 * Math.max(...this.series[0].data.map((d: any) => d.y)),
+          max: 2 * Math.max(...this.series[0].data.map((d: any) => d.y),
+              ...(this.series[1] ? this.series[1].data.map((d: any) => d.y) : [])),
           opposite: false,
+          tickAmount: 5,
+          labels: {
+            style: {
+              colors: palette('green-12')
+            },
+            formatter: function(value: number): string {
+              if (value === 0) return ''
+              return Math.ceil(value) as unknown as string
+            }
+          }
+        }],
+        markers: {
+          colors: [palette('green-12'), palette('accent')]
+        }
+      }
+      if (this.series.length > 1) {
+        const secondYAxis = {
+          min: 0,
+          max: 3 * Math.max(...this.series[1].data.map((d: any) => d.y)),
+          opposite: true,
           tickAmount: 5,
           labels: {
             style: {
@@ -111,9 +151,15 @@ export default defineComponent({
               return Math.ceil(value)
             }
           }
-        }]
+        }
+        // if (Array.isArray(options.yaxis)) {
+        //   options.yaxis?.push(secondYAxis as any)
+        // }
       }
+      return options
     }
   }
 })
 </script>
+<style lang="scss">
+</style>

@@ -11,11 +11,11 @@
             {{ $store.getters['time/currentCycle'] }}
           </div>
         </div>
-        <div class="col-6 text-secondary text-h1 flex flex-center">{{ $store.getters['api/temperature'] }}</div>
+        <div class="col-6 text-secondary text-h1 flex flex-center">{{ Math.floor($store.state.api.temperature_c) }}°</div>
       </div>
       <div class="col-6 column">
         <div class="col flex flex-center">
-          <q-icon name="weather_partly_cloudy_rain_filled" style="font-size: 20vh"/>
+          <q-icon :name="$store.getters['api/climateIcon']" style="font-size: 20vh"/>
         </div>
         <div class="col-1"/>
       </div>

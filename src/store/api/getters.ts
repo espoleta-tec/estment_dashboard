@@ -76,7 +76,29 @@ const getters: GetterTree<ApiStateInterface, StateInterface> = {
     return direction[context.wind_direction_average] || 'desconocida'
   },
   climateIcon(context) {
-    console.log('ll')
+    let icon = 'weather_'
+
+    //set time
+    const timeOfDay = new Date().getHours()
+    icon += timeOfDay >= 6 && timeOfDay < 18 ? 'day' : 'night'
+
+    //set precipitations
+    if (context.water_count > 0) {
+      icon += '-rain'
+    }
+
+    //set wind
+    if (context.wind_speed_average >= 1) {
+      icon += '-wind'
+    }
+
+    //set lightnings
+    if (context.lightningCount > 0) {
+      icon += '-lightning'
+    }
+
+
+    return icon
   }
 }
 

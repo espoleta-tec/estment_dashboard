@@ -7,7 +7,7 @@
     </div>
     <div class="column items-center">
       <span>Version Actual</span>
-      <span class="text-secondary text-h6">0.5</span>
+      <span class="text-secondary text-h6">{{version}}</span>
     </div>
     <div style="width: 20em">
       <q-file dark v-model="file">
@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, onBeforeMount } from '@vue/composition-api'
 
 export default defineComponent({
   // name: 'PageName'
@@ -34,7 +34,8 @@ export default defineComponent({
       file: '',
       type: 'firmware',
       uploading: false,
-      progress: 0
+      progress: 0,
+      version: '0.0.0'
     }
   },
   methods: {
@@ -74,7 +75,12 @@ export default defineComponent({
           color: 'negative'
         })
       })
-    }
+    },
+  },
+  async created() {
+    const response = await this.$axios.get('firmware-version')
+
+    this.version = response.data
   }
 })
 </script>
