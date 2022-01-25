@@ -100,37 +100,16 @@ export default defineComponent({
       })
     },
     requestDownload() {
-      // Filesystem.writeFile({
-      //   data: 'me cago en dios',
-      //   path: `lecturas_${new Date().toISOString()}.txt`,
-      //   directory: FilesystemDirectory.ExternalStorage,
-      //   encoding: FilesystemEncoding.UTF8
-      // })
-      //   .then((result: any) => {
-      //     this.$q.notify({
-      //       message: `${result} stuff`,
-      //       color: 'positive',
-      //       position: 'top'
-      //     })
-      //   }).catch(error => {
-      //   console.log(error)
-      //   this.$q.notify({
-      //     message: `${error} stuff`,
-      //     color: 'negative',
-      //     position: 'top'
-      //   })
-      // })
 
       this.$axios.get('/logs-global').then((response) => {
-        const url = window.URL.createObjectURL(new Blob(([response.data])))
-        // const link = document.createElement('a')
-        // link.href = url
-        // link.setAttribute('download', `lecturas_${new Date().toISOString()}.txt`)
-        // document.body.appendChild(link)
-        // link.click()
+        this.$q.notify({
+          message: 'guardando lecturas',
+          color: 'blue',
+          position: 'top'
+        })
         Filesystem.writeFile({
           data: response.data,
-          path: `vortice/lecturas_${new Date().toISOString()}.txt`,
+          path: `lecturas_${new Date().toISOString()}.txt`,
           directory: FilesystemDirectory.ExternalStorage,
           encoding: FilesystemEncoding.UTF8
         })

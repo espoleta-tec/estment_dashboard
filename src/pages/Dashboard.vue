@@ -2,7 +2,7 @@
   <q-page class="row text-white">
     <!--    {{readyStateWatch(ticker)}}-->
     <div class="col-12 column">
-      <div class="text-red-6 text-h5 text-center" v-if="readyStateWatch(ticker) !== 1 && false">
+      <div class="text-red-6 text-h5 text-center" v-if="readyStateWatch(ticker) !== 1">
         No se encuentra conectado a ninguna estación.
       </div>
       <router-view v-else class="col"/>
