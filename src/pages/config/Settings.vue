@@ -80,8 +80,17 @@ export default defineComponent({
       })
     },
     timeSync() {
-      this.$store.dispatch('api/syncTime').catch(e => {
+      this.$store.dispatch('api/syncTime').then(() => {
+        this.$q.notify({
+          message: 'Fecha y hora del dispositivo actualizadas con su terminal',
+          color: 'positive'
+        })
+      }).catch(e => {
         console.log(e.message)
+        this.$q.notify({
+          message: `Error ${e.message}`,
+          color: 'negative'
+        })
       })
     },
     resetConfiguration() {

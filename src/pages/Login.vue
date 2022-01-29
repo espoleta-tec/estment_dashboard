@@ -52,6 +52,10 @@ export default defineComponent({
         }
       }).catch(error => {
         console.log(error)
+        this.$q.notify({
+          message: `Error ${error.message}`,
+          color: 'negative'
+        })
       })
     }
   }
