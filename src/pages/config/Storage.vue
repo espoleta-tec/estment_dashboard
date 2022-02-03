@@ -100,13 +100,12 @@ export default defineComponent({
       })
     },
     requestDownload() {
-
+      this.$q.notify({
+        message: 'guardando lecturas',
+        color: 'blue',
+        position: 'top'
+      })
       this.$axios.get('/logs-global').then((response) => {
-        this.$q.notify({
-          message: 'guardando lecturas',
-          color: 'blue',
-          position: 'top'
-        })
         Filesystem.writeFile({
           data: response.data,
           path: `lecturas_${new Date().toISOString()}.txt`,

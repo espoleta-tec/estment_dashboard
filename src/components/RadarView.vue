@@ -54,7 +54,7 @@ export default defineComponent({
           }
         },
         tooltip: {
-          enabled: true,
+          enabled: true
         },
         markers: {
           colors: [palette('white')],
@@ -90,7 +90,9 @@ export default defineComponent({
         },
         yaxis: {
           min: 0,
-          max: 100,
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          max: 2 * Math.max(...this.data),
           tickAmount: 4,
           labels: {
             show: true,
