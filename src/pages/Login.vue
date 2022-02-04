@@ -41,10 +41,10 @@ export default defineComponent({
         url: 'authenticate',
         method: 'POST',
         data: data
-      }).then((response) => {
-        console.log(response.data)
+      }).then(async (response) => {
         if ('access_token' in response.data) {
           this.$store.commit('login/changeToken', response.data['access_token'])
+          await this.$store.dispatch('api/changeMaster')
           console.log(this.$store.state.login.token)
           this.$router.push('/').catch(error => {
             console.log(error.message)
