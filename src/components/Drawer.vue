@@ -62,7 +62,7 @@ export default defineComponent({
       ]
     },
     routesToShow() {
-      return this.drawerRoutes.filter((r) => {
+      return (this.drawerRoutes as any).filter((r: any) => {
         if (r.loggedIn) {
           return this.$store.state.api.ws?.readyState
         }
