@@ -16,6 +16,7 @@ export default defineComponent({
         {
           name: 'Presión',
           data: this.$store.getters['api/gData']('pressure')
+            .map((elem: any) => ({ x: elem.x, y: Math.round(elem.y) }))
         }]
     }
   }

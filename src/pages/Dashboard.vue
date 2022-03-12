@@ -96,13 +96,4 @@ $theBorder: solid rgba(255, 255, 255, 0.1) 1px;
 .leftSplit {
   border-left: $theBorder;
 }
-
-/*.q-btn:hover {
-  background: $secondary !important;
-}
-
-.q-btn:hover div {
-  color: white !important;
-}
- */
 </style>
