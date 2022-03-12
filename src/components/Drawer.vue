@@ -24,7 +24,7 @@
           :key="n.to"
           :style="`font-weight: 300; ${idx === drawerRoutes.length - 1 ? 'margin-top: 3rem': ''}`"
           :to="n.to" clickable
-          v-for="(n, idx) in drawerRoutes">
+          v-for="(n, idx) in routesToShow">
           <q-icon :name="n.icon" class="q-pr-sm"/>
           <span style="margin-left: 0.2rem;">{{ n.name }}</span>
         </q-item>
@@ -52,14 +52,22 @@ export default defineComponent({
     drawerRoutes() {
       return [
         { to: '/', name: 'Tablero', icon: 'home_filled' },
-        { to: '/user', name: 'usuario', icon: 'user_filled' },
+        { to: '/user', name: 'usuario', icon: 'user_filled', loggedIn: true },
         // { to: '/sensors', name: 'sensores', icon: 'microchip' },
-        { to: '/connectivity', name: 'conectividad', icon: 'wifi_router' },
-        { to: '/storage', name: 'almacenamiento', icon: 'sd_filled' },
-        { to: '/update', name: 'update', icon: 'folder-f' },
+        { to: '/connectivity', name: 'conectividad', icon: 'wifi_router', loggedIn: true },
+        { to: '/storage', name: 'almacenamiento', icon: 'sd_filled', loggedIn: true },
+        { to: '/update', name: 'update', icon: 'folder-f', loggedIn: true },
         { to: '/settings', name: 'Ajustes', icon: 'settings_filled' },
         { to: '/about', name: 'Acerca de', icon: 'info_filled' }
       ]
+    },
+    routesToShow() {
+      return this.drawerRoutes.filter((r) => {
+        if (r.loggedIn) {
+          return this.$store.state.api.ws?.readyState
+        }
+        return true
+      })
     }
   },
   methods: {
