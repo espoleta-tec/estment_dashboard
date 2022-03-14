@@ -25,9 +25,9 @@ export default route<Store<StateInterface>>(function({ Vue }) {
   })
 
   router.beforeEach((to, from, next) => {
-    theStore.dispatch('api/getLogs').catch((e: Error) => {
-      console.log(e.message)
-    })
+    // theStore.dispatch('api/getLogs').catch((e: Error) => {
+    //   console.log(e.message)
+    // })
     next()
   })
 

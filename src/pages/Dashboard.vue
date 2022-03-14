@@ -10,7 +10,7 @@
       <div class="col-auto row">
         <div :key="elem.icon" class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm" v-for="elem in fourthBar">
           <q-btn :class="`col-12 row ${ $route.path === elem.to ? 'bg-secondary text-white' : ''}`"
-                 :to="elem.to"
+                 :to="elem.to" @click="$store.dispatch('api/getLogs')"
                  outline style="border-radius: 0.6rem" v-ripple:secondary>
             <div class="col row items-stretch self-stretch">
               <div

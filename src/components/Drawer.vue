@@ -62,6 +62,7 @@ export default defineComponent({
       ]
     },
     routesToShow() {
+      this.ticker
       return (this.drawerRoutes as any).filter((r: any) => {
         if (r.loggedIn) {
           return this.$store.state.api.ws?.readyState
@@ -82,6 +83,16 @@ export default defineComponent({
         console.log(err.message)
       })
     }
+  },
+  data() {
+    return {
+      ticker: 0
+    }
+  },
+  mounted() {
+    setInterval(() => {
+      this.ticker++
+    }, 1000)
   }
 })
 </script>
