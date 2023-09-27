@@ -1,5 +1,5 @@
 {
-  "appId": "com.espoleta.vortex.v1.app",
+  "appId": "com.github.lazaroofarrill.vortex_visor",
   "appName": "Quasar App",
   "bundledWebRuntime": false,
   "npmClient": "yarn",

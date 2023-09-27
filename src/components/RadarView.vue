@@ -1,13 +1,22 @@
 <template>
   <div class="row">
-    <VueApexCharts :options="options" :series="series" class="col-12" type="radar"/>
+    <VueApexCharts
+      :options="options"
+      :series="series"
+      class="col-12"
+      type="radar"
+    />
     <div class="text-h6 col-grow text-center">
-      <q-icon name="032-windsock"/>
-      <span style="margin-left: .5em">{{ $store.state.api.wind_speed_average }} m/s</span>
+      <q-icon name="032-windsock" />
+      <span style="margin-left: .5em"
+        >{{ $store.state.api.wind_speed_average }} m/s</span
+      >
     </div>
     <div class="text-h6 col-grow text-center">
-      <q-icon name="vane"/>
-      <span style="margin-left: .5em">{{ $store.getters['api/lastWindDirection'] }}</span>
+      <q-icon name="vane" />
+      <span style="margin-left: .5em">{{
+        $store.getters['api/lastWindDirection']
+      }}</span>
     </div>
   </div>
 </template>
@@ -68,7 +77,9 @@ export default defineComponent({
           opacity: 0.2,
           colors: [palette('green')]
         },
-        labels: ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'],
+        labels: ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO']
+          .map(l => [l, ' '])
+          .flat(),
         // labels: ['N', 'E', 'S', 'O'],
         xaxis: {
           labels: {

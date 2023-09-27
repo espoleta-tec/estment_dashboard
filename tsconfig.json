@@ -1,7 +1,10 @@
 {
   "extends": "@quasar/app/tsconfig-preset",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "node"
   },
   "files": [
     "./node_modules/@types/webpack/index.d.ts"

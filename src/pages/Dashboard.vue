@@ -2,29 +2,59 @@
   <q-page class="row text-white">
     <!--    {{readyStateWatch(ticker)}}-->
     <div class="col-12 column">
-      <div class="text-red-6 text-h5 text-center" v-if="readyStateWatch(ticker) !== 1">
+      <div
+        class="text-red-6 text-h5 text-center"
+        v-if="readyStateWatch(ticker) !== 1 && false"
+      >
         No se encuentra conectado a ninguna estación.
       </div>
-      <router-view v-else class="col"/>
-      <q-space/>
+      <router-view v-else class="col" />
+      <q-space />
       <div class="col-auto row">
-        <div :key="elem.icon" class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm" v-for="elem in fourthBar">
-          <q-btn :class="`col-12 row ${ $route.path === elem.to ? 'bg-secondary text-white' : ''}`"
-                 :to="elem.to" @click="$store.dispatch('api/getLogs')"
-                 outline style="border-radius: 0.6rem" v-ripple:secondary>
+        <div
+          :key="elem.icon"
+          class="col-4 col-sm-3 col-lg-2 col-xl-1 row q-pa-sm"
+          v-for="elem in fourthBar"
+        >
+          <q-btn
+            :class="
+              `col-12 row ${
+                $route.path === elem.to ? 'bg-secondary text-white' : ''
+              }`
+            "
+            :to="elem.to"
+            @click="$store.dispatch('api/getLogs')"
+            outline
+            style="border-radius: 0.6rem"
+            v-ripple:secondary
+          >
             <div class="col row items-stretch self-stretch">
               <div
-                :class="`col-12 text-left text-no-wrap ${ $route.path === elem.to ? 'text-white' : 'text-secondary'}`"
-                style="font-size: 10pt; text-transform: none">
+                :class="
+                  `col-12 text-left text-no-wrap ${
+                    $route.path === elem.to ? 'text-white' : 'text-secondary'
+                  }`
+                "
+                style="font-size: 10pt; text-transform: none"
+              >
                 {{ elem.text }}
               </div>
-              <div :class="`col-grow flex ${elem.text.length === 0 ? 'flex-center' : 'items-end justify-end'}`">
-                <q-icon :name="elem.icon" style="font-size: 2rem"/>
+              <div
+                :class="
+                  `col-grow flex ${
+                    elem.text.length === 0
+                      ? 'flex-center'
+                      : 'items-end justify-end'
+                  }`
+                "
+              >
+                <q-icon :name="elem.icon" style="font-size: 2rem" />
               </div>
             </div>
           </q-btn>
         </div>
       </div>
+      <div style="height: 24px"></div>
     </div>
   </q-page>
 </template>
@@ -50,15 +80,46 @@ export default defineComponent({
   computed: {
     fourthBar(): Record<string, any>[] {
       return [
-        { text: `${this.$store.state.api.water_count} mm`, icon: '028-drop', to: '/precipitation' },
-        { text: `${this.$store.state.api.humidity}%`, icon: 'humidity', to: '/humidity' },
-        { text: this.$store.getters['api/temperature'], icon: 'temperature', to: '/humidity' },
-        { text: `${this.$store.state.api.wind_speed_average} m/s`, icon: '032-windsock', to: '/wind' },
+        /*
+        {
+          text: `${this.$store.state.api.humidity}%`,
+          icon: 'humidity',
+          to: '/humidity'
+        },
+        */
+        {
+          text: this.$store.getters['api/temperature'],
+          icon: 'temperature',
+          to: '/humidity'
+        },
+        {
+          text: `${this.$store.state.api.wind_speed_average} m/s`,
+          icon: '032-windsock',
+          to: '/wind'
+        },
         { text: '', icon: 'home_filled', to: '/' },
-        { text: `${this.$store.getters['api/pressure']} hpa`, icon: 'barometer', to: '/pressure' },
-        { text: `${this.$store.getters['api/lastWindDirection']}`, icon: 'vane', to: '/wind' },
-        { text: `${this.$store.state.api.light} lux`, icon: 'sun', to: '/light' },
-        { text: this.$store.state.api.lightningCount, icon: 'lightning-bolt', to: '/lightnings' }
+        {
+          text: `${this.$store.getters['api/pressure']} mmHg`,
+          icon: 'barometer',
+          to: '/pressure'
+        },
+        {
+          text: `${this.$store.getters['api/lastWindDirection']}`,
+          icon: 'vane',
+          to: '/wind'
+        },
+        /*
+        {
+          text: `${this.$store.state.api.light} lux`,
+          icon: 'sun',
+          to: '/light'
+        },
+        */
+        {
+          text: this.$store.state.api.lightningCount,
+          icon: 'lightning-bolt',
+          to: '/lightnings'
+        }
       ]
     }
   },
@@ -83,6 +144,7 @@ export default defineComponent({
 </script>
 <style lang="scss">
 $theBorder: solid rgba(255, 255, 255, 0.1) 1px;
+
 .splitSession {
   border-top: $theBorder;
   border-bottom: $theBorder;

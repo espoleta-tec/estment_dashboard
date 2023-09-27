@@ -1,6 +1,6 @@
 {
-  "appId": "com.espoleta.vortex.v1.app",
-  "appName": "Vortex Visor",
+  "appId": "com.github.lazaroofarrill.vortex_visor",
+  "appName": "Quasar App",
   "bundledWebRuntime": false,
   "npmClient": "yarn",
   "webDir": "www"
